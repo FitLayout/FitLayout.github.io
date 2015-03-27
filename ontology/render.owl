@@ -1,0 +1,418 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY boxOnt "http://www.mws.cz/render.owl#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.mws.cz/render.owl#"
+     xml:base="http://www.mws.cz/render.owl"
+     xmlns:boxOnt="http://www.mws.cz/render.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.mws.cz/render.owl#"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.mws.cz/render.owl#belongsTo -->
+
+    <owl:ObjectProperty rdf:about="&boxOnt;belongsTo">
+        <rdfs:range rdf:resource="&boxOnt;Page"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#containsImage -->
+
+    <owl:ObjectProperty rdf:about="&boxOnt;containsImage">
+        <rdfs:domain rdf:resource="&boxOnt;Box"/>
+        <rdfs:range rdf:resource="&boxOnt;Image"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#containsObject -->
+
+    <owl:ObjectProperty rdf:about="&boxOnt;containsObject">
+        <rdfs:domain rdf:resource="&boxOnt;Box"/>
+        <rdfs:range rdf:resource="&boxOnt;CommonObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#hasBottomBorder -->
+
+    <owl:ObjectProperty rdf:about="&boxOnt;hasBottomBorder">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&boxOnt;Border"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#hasLeftBorder -->
+
+    <owl:ObjectProperty rdf:about="&boxOnt;hasLeftBorder">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&boxOnt;Border"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#hasRightBorder -->
+
+    <owl:ObjectProperty rdf:about="&boxOnt;hasRightBorder">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&boxOnt;Border"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#hasTopBorder -->
+
+    <owl:ObjectProperty rdf:about="&boxOnt;hasTopBorder">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&boxOnt;Border"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#isChildOf -->
+
+    <owl:ObjectProperty rdf:about="&boxOnt;isChildOf">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Box"/>
+        <rdfs:range rdf:resource="&boxOnt;ContainerBox"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.mws.cz/render.owl#backgroundColor -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;backgroundColor">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#color -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;color">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#fontDecoration -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;fontDecoration">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#fontFamily -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;fontFamily">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#fontSize -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;fontSize">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#fontStyle -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;fontStyle">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#fontVariant -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;fontVariant">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#fontWeight -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;fontWeight">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#hasText -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;hasText">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Box"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#height -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;height">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Page"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#imageUrl -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;imageUrl">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Image"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#launchDatetime -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;launchDatetime">
+        <rdfs:domain rdf:resource="&boxOnt;Launch"/>
+        <rdfs:range rdf:resource="&xsd;dateTimeStamp"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#objectInformation -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;objectInformation">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;CommonObject"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#positionX -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;positionX">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#positionY -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;positionY">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#sourceUrl -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;sourceUrl">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Page"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#width -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;width">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Page"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+    <!-- http://www.mws.cz/render.owl#backgroundImageUrl -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;backgroundImageUrl">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.mws.cz/render.owl#backgroundImagePosition -->
+
+    <owl:DatatypeProperty rdf:about="&boxOnt;backgroundImagePosition">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&boxOnt;Rectangle"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+
+
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.mws.cz/render.owl#Border -->
+
+    <owl:Class rdf:about="&boxOnt;Border"/>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#Box -->
+
+    <owl:Class rdf:about="&boxOnt;Box">
+        <rdfs:subClassOf rdf:resource="&boxOnt;Rectangle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#CommonObject -->
+
+    <owl:Class rdf:about="&boxOnt;CommonObject"/>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#ContainerBox -->
+
+    <owl:Class rdf:about="&boxOnt;ContainerBox">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&boxOnt;Box"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&boxOnt;ContentBox"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&boxOnt;Box"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#ContentBox -->
+
+    <owl:Class rdf:about="&boxOnt;ContentBox">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&boxOnt;Box"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&boxOnt;containsImage"/>
+                                <owl:someValuesFrom rdf:resource="&boxOnt;Image"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&boxOnt;containsObject"/>
+                                <owl:someValuesFrom rdf:resource="&boxOnt;CommonObject"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&boxOnt;hasText"/>
+                                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&boxOnt;Box"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#Image -->
+
+    <owl:Class rdf:about="&boxOnt;Image"/>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#Launch -->
+
+    <owl:Class rdf:about="&boxOnt;Launch"/>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#Page -->
+
+    <owl:Class rdf:about="&boxOnt;Page"/>
+    
+
+
+    <!-- http://www.mws.cz/render.owl#Rectangle -->
+
+    <owl:Class rdf:about="&boxOnt;Rectangle"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
