@@ -54,7 +54,7 @@
 
     <owl:ObjectProperty rdf:about="&box;containsObject">
         <rdfs:domain rdf:resource="&box;Box"/>
-        <rdfs:range rdf:resource="&box;CommonObject"/>
+        <rdfs:range rdf:resource="&box;ContentObject"/>
     </owl:ObjectProperty>
     
 
@@ -245,7 +245,7 @@
 
     <owl:DatatypeProperty rdf:about="&box;objectInformation">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:domain rdf:resource="&box;CommonObject"/>
+        <rdfs:domain rdf:resource="&box;ContentObject"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -334,9 +334,9 @@
     
 
 
-    <!-- http://fitlayout.github.io/ontology/render.owl#CommonObject -->
+    <!-- http://fitlayout.github.io/ontology/render.owl#ContentObject -->
 
-    <owl:Class rdf:about="&box;CommonObject"/>
+    <owl:Class rdf:about="&box;ContentObject"/>
     
 
 
@@ -373,7 +373,7 @@
                             </owl:Restriction>
                             <owl:Restriction>
                                 <owl:onProperty rdf:resource="&box;containsObject"/>
-                                <owl:someValuesFrom rdf:resource="&box;CommonObject"/>
+                                <owl:someValuesFrom rdf:resource="&box;ContentObject"/>
                             </owl:Restriction>
                             <owl:Restriction>
                                 <owl:onProperty rdf:resource="&box;hasText"/>
