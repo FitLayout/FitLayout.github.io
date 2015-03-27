@@ -6,7 +6,8 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-    <!ENTITY render "http://fitlayout.github.io/ontology/render.owl#" >
+    <!ENTITY box "http://fitlayout.github.io/ontology/render.owl#" >
+    <!ENTITY segm "http://fitlayout.github.io/ontology/segmentation.owl#" >
 ]>
 
 
@@ -16,36 +17,11 @@
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:render="http://fitlayout.github.io/ontology/render.owl#">
+     xmlns:box="http://fitlayout.github.io/ontology/render.owl#"
+     xmlns:segm="http://fitlayout.github.io/ontology/segmentation.owl#">
     <owl:Ontology rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#"/>
     
 
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://fitlayout.github.io/ontology/segmentation.owl#establishes -->
-
-    <owl:AnnotationProperty rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#establishes">
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
-    </owl:AnnotationProperty>
-    
-
-
-    <!-- http://fitlayout.github.io/ontology/segmentation.owl#isChildOf -->
-
-    <owl:AnnotationProperty rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#isChildOf">
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#Area"/>
-    </owl:AnnotationProperty>
-    
 
 
     <!-- 
@@ -61,60 +37,20 @@
 
     <!-- http://fitlayout.github.io/ontology/segmentation.owl#establishes -->
 
-    <owl:ObjectProperty rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#establishes">
+    <owl:ObjectProperty rdf:about="&segm;establishes">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#Area"/>
-		<rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
+        <rdfs:range rdf:resource="&segm;Area"/>
+		<rdfs:domain rdf:resource="&box;Box"/>
     </owl:ObjectProperty>
     
 
 
     <!-- http://fitlayout.github.io/ontology/segmentation.owl#isChildOf -->
 
-    <owl:ObjectProperty rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#isChildOf">
-        <rdfs:range rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#Area"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#Area"/>
+    <owl:ObjectProperty rdf:about="&segm;isChildOf">
+        <rdfs:range rdf:resource="&segm;Area"/>
+        <rdfs:domain rdf:resource="&segm;Area"/>
     </owl:ObjectProperty>
-    
-
-	
-
-    <!-- http://fitlayout.github.io/ontology/segmentation.owl#downOf -->
-
-    <owl:ObjectProperty rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#downOf">
-        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
-        <rdfs:range rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#Area"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#Area"/>
-    </owl:ObjectProperty>
-
-    <!-- http://fitlayout.github.io/ontology/segmentation.owl#leftOf -->
-
-    <owl:ObjectProperty rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#leftOf">
-        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
-        <rdfs:range rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#Area"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#Area"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://fitlayout.github.io/ontology/segmentation.owl#rightOf -->
-
-    <owl:ObjectProperty rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#rightOf">
-        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#Area"/>
-        <rdfs:range rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#Area"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://fitlayout.github.io/ontology/segmentation.owl#topOf -->
-
-    <owl:ObjectProperty rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#topOf">
-        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#Area"/>
-        <rdfs:range rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#Area"/>
-    </owl:ObjectProperty>
-	
 	
 
     <!-- 
@@ -125,19 +61,11 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
-
-
-    <!-- http://fitlayout.github.io/ontology/render.owl#Rectangle -->
-
-    <owl:Class rdf:about="&render;Rectangle"/>
-    
-
 
     <!-- http://fitlayout.github.io/ontology/segmentation.owl#Area -->
 
-    <owl:Class rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#Area">
-        <rdfs:subClassOf rdf:resource="&render;Rectangle"/>
+    <owl:Class rdf:about="&segm;Area">
+        <rdfs:subClassOf rdf:resource="&box;Rectangle"/>
     </owl:Class>
 </rdf:RDF>
 
