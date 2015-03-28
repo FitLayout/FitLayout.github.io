@@ -34,6 +34,15 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/segmentation.owl#belongsTo -->
+
+    <owl:ObjectProperty rdf:about="&segm;belongsTo">
+        <rdfs:domain rdf:resource="&segm;Area"/>
+        <rdfs:range rdf:resource="&segm;AreaTree"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/segmentation.owl#establishes -->
 
     <owl:ObjectProperty rdf:about="&segm;establishes">
@@ -68,6 +77,15 @@
     <owl:ObjectProperty rdf:about="&segm;isSubordinateTo">
         <rdfs:domain rdf:resource="&segm;LogicalArea"/>
         <rdfs:range rdf:resource="&segm;LogicalArea"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/segmentation.owl#sourcePage -->
+
+    <owl:ObjectProperty rdf:about="&segm;sourcePage">
+        <rdfs:domain rdf:resource="&segm;AreaTree"/>
+        <rdfs:range rdf:resource="&box;Page"/>
     </owl:ObjectProperty>
     
 
@@ -147,6 +165,12 @@
     <owl:Class rdf:about="&segm;Area">
         <rdfs:subClassOf rdf:resource="&box;Rectangle"/>
     </owl:Class>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/segmentation.owl#AreaTree -->
+
+    <owl:Class rdf:about="&segm;AreaTree"/>
     
 
 
