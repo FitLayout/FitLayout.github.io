@@ -84,8 +84,8 @@
     <!-- http://fitlayout.github.io/ontology/segmentation.owl#sourcePage -->
 
     <owl:ObjectProperty rdf:about="&segm;sourcePage">
-        <rdfs:domain rdf:resource="&segm;AreaTree"/>
         <rdfs:range rdf:resource="&box;Page"/>
+        <rdfs:domain rdf:resource="&segm;AreaTree"/>
     </owl:ObjectProperty>
     
 
@@ -110,15 +110,6 @@
     
 
 
-    <!-- http://fitlayout.github.io/ontology/segmentation.owl#hasSupport -->
-
-    <owl:DatatypeProperty rdf:about="&segm;hasSupport">
-        <rdfs:domain rdf:resource="&segm;Tag"/>
-        <rdfs:range rdf:resource="&xsd;float"/>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- http://fitlayout.github.io/ontology/segmentation.owl#hasText -->
 
     <owl:DatatypeProperty rdf:about="&segm;hasText">
@@ -137,6 +128,22 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/segmentation.owl#support -->
+
+    <owl:DatatypeProperty rdf:about="&segm;support">
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/segmentation.owl#tagSupport -->
+
+    <owl:DatatypeProperty rdf:about="&segm;tagSupport">
+        <rdfs:domain rdf:resource="&segm;Area"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -151,6 +158,12 @@
     <!-- http://fitlayout.github.io/ontology/render.owl#Box -->
 
     <owl:Class rdf:about="&box;Box"/>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/render.owl#Page -->
+
+    <owl:Class rdf:about="&box;Page"/>
     
 
 
