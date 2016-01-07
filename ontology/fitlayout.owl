@@ -58,6 +58,15 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/fitlayout.owl#createdOn -->
+
+    <owl:DatatypeProperty rdf:about="&layout;createdOn">
+        <rdfs:domain rdf:resource="&layout;PageSet"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/fitlayout.owl#hasName -->
 
     <owl:DatatypeProperty rdf:about="&layout;hasName">
