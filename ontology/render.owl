@@ -309,6 +309,42 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/render.owl#visualHeight -->
+
+    <owl:DatatypeProperty rdf:about="&box;visualHeight">
+        <rdfs:domain rdf:resource="&box;Box"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/render.owl#visualWidth -->
+
+    <owl:DatatypeProperty rdf:about="&box;visualWidth">
+        <rdfs:domain rdf:resource="&box;Box"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/render.owl#visualX -->
+
+    <owl:DatatypeProperty rdf:about="&box;visualX">
+        <rdfs:domain rdf:resource="&box;Box"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/render.owl#visualY -->
+
+    <owl:DatatypeProperty rdf:about="&box;visualY">
+        <rdfs:domain rdf:resource="&box;Box"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/render.owl#width -->
 
     <owl:DatatypeProperty rdf:about="&box;width">
