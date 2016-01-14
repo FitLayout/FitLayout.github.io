@@ -150,6 +150,33 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/render.owl#borderColor -->
+
+    <owl:DatatypeProperty rdf:about="&box;borderColor">
+        <rdfs:domain rdf:resource="&box;Border"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/render.owl#borderStyle -->
+
+    <owl:DatatypeProperty rdf:about="&box;borderStyle">
+        <rdfs:domain rdf:resource="&box;Border"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/render.owl#borderWidth -->
+
+    <owl:DatatypeProperty rdf:about="&box;borderWidth">
+        <rdfs:domain rdf:resource="&box;Border"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/render.owl#color -->
 
     <owl:DatatypeProperty rdf:about="&box;color">
