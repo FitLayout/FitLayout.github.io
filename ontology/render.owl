@@ -258,6 +258,15 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/render.owl#htmlTagName -->
+
+    <owl:DatatypeProperty rdf:about="&box;htmlTagName">
+        <rdfs:domain rdf:resource="&box;Box"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/render.owl#imageUrl -->
 
     <owl:DatatypeProperty rdf:about="&box;imageUrl">
