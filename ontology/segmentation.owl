@@ -43,12 +43,11 @@
     
 
 
-    <!-- http://fitlayout.github.io/ontology/segmentation.owl#establishes -->
+    <!-- http://fitlayout.github.io/ontology/segmentation.owl#contains -->
 
-    <owl:ObjectProperty rdf:about="&segm;establishes">
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:domain rdf:resource="&box;Box"/>
-        <rdfs:range rdf:resource="&segm;Area"/>
+    <owl:ObjectProperty rdf:about="&segm;contains">
+        <rdfs:range rdf:resource="&box;Box"/>
+        <rdfs:domain rdf:resource="&segm;Area"/>
     </owl:ObjectProperty>
     
 
