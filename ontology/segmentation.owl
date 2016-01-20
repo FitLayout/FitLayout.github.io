@@ -43,9 +43,18 @@
     
 
 
-    <!-- http://fitlayout.github.io/ontology/segmentation.owl#contains -->
+    <!-- http://fitlayout.github.io/ontology/segmentation.owl#containsArea -->
 
-    <owl:ObjectProperty rdf:about="&segm;contains">
+    <owl:ObjectProperty rdf:about="&segm;containsArea">
+        <rdfs:range rdf:resource="&segm;Area"/>
+        <rdfs:domain rdf:resource="&segm;LogicalArea"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/segmentation.owl#containsBox -->
+
+    <owl:ObjectProperty rdf:about="&segm;containsBox">
         <rdfs:range rdf:resource="&box;Box"/>
         <rdfs:domain rdf:resource="&segm;Area"/>
     </owl:ObjectProperty>
