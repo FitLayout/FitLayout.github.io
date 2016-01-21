@@ -247,6 +247,16 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/render.owl#hasTitle -->
+
+    <owl:DatatypeProperty rdf:about="&box;hasTitle">
+        <rdfs:comment>Page title</rdfs:comment>
+        <rdfs:domain rdf:resource="&box;Page"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/render.owl#height -->
 
     <owl:DatatypeProperty rdf:about="&box;height">
