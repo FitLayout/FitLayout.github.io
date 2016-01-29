@@ -187,6 +187,16 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/render.owl#documentOrder -->
+
+    <owl:DatatypeProperty rdf:about="&box;documentOrder">
+        <rdfs:comment>The order of a rectangle within its page</rdfs:comment>
+        <rdfs:domain rdf:resource="&box;Rectangle"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/render.owl#fontFamily -->
 
     <owl:DatatypeProperty rdf:about="&box;fontFamily">
