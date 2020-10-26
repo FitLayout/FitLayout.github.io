@@ -107,6 +107,16 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/segmentation.owl#hasContentLength -->
+
+    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#hasContentLength">
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#Area"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The number of content elements used to compute the style statistics such as average font weight.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/segmentation.owl#hasName -->
 
     <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#hasName">
