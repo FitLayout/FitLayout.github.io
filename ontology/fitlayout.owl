@@ -84,15 +84,6 @@
     
 
 
-    <!-- http://fitlayout.github.io/ontology/fitlayout.owl#hasName -->
-
-    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#hasName">
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/fitlayout.owl#PageSet"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
