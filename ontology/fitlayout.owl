@@ -59,8 +59,27 @@
     <!-- http://fitlayout.github.io/ontology/fitlayout.owl#createdOn -->
 
     <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#createdOn">
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact"/>
         <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/fitlayout.owl#PageSet"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/fitlayout.owl#creator -->
+
+    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#creator">
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/fitlayout.owl#creatorParams -->
+
+    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#creatorParams">
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
 
