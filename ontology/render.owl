@@ -315,6 +315,17 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/render.owl#pngImage -->
+
+    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#pngImage">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Page"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>PNG image data representing the whole page (screen shot)</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/render.owl#positionX -->
 
     <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#positionX">
