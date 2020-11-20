@@ -185,6 +185,17 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/render.owl#displayType -->
+
+    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#displayType">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The display type of a box that corresponds to the CSS &apos;display&apos; property (&apos;inline&apos;, &apos;block&apos;, etc.)</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/render.owl#documentOrder -->
 
     <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#documentOrder">
