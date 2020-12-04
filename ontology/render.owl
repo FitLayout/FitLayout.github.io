@@ -128,6 +128,15 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/render.owl#backgroundImageData -->
+
+    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#backgroundImageData">
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Rectangle"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/render.owl#backgroundImagePosition -->
 
     <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#backgroundImagePosition">
