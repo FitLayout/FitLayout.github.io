@@ -305,6 +305,15 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/render.owl#imageData -->
+
+    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#imageData">
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Image"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/render.owl#imageUrl -->
 
     <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#imageUrl">
