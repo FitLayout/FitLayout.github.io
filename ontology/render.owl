@@ -207,6 +207,50 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/render.owl#contentHeight -->
+
+    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#contentHeight">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The height of the content bounds of a box. The content bounds correspond to the box border bounds as provided by the box source (renderer).</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/render.owl#contentWidth -->
+
+    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#contentWidth">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The width of the content bounds of a box. The content bounds correspond to the box border bounds as provided by the box source (renderer).</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/render.owl#contentX -->
+
+    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#contentX">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The X coordinate of the content bounds of a box. The content bounds correspond to the box border bounds as provided by the box source (renderer).</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/render.owl#contentY -->
+
+    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#contentY">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:comment>The Y coordinate of the content bounds of a box. The content bounds correspond to the box border bounds as provided by the box source (renderer).</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/render.owl#displayType -->
 
     <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#displayType">
