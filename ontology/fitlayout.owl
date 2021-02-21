@@ -10,6 +10,7 @@
      xmlns:segm="http://fitlayout.github.io/ontology/segmentation.owl#"
      xmlns:layout="http://fitlayout.github.io/ontology/fitlayout.owl#">
     <owl:Ontology rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#">
+        <owl:imports rdf:resource="http://fitlayout.github.io/ontology/render.owl#"/>
         <rdfs:comment>FITLayout system types and properties</rdfs:comment>
     </owl:Ontology>
     
@@ -30,6 +31,7 @@
 
     <owl:ObjectProperty rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#containsPage">
         <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/fitlayout.owl#PageSet"/>
+        <rdfs:range rdf:resource="http://fitlayout.github.io/ontology/render.owl#Page"/>
     </owl:ObjectProperty>
     
 

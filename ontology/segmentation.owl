@@ -8,7 +8,9 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:segm="http://fitlayout.github.io/ontology/segmentation.owl#">
-    <owl:Ontology rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#"/>
+    <owl:Ontology rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#">
+        <owl:imports rdf:resource="http://fitlayout.github.io/ontology/render.owl#"/>
+    </owl:Ontology>
     
 
 
