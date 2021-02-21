@@ -527,6 +527,12 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/fitlayout.owl#Artifact -->
+
+    <owl:Class rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact"/>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/render.owl#Border -->
 
     <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#Border"/>
@@ -604,7 +610,10 @@
 
     <!-- http://fitlayout.github.io/ontology/render.owl#Page -->
 
-    <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#Page"/>
+    <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#Page">
+        <rdfs:subClassOf rdf:resource="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact"/>
+        <rdfs:comment>A tree of boxes representing a rendered page.</rdfs:comment>
+    </owl:Class>
     
 
 
