@@ -202,16 +202,16 @@
     
 
 
-    <!-- http://fitlayout.github.io/ontology/render.owl#Rectangle -->
+    <!-- http://fitlayout.github.io/ontology/render.owl#RectArea -->
 
-    <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#Rectangle"/>
+    <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#RectArea"/>
     
 
 
     <!-- http://fitlayout.github.io/ontology/segmentation.owl#Area -->
 
     <owl:Class rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#Area">
-        <rdfs:subClassOf rdf:resource="http://fitlayout.github.io/ontology/render.owl#Rectangle"/>
+        <rdfs:subClassOf rdf:resource="http://fitlayout.github.io/ontology/render.owl#RectArea"/>
     </owl:Class>
     
 
