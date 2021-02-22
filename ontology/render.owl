@@ -35,6 +35,16 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/render.owl#bounds -->
+
+    <owl:ObjectProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#bounds">
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#RectArea"/>
+        <rdfs:range rdf:resource="http://fitlayout.github.io/ontology/render.owl#Bounds"/>
+        <rdfs:comment>Assigns logical rectangular bounds to an area.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/render.owl#containsImage -->
 
     <owl:ObjectProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#containsImage">
@@ -51,6 +61,16 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
         <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
         <rdfs:range rdf:resource="http://fitlayout.github.io/ontology/render.owl#ContentObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/render.owl#contentBounds -->
+
+    <owl:ObjectProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#contentBounds">
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
+        <rdfs:range rdf:resource="http://fitlayout.github.io/ontology/render.owl#Bounds"/>
+        <rdfs:comment>Assigns rectangular content bounds to a box. The content bounds correspond to the box border bounds as provided by the box source (renderer).</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -114,6 +134,16 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
         <rdfs:range rdf:resource="http://fitlayout.github.io/ontology/render.owl#ContainerBox"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/render.owl#visualBounds -->
+
+    <owl:ObjectProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#visualBounds">
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
+        <rdfs:range rdf:resource="http://fitlayout.github.io/ontology/render.owl#Bounds"/>
+        <rdfs:comment>Assigns visual rectangular bounds to a box. Visual bounds correspond to the minimal rectangle that encloses visible contents inside the box.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -205,50 +235,6 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://fitlayout.github.io/ontology/render.owl#contentHeight -->
-
-    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#contentHeight">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-        <rdfs:comment>The height of the content bounds of a box. The content bounds correspond to the box border bounds as provided by the box source (renderer).</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://fitlayout.github.io/ontology/render.owl#contentWidth -->
-
-    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#contentWidth">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-        <rdfs:comment>The width of the content bounds of a box. The content bounds correspond to the box border bounds as provided by the box source (renderer).</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://fitlayout.github.io/ontology/render.owl#contentX -->
-
-    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#contentX">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-        <rdfs:comment>The X coordinate of the content bounds of a box. The content bounds correspond to the box border bounds as provided by the box source (renderer).</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://fitlayout.github.io/ontology/render.owl#contentY -->
-
-    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#contentY">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-        <rdfs:comment>The Y coordinate of the content bounds of a box. The content bounds correspond to the box border bounds as provided by the box source (renderer).</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -350,8 +336,8 @@
 
     <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#height">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Bounds"/>
         <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Page"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#RectArea"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
         <rdfs:comment>Effective height of a rectangle.</rdfs:comment>
     </owl:DatatypeProperty>
@@ -424,7 +410,7 @@
 
     <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#positionX">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#RectArea"/>
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Bounds"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
         <rdfs:comment>Effective X coordinate of a rectangle.</rdfs:comment>
     </owl:DatatypeProperty>
@@ -435,7 +421,7 @@
 
     <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#positionY">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#RectArea"/>
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Bounds"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
         <rdfs:comment>Effective Y coordinate of a rectangle.</rdfs:comment>
     </owl:DatatypeProperty>
@@ -462,56 +448,12 @@
     
 
 
-    <!-- http://fitlayout.github.io/ontology/render.owl#visualHeight -->
-
-    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#visualHeight">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-        <rdfs:comment>The height of the visual bounds of a box.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://fitlayout.github.io/ontology/render.owl#visualWidth -->
-
-    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#visualWidth">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-        <rdfs:comment>The width of the visual bounds of a box.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://fitlayout.github.io/ontology/render.owl#visualX -->
-
-    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#visualX">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-        <rdfs:comment>The X coordinate of the visual bounds of a box.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://fitlayout.github.io/ontology/render.owl#visualY -->
-
-    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#visualY">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Box"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-        <rdfs:comment>The Y coordinate of the visual bounds of a box.</rdfs:comment>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- http://fitlayout.github.io/ontology/render.owl#width -->
 
     <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#width">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Bounds"/>
         <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#Page"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#RectArea"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
         <rdfs:comment>Effective width of a rectangle.</rdfs:comment>
     </owl:DatatypeProperty>
@@ -538,6 +480,14 @@
     <!-- http://fitlayout.github.io/ontology/render.owl#Border -->
 
     <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#Border"/>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/render.owl#Bounds -->
+
+    <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#Bounds">
+        <rdfs:comment>Rectangular bounds specified by its coordinates, width and height.</rdfs:comment>
+    </owl:Class>
     
 
 
