@@ -63,8 +63,14 @@
 
     <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#createdOn">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact"/>
-        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/fitlayout.owl#PageSet"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact"/>
+                    <rdf:Description rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#PageSet"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
         <rdfs:comment>Creation date/time for an artifact or page set</rdfs:comment>
     </owl:DatatypeProperty>
