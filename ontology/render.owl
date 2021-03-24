@@ -491,13 +491,38 @@
 
     <!-- http://fitlayout.github.io/ontology/fitlayout.owl#Artifact -->
 
-    <owl:Class rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact"/>
+    <owl:Class rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact">
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Attribute"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Border"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Bounds"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#ContentObject"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Image"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#RectArea"/>
+    </owl:Class>
+    
+
+
+    <!-- http://fitlayout.github.io/ontology/fitlayout.owl#PageSet -->
+
+    <rdf:Description rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#PageSet">
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Attribute"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Border"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Bounds"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#ContentObject"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Image"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#RectArea"/>
+    </rdf:Description>
     
 
 
     <!-- http://fitlayout.github.io/ontology/render.owl#Attribute -->
 
     <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#Attribute">
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Border"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Bounds"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#ContentObject"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Image"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#RectArea"/>
         <rdfs:comment>An HTML attribute assigned to a box.</rdfs:comment>
     </owl:Class>
     
@@ -505,7 +530,12 @@
 
     <!-- http://fitlayout.github.io/ontology/render.owl#Border -->
 
-    <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#Border"/>
+    <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#Border">
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Bounds"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#ContentObject"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Image"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#RectArea"/>
+    </owl:Class>
     
 
 
@@ -534,6 +564,9 @@
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#ContentObject"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Image"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#RectArea"/>
         <rdfs:comment>Rectangular bounds specified by its coordinates, width and height.</rdfs:comment>
     </owl:Class>
     

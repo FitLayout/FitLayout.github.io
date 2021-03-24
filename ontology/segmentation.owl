@@ -198,13 +198,18 @@
 
     <!-- http://fitlayout.github.io/ontology/render.owl#Box -->
 
-    <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#Box"/>
+    <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#Box">
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#Area"/>
+    </owl:Class>
     
 
 
     <!-- http://fitlayout.github.io/ontology/render.owl#Page -->
 
-    <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#Page"/>
+    <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#Page">
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#AreaTree"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#LogicalAreaTree"/>
+    </owl:Class>
     
 
 
@@ -226,6 +231,7 @@
 
     <owl:Class rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#AreaTree">
         <rdfs:subClassOf rdf:resource="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/segmentation.owl#LogicalAreaTree"/>
         <rdfs:comment>A tree of visual areas created from a rendered page by page segmentation.</rdfs:comment>
     </owl:Class>
     
@@ -242,6 +248,7 @@
     <!-- http://fitlayout.github.io/ontology/segmentation.owl#LogicalAreaTree -->
 
     <owl:Class rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#LogicalAreaTree">
+        <rdfs:subClassOf rdf:resource="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact"/>
         <rdfs:comment>A tree of logical areas created from an area tree by some kind of logical structure analysis.</rdfs:comment>
     </owl:Class>
     

@@ -113,6 +113,7 @@
     <!-- http://fitlayout.github.io/ontology/fitlayout.owl#Artifact -->
 
     <owl:Class rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact">
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/fitlayout.owl#PageSet"/>
         <rdfs:comment>An artifact created during the page processing</rdfs:comment>
     </owl:Class>
     
