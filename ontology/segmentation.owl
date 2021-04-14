@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="http://fitlayout.github.io/ontology/segmentation.owl#"
      xml:base="http://fitlayout.github.io/ontology/segmentation.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:box="http://fitlayout.github.io/ontology/render.owl#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -10,6 +11,11 @@
      xmlns:segm="http://fitlayout.github.io/ontology/segmentation.owl#">
     <owl:Ontology rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#">
         <owl:imports rdf:resource="http://fitlayout.github.io/ontology/render.owl#"/>
+        <dc:creator>Radek Burget</dc:creator>
+        <dc:description>Document visual area (segmentation) ontology.</dc:description>
+        <dc:title>Document Visual Area Ontology</dc:title>
+        <rdfs:comment>Document visual area (segmentation) ontology.</rdfs:comment>
+        <owl:versionInfo>1.0.0</owl:versionInfo>
     </owl:Ontology>
     
 

@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="http://fitlayout.github.io/ontology/render.owl#"
      xml:base="http://fitlayout.github.io/ontology/render.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:box="http://fitlayout.github.io/ontology/render.owl#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -9,6 +10,11 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://fitlayout.github.io/ontology/render.owl#">
         <owl:imports rdf:resource="http://fitlayout.github.io/ontology/fitlayout.owl#"/>
+        <dc:creator>Radek Burget</dc:creator>
+        <dc:description>FitLayout rendered document (box model) description ontology.</dc:description>
+        <dc:title>Box Model Ontology</dc:title>
+        <rdfs:comment>FitLayout rendered document (box model) description ontology.</rdfs:comment>
+        <owl:versionInfo>1.0.0</owl:versionInfo>
     </owl:Ontology>
     
 
