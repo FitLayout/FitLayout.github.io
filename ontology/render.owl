@@ -513,19 +513,6 @@
     
 
 
-    <!-- http://fitlayout.github.io/ontology/fitlayout.owl#PageSet -->
-
-    <rdf:Description rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#PageSet">
-        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Attribute"/>
-        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Border"/>
-        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Bounds"/>
-        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#ContentObject"/>
-        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Image"/>
-        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#RectArea"/>
-    </rdf:Description>
-    
-
-
     <!-- http://fitlayout.github.io/ontology/render.owl#Attribute -->
 
     <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#Attribute">
