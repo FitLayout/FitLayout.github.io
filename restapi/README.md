@@ -3,7 +3,6 @@
 <a name="documentation-for-api-endpoints"></a>
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:9080/fitlayout-web*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -68,5 +67,5 @@ Class | Method | HTTP request | Description
 <a name="jwt"></a>
 ### jwt
 
-- **Type**: HTTP basic authentication
+- **Type**: HTTP bearer authentication (JWT)
 

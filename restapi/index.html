@@ -1,0 +1,1978 @@
+<!doctype html>
+<html>
+  <head>
+    <title>FitLayout REST API</title>
+    <style type="text/css">
+      body {
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 15px;
+	color: #444;
+	margin-right: 24px;
+}
+
+h1	{
+	font-size: 25px;
+}
+h2	{
+	font-size: 20px;
+}
+h3	{
+	font-size: 16px;
+	font-weight: bold;
+}
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+.param-name {
+  width: 100%;
+}
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+
+    </style>
+  </head>
+  <body>
+  <h1>FitLayout REST API</h1>
+    <div class="app-desc">FitLayout API for artifact creation, storage and manipulation</div>
+    <div class="app-desc">More information: <a href="https://github.com/FitLayout/FitLayout/wiki">https://github.com/FitLayout/FitLayout/wiki</a></div>
+    <div class="app-desc">Version: 1.0.0</div>
+    <div class="app-desc">BasePath:/fitlayout-web</div>
+  <h2>Access</h2>
+    <ol>
+      <li>HTTP Bearer Authentication (JWT)</li>
+    </ol>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Admin">Admin</a></h4>
+  <ul>
+  <li><a href="#createRepository"><code><span class="http-method">post</span> /api/repository</code></a></li>
+  <li><a href="#deleteRepository"><code><span class="http-method">delete</span> /api/repository/{repoId}</code></a></li>
+  <li><a href="#getRepositoryInfo"><code><span class="http-method">get</span> /api/repository/{repoId}</code></a></li>
+  <li><a href="#listAllRepositories"><code><span class="http-method">get</span> /api/repository/all</code></a></li>
+  <li><a href="#listRepositories"><code><span class="http-method">get</span> /api/repository</code></a></li>
+  <li><a href="#sendRepositoriesReminder"><code><span class="http-method">get</span> /api/repository/remind/{email}</code></a></li>
+  <li><a href="#status"><code><span class="http-method">get</span> /api/repository/status</code></a></li>
+  <li><a href="#updateRepositoryInfo"><code><span class="http-method">put</span> /api/repository/{repoId}</code></a></li>
+  </ul>
+  <h4><a href="#Artifact">Artifact</a></h4>
+  <ul>
+  <li><a href="#clear"><code><span class="http-method">delete</span> /api/r/{repoId}/artifact/clear</code></a></li>
+  <li><a href="#createArtifact"><code><span class="http-method">post</span> /api/r/{repoId}/artifact/create</code></a></li>
+  <li><a href="#deleteArtifact"><code><span class="http-method">delete</span> /api/r/{repoId}/artifact/item/{iri}</code></a></li>
+  <li><a href="#getArtifact"><code><span class="http-method">get</span> /api/r/{repoId}/artifact/item/{iri}</code></a></li>
+  <li><a href="#getArtifactInfo"><code><span class="http-method">get</span> /api/r/{repoId}/artifact/info/{iri}</code></a></li>
+  <li><a href="#getArtifactsInfo"><code><span class="http-method">get</span> /api/r/{repoId}/artifact</code></a></li>
+  <li><a href="#listArtifacts"><code><span class="http-method">get</span> /api/r/{repoId}/artifact/list</code></a></li>
+  </ul>
+  <h4><a href="#Auth">Auth</a></h4>
+  <ul>
+  <li><a href="#getUserInfo"><code><span class="http-method">get</span> /api/auth/userInfo</code></a></li>
+  </ul>
+  <h4><a href="#Repository">Repository</a></h4>
+  <ul>
+  <li><a href="#addQuadruple"><code><span class="http-method">post</span> /api/r/{repoId}/repository/add</code></a></li>
+  <li><a href="#checkRepo"><code><span class="http-method">get</span> /api/r/{repoId}/repository/checkRepo</code></a></li>
+  <li><a href="#describeSubject"><code><span class="http-method">get</span> /api/r/{repoId}/repository/describe/{iri}</code></a></li>
+  <li><a href="#getSubjectType"><code><span class="http-method">get</span> /api/r/{repoId}/repository/type/{iri}</code></a></li>
+  <li><a href="#getSubjectValue"><code><span class="http-method">get</span> /api/r/{repoId}/repository/subject/{subjIri}/{propertyIri}</code></a></li>
+  <li><a href="#initRepo"><code><span class="http-method">get</span> /api/r/{repoId}/repository/initRepo</code></a></li>
+  <li><a href="#queryObject"><code><span class="http-method">get</span> /api/r/{repoId}/repository/object/{iri}</code></a></li>
+  <li><a href="#querySubject"><code><span class="http-method">get</span> /api/r/{repoId}/repository/subject/{iri}</code></a></li>
+  <li><a href="#repositoryQuery"><code><span class="http-method">post</span> /api/r/{repoId}/repository/query</code></a></li>
+  <li><a href="#touch"><code><span class="http-method">get</span> /api/r/{repoId}/repository/touch</code></a></li>
+  </ul>
+  <h4><a href="#Service">Service</a></h4>
+  <ul>
+  <li><a href="#getServiceConfig"><code><span class="http-method">get</span> /api/service/config</code></a></li>
+  <li><a href="#getServiceList"><code><span class="http-method">get</span> /api/service</code></a></li>
+  <li><a href="#invoke"><code><span class="http-method">post</span> /api/service</code></a></li>
+  <li><a href="#listOperators"><code><span class="http-method">get</span> /api/operator</code></a></li>
+  <li><a href="#ping"><code><span class="http-method">get</span> /api/service/ping</code></a></li>
+  </ul>
+
+  <h1><a name="Admin">Admin</a></h1>
+  <div class="method"><a name="createRepository"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/repository</code></pre></div>
+    <div class="method-summary">Creates a new repository. (<span class="nickname">createRepository</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">RepositoryInfo <a href="#RepositoryInfo">RepositoryInfo</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#RepositoryInfo">RepositoryInfo</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "owner" : "owner",
+  "expires" : "2000-01-23",
+  "accessedOn" : "2000-01-23",
+  "description" : "description",
+  "id" : "id",
+  "createdOn" : "2000-01-23",
+  "version" : "version",
+  "email" : "email"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The new repository description
+        <a href="#RepositoryInfo">RepositoryInfo</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteRepository"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /api/repository/{repoId}</code></pre></div>
+    <div class="method-summary">Deletes a repository identified by its ID. (<span class="nickname">deleteRepository</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Repository deleted
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getRepositoryInfo"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/repository/{repoId}</code></pre></div>
+    <div class="method-summary">Gets information about a repository identified by its ID. (<span class="nickname">getRepositoryInfo</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#RepositoryInfo">RepositoryInfo</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "owner" : "owner",
+  "expires" : "2000-01-23",
+  "accessedOn" : "2000-01-23",
+  "description" : "description",
+  "id" : "id",
+  "createdOn" : "2000-01-23",
+  "version" : "version",
+  "email" : "email"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Selected repository information
+        <a href="#RepositoryInfo">RepositoryInfo</a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="listAllRepositories"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/repository/all</code></pre></div>
+    <div class="method-summary">Gets a list of all available repositories (admin only). (<span class="nickname">listAllRepositories</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#RepositoryInfo">RepositoryInfo</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "owner" : "owner",
+  "expires" : "2000-01-23",
+  "accessedOn" : "2000-01-23",
+  "description" : "description",
+  "id" : "id",
+  "createdOn" : "2000-01-23",
+  "version" : "version",
+  "email" : "email"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    List of repository information
+        
+    <h4 class="field-label">403</h4>
+    Not authorized
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="listRepositories"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/repository</code></pre></div>
+    <div class="method-summary">Gets a list of available repositories for current user. (<span class="nickname">listRepositories</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#RepositoryInfo">RepositoryInfo</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "owner" : "owner",
+  "expires" : "2000-01-23",
+  "accessedOn" : "2000-01-23",
+  "description" : "description",
+  "id" : "id",
+  "createdOn" : "2000-01-23",
+  "version" : "version",
+  "email" : "email"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    List of repository information
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="sendRepositoriesReminder"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/repository/remind/{email}</code></pre></div>
+    <div class="method-summary">Sends an e-mail reminder containing all repositories that have the given e-mail assigned (<span class="nickname">sendRepositoriesReminder</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">email (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    E-mail sent (or nothing set if no repository is assigned to the given e-mail
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="status"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/repository/status</code></pre></div>
+    <div class="method-summary">Gets overall storage status. (<span class="nickname">status</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#StorageStatus">StorageStatus</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "createAvailable" : true,
+  "repositories" : 6,
+  "available" : 0,
+  "singleMode" : true
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Selected repository information
+        <a href="#StorageStatus">StorageStatus</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateRepositoryInfo"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /api/repository/{repoId}</code></pre></div>
+    <div class="method-summary">Gets information about a repository identified by its ID. (<span class="nickname">updateRepositoryInfo</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">RepositoryInfo <a href="#RepositoryInfo">RepositoryInfo</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#RepositoryInfo">RepositoryInfo</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "owner" : "owner",
+  "expires" : "2000-01-23",
+  "accessedOn" : "2000-01-23",
+  "description" : "description",
+  "id" : "id",
+  "createdOn" : "2000-01-23",
+  "version" : "version",
+  "email" : "email"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The updated repository description
+        <a href="#RepositoryInfo">RepositoryInfo</a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Artifact">Artifact</a></h1>
+  <div class="method"><a name="clear"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /api/r/{repoId}/artifact/clear</code></pre></div>
+    <div class="method-summary">Clears the repository - deletes all artifacts and metadata (<span class="nickname">clear</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Repository cleared
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="createArtifact"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/r/{repoId}/artifact/create</code></pre></div>
+    <div class="method-summary">Creates a new artifact by invoking a service. (<span class="nickname">createArtifact</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">ServiceParams <a href="#ServiceParams">ServiceParams</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The IRI of the new artifact created
+        <a href="#String">String</a>
+    <h4 class="field-label">404</h4>
+    Repository or service with the given ID not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteArtifact"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /api/r/{repoId}/artifact/item/{iri}</code></pre></div>
+    <div class="method-summary">Deletes an artifact identified by its IRI (<span class="nickname">deleteArtifact</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div><div class="param">iri (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Artifact deleted
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Repository or artifact with the given ID not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getArtifact"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/r/{repoId}/artifact/item/{iri}</code></pre></div>
+    <div class="method-summary">Gets a complete artifact including its contents identified by its IRI (<span class="nickname">getArtifact</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div><div class="param">iri (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/ld+json</code></li>
+      <li><code>text/turtle</code></li>
+      <li><code>application/rdf+xml</code></li>
+      <li><code>text/xml</code></li>
+      <li><code>text/html</code></li>
+      <li><code>image/png</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200-JSONLD</h4>
+    The complete artifact RDF description serialized in JSON-LD
+        <a href="#"></a>
+    <h4 class="field-label">200-TURTLE</h4>
+    The complete artifact RDF description serialized in TURTLE
+        <a href="#"></a>
+    <h4 class="field-label">200-RDFXML</h4>
+    The complete artifact RDF description serialized in RDF/XML
+        <a href="#"></a>
+    <h4 class="field-label">200-XML</h4>
+    The complete artifact serialized in XML
+        <a href="#"></a>
+    <h4 class="field-label">200-HTML</h4>
+    The complete artifact serialized in HTML
+        <a href="#"></a>
+    <h4 class="field-label">200-PNG</h4>
+    The complete artifact in a PNG image
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Repository or artifact with the given ID not found or could not be serialized
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getArtifactInfo"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/r/{repoId}/artifact/info/{iri}</code></pre></div>
+    <div class="method-summary">Retrieves information about an artifact identified by its IRI (artifact content not included). (<span class="nickname">getArtifactInfo</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div><div class="param">iri (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/ld+json</code></li>
+      <li><code>text/turtle</code></li>
+      <li><code>application/rdf+xml</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200-JSONLD</h4>
+    The artifact RDF description serialized in JSON-LD
+        <a href="#"></a>
+    <h4 class="field-label">200-TURTLE</h4>
+    The artifact RDF description serialized in TURTLE
+        <a href="#"></a>
+    <h4 class="field-label">200-RDFXML</h4>
+    The artifact RDF description serialized in RDF/XML
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Repository or artifact with the given ID not found or could not be serialized
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getArtifactsInfo"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/r/{repoId}/artifact</code></pre></div>
+    <div class="method-summary">Retrieves information about all artifacts in the repository (artifact contents not included). (<span class="nickname">getArtifactsInfo</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/ld+json</code></li>
+      <li><code>text/turtle</code></li>
+      <li><code>application/rdf+xml</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200-JSONLD</h4>
+    The artifacts RDF description serialized in JSON-LD
+        <a href="#"></a>
+    <h4 class="field-label">200-TURTLE</h4>
+    The artifacts RDF description serialized in TURTLE
+        <a href="#"></a>
+    <h4 class="field-label">200-RDFXML</h4>
+    The artifacts RDF description serialized in RDF/XML
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found or could not be serialized
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="listArtifacts"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/r/{repoId}/artifact/list</code></pre></div>
+    <div class="method-summary">Gets a list of artifact IRIs. (<span class="nickname">listArtifacts</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      array[String]
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    List of artifact IRIs
+        
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Auth">Auth</a></h1>
+  <div class="method"><a name="getUserInfo"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/auth/userInfo</code></pre></div>
+    <div class="method-summary">Get current user information based on the credentials (Bearer JWT token) obtained (<span class="nickname">getUserInfo</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#UserInfo">UserInfo</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "expires" : "2000-01-23",
+  "roles" : [ "roles", "roles" ],
+  "anonymous" : true,
+  "guest" : true,
+  "userId" : "userId",
+  "email" : "email"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Current user information
+        <a href="#UserInfo">UserInfo</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Repository">Repository</a></h1>
+  <div class="method"><a name="addQuadruple"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/r/{repoId}/repository/add</code></pre></div>
+    <div class="method-summary">Adds a new quadruple to the repository (<span class="nickname">addQuadruple</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">QuadrupleData <a href="#QuadrupleData">QuadrupleData</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#QuadrupleData">QuadrupleData</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "artifact" : "artifact",
+  "p" : "p",
+  "s" : "s",
+  "ok" : true,
+  "value" : "{}",
+  "o" : "o"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The quadruple added
+        <a href="#QuadrupleData">QuadrupleData</a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="checkRepo"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/r/{repoId}/repository/checkRepo</code></pre></div>
+    <div class="method-summary">Checks the repository whether it exists and is properly initialized (<span class="nickname">checkRepo</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      Object
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The quadruple added
+        <a href="#Object">Object</a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="describeSubject"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/r/{repoId}/repository/describe/{iri}</code></pre></div>
+    <div class="method-summary">Gets the RDF description for the given subject IRI (<span class="nickname">describeSubject</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div><div class="param">iri (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SubjectDescriptionResult">SubjectDescriptionResult</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "description" : {
+    "key" : [ {
+      "type" : "type",
+      "value" : "value"
+    }, {
+      "type" : "type",
+      "value" : "value"
+    } ]
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Subject description
+        <a href="#SubjectDescriptionResult">SubjectDescriptionResult</a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getSubjectType"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/r/{repoId}/repository/type/{iri}</code></pre></div>
+    <div class="method-summary">Gets the assigned rdf:type IRI for the given subject IRI (<span class="nickname">getSubjectType</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div><div class="param">iri (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Type IRI or 'unknown'
+        <a href="#String">String</a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getSubjectValue"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/r/{repoId}/repository/subject/{subjIri}/{propertyIri}</code></pre></div>
+    <div class="method-summary">Gets the property value for the given subject and property IRIs (<span class="nickname">getSubjectValue</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div><div class="param">propertyIri (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div><div class="param">subjIri (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ResultBinding">ResultBinding</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "type" : "type",
+  "value" : "value"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Select query result assigning (p)redicate and (v)alue
+        <a href="#ResultBinding">ResultBinding</a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="initRepo"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/r/{repoId}/repository/initRepo</code></pre></div>
+    <div class="method-summary">Initializes an empty repository with the necessary RDF metadata (schemas) (<span class="nickname">initRepo</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Repository initialized
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="queryObject"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/r/{repoId}/repository/object/{iri}</code></pre></div>
+    <div class="method-summary">Gets all triples for the given object IRI (<span class="nickname">queryObject</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div><div class="param">iri (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  default: 100 format: int32</div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SelectQueryResult">SelectQueryResult</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "head" : {
+    "vars" : [ "vars", "vars" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "key" : {
+        "type" : "type",
+        "value" : "value"
+      }
+    }, {
+      "key" : {
+        "type" : "type",
+        "value" : "value"
+      }
+    } ]
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Select query result assigning (v)alue and (p)redicate
+        <a href="#SelectQueryResult">SelectQueryResult</a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="querySubject"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/r/{repoId}/repository/subject/{iri}</code></pre></div>
+    <div class="method-summary">Gets all triples for the given subject IRI (<span class="nickname">querySubject</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div><div class="param">iri (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  default: 100 format: int32</div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SelectQueryResult">SelectQueryResult</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "head" : {
+    "vars" : [ "vars", "vars" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "key" : {
+        "type" : "type",
+        "value" : "value"
+      }
+    }, {
+      "key" : {
+        "type" : "type",
+        "value" : "value"
+      }
+    } ]
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Select query result assigning (p)redicate and (v)alue
+        <a href="#SelectQueryResult">SelectQueryResult</a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="repositoryQuery"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/r/{repoId}/repository/query</code></pre></div>
+    <div class="method-summary">Executes a SPARQL SELECT query on the underlying RDF repository (<span class="nickname">repositoryQuery</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/sparql-query</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#string">string</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SelectQueryResult">SelectQueryResult</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "head" : {
+    "vars" : [ "vars", "vars" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "key" : {
+        "type" : "type",
+        "value" : "value"
+      }
+    }, {
+      "key" : {
+        "type" : "type",
+        "value" : "value"
+      }
+    } ]
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    SPARQL query result
+        <a href="#SelectQueryResult">SelectQueryResult</a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#"></a>
+    <h4 class="field-label">500</h4>
+    Query evaluation error
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="touch"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/r/{repoId}/repository/touch</code></pre></div>
+    <div class="method-summary">Updates the last access time of the given repository to current time (<span class="nickname">touch</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Repository touched
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Service">Service</a></h1>
+  <div class="method"><a name="getServiceConfig"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/service/config</code></pre></div>
+    <div class="method-summary">Gets the default configuration of an artifact service. (<span class="nickname">getServiceConfig</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">id (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ServiceParams">ServiceParams</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "parentIri" : "parentIri",
+  "params" : {
+    "key" : ""
+  },
+  "serviceId" : "serviceId"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Service configuration
+        <a href="#ServiceParams">ServiceParams</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getServiceList"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/service</code></pre></div>
+    <div class="method-summary">Gets a list of available artifact services. (<span class="nickname">getServiceList</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#ArtifactServiceDescr">ArtifactServiceDescr</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "name",
+  "produces" : "produces",
+  "description" : "description",
+  "id" : "id",
+  "category" : "category",
+  "params" : {
+    "key" : {
+      "name" : "name",
+      "type" : "type"
+    }
+  },
+  "consumes" : "consumes"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    List of service descriptions
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="invoke"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/service</code></pre></div>
+    <div class="method-summary">Invokes a service and returns the resulting artifact (<span class="nickname">invoke</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">ServiceParams <a href="#ServiceParams">ServiceParams</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The complete artifact data
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="listOperators"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/operator</code></pre></div>
+    <div class="method-summary">Gets a list of available area tree operator services. (<span class="nickname">listOperators</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#ParametrizedServiceDescr">ParametrizedServiceDescr</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "name",
+  "produces" : "produces",
+  "description" : "description",
+  "id" : "id",
+  "category" : "category",
+  "params" : {
+    "key" : {
+      "name" : "name",
+      "type" : "type"
+    }
+  },
+  "consumes" : "consumes"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    List of service descriptions
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="ping"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/service/ping</code></pre></div>
+    <div class="method-summary">Returns 'ok'. (<span class="nickname">ping</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>*/*</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#String">String</a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#ArtifactServiceDescr"><code>ArtifactServiceDescr</code> - </a></li>
+    <li><a href="#ParamBooleanDescr"><code>ParamBooleanDescr</code> - </a></li>
+    <li><a href="#ParamDescr"><code>ParamDescr</code> - </a></li>
+    <li><a href="#ParamFloatDescr"><code>ParamFloatDescr</code> - </a></li>
+    <li><a href="#ParamIntDescr"><code>ParamIntDescr</code> - </a></li>
+    <li><a href="#ParamStringDescr"><code>ParamStringDescr</code> - </a></li>
+    <li><a href="#ParametrizedServiceDescr"><code>ParametrizedServiceDescr</code> - </a></li>
+    <li><a href="#QuadrupleData"><code>QuadrupleData</code> - </a></li>
+    <li><a href="#RepositoryInfo"><code>RepositoryInfo</code> - </a></li>
+    <li><a href="#ResultBinding"><code>ResultBinding</code> - </a></li>
+    <li><a href="#ResultBody"><code>ResultBody</code> - </a></li>
+    <li><a href="#ResultHeader"><code>ResultHeader</code> - </a></li>
+    <li><a href="#SelectQueryResult"><code>SelectQueryResult</code> - </a></li>
+    <li><a href="#ServiceParams"><code>ServiceParams</code> - </a></li>
+    <li><a href="#StorageStatus"><code>StorageStatus</code> - </a></li>
+    <li><a href="#SubjectDescriptionResult"><code>SubjectDescriptionResult</code> - </a></li>
+    <li><a href="#UserInfo"><code>UserInfo</code> - </a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="ArtifactServiceDescr"><code>ArtifactServiceDescr</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">category (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Service category used for grouping services </div>
+<div class="param">description </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Service description </div>
+<div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Service ID </div>
+<div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Service name </div>
+<div class="param">params (optional)</div><div class="param-desc"><span class="param-type"><a href="#ParamDescr">map[String, ParamDescr]</a></span> Descriptions of accepted parameters </div>
+<div class="param">consumes (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">produces (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ParamBooleanDescr"><code>ParamBooleanDescr</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Name of the parameter </div>
+<div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Type of the parameter {bolean, int, float, string} </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ParamDescr"><code>ParamDescr</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Service parameter description</div>
+    <div class="field-items">
+      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Name of the parameter </div>
+<div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Type of the parameter {bolean, int, float, string} </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ParamFloatDescr"><code>ParamFloatDescr</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Name of the parameter </div>
+<div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Type of the parameter {bolean, int, float, string} </div>
+<div class="param">maxValue (optional)</div><div class="param-desc"><span class="param-type"><a href="#float">Float</a></span>  format: float</div>
+<div class="param">minValue (optional)</div><div class="param-desc"><span class="param-type"><a href="#float">Float</a></span>  format: float</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ParamIntDescr"><code>ParamIntDescr</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Name of the parameter </div>
+<div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Type of the parameter {bolean, int, float, string} </div>
+<div class="param">maxValue (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">minValue (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ParamStringDescr"><code>ParamStringDescr</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Name of the parameter </div>
+<div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Type of the parameter {bolean, int, float, string} </div>
+<div class="param">maxLength (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">minLength (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ParametrizedServiceDescr"><code>ParametrizedServiceDescr</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Description of a parametrized service</div>
+    <div class="field-items">
+      <div class="param">category (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Service category used for grouping services </div>
+<div class="param">consumes (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Type IRI of the input artifacts </div>
+<div class="param">description </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Service description </div>
+<div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Service ID </div>
+<div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Service name </div>
+<div class="param">params (optional)</div><div class="param-desc"><span class="param-type"><a href="#ParamDescr">map[String, ParamDescr]</a></span> Descriptions of accepted parameters </div>
+<div class="param">produces </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Type IRI of the produced artifacts </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="QuadrupleData"><code>QuadrupleData</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>RDF quadruple data</div>
+    <div class="field-items">
+      <div class="param">artifact (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">o (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">p (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">s (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">value (optional)</div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span>  </div>
+<div class="param">ok (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="RepositoryInfo"><code>RepositoryInfo</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Information about an artifact repository</div>
+    <div class="field-items">
+      <div class="param">accessedOn (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> Last access date format: date</div>
+<div class="param">createdOn (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> Creation date format: date</div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Repository description </div>
+<div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Creator's e-mail </div>
+<div class="param">expires (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> Expiration date format: date</div>
+<div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Repository ID </div>
+<div class="param">owner </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Owner ID </div>
+<div class="param">version (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Metadata schema version </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ResultBinding"><code>ResultBinding</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Assigned result value</div>
+    <div class="field-items">
+      <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Value type {iri, literal} </div>
+<div class="param">value (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The value </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ResultBody"><code>ResultBody</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Query result body (bindings)</div>
+    <div class="field-items">
+      <div class="param">bindings (optional)</div><div class="param-desc"><span class="param-type"><a href="#map">array[map[String, ResultBinding]]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ResultHeader"><code>ResultHeader</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Query result header (column names)</div>
+    <div class="field-items">
+      <div class="param">vars (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="SelectQueryResult"><code>SelectQueryResult</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>A result of a SPARQL SELECT query</div>
+    <div class="field-items">
+      <div class="param">head (optional)</div><div class="param-desc"><span class="param-type"><a href="#ResultHeader">ResultHeader</a></span>  </div>
+<div class="param">results (optional)</div><div class="param-desc"><span class="param-type"><a href="#ResultBody">ResultBody</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ServiceParams"><code>ServiceParams</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Service input parametres</div>
+    <div class="field-items">
+      <div class="param">params (optional)</div><div class="param-desc"><span class="param-type"><a href="#AnyType">map[String, oas_any_type_not_mapped]</a></span> Service invocation parametres </div>
+<div class="param">parentIri (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> IRI of the input artifact if required by the given service </div>
+<div class="param">serviceId </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> ID of the service to invoke </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="StorageStatus"><code>StorageStatus</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Overall storage status</div>
+    <div class="field-items">
+      <div class="param">available (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">createAvailable (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">repositories (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">singleMode (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="SubjectDescriptionResult"><code>SubjectDescriptionResult</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Represents the subject descripton as map of properties.</div>
+    <div class="field-items">
+      <div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#array">map[String, array[ResultBinding]]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="UserInfo"><code>UserInfo</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Current user information</div>
+    <div class="field-items">
+      <div class="param">anonymous (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">expires (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span>  format: date</div>
+<div class="param">guest (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">roles (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">set[String]</a></span>  </div>
+<div class="param">userId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>
