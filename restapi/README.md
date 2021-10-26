@@ -69,5 +69,5 @@ Class | Method | HTTP request | Description
 <a name="jwt"></a>
 ### jwt
 
-- **Type**: HTTP basic authentication
+- **Type**: HTTP bearer authentication (JWT)
 
