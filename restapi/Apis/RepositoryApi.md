@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 <a name="addQuadruple"></a>
 # **addQuadruple**
-> QuadrupleData addQuadruple(repoId, QuadrupleData)
+> ResultValue addQuadruple(repoId, QuadrupleData)
 
 Adds a new quadruple to the repository
 
@@ -31,7 +31,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**QuadrupleData**](../Models/QuadrupleData.md)
+[**ResultValue**](../Models/ResultValue.md)
 
 ### Authorization
 
@@ -44,7 +44,7 @@ Name | Type | Description  | Notes
 
 <a name="checkRepo"></a>
 # **checkRepo**
-> Object checkRepo(repoId)
+> ResultValue checkRepo(repoId)
 
 Checks the repository whether it exists and is properly initialized
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](../Models/object.md)
+[**ResultValue**](../Models/ResultValue.md)
 
 ### Authorization
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 <a name="getSubjectType"></a>
 # **getSubjectType**
-> String getSubjectType(repoId, iri)
+> ResultValue getSubjectType(repoId, iri)
 
 Gets the assigned rdf:type IRI for the given subject IRI
 
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**String**](../Models/string.md)
+[**ResultValue**](../Models/ResultValue.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 <a name="initRepo"></a>
 # **initRepo**
-> initRepo(repoId)
+> ResultValue initRepo(repoId)
 
 Initializes an empty repository with the necessary RDF metadata (schemas)
 
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**ResultValue**](../Models/ResultValue.md)
 
 ### Authorization
 
@@ -169,7 +169,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 <a name="queryObject"></a>
 # **queryObject**
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 
 <a name="touch"></a>
 # **touch**
-> touch(repoId)
+> ResultValue touch(repoId)
 
 Updates the last access time of the given repository to current time
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**ResultValue**](../Models/ResultValue.md)
 
 ### Authorization
 
@@ -274,5 +274,5 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 

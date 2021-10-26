@@ -320,18 +320,38 @@ font-style: italic;
 
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ResultValue">ResultValue</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "result" : "{}",
+  "status" : "status"
+}</code></pre>
 
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Repository deleted
-        <a href="#"></a>
+        <a href="#ResultValue">ResultValue</a>
+    <h4 class="field-label">400</h4>
+    Invalid parametres
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getRepositoryInfo"/>
@@ -387,7 +407,7 @@ font-style: italic;
         <a href="#RepositoryInfo">RepositoryInfo</a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="listAllRepositories"/>
@@ -437,7 +457,7 @@ font-style: italic;
         
     <h4 class="field-label">403</h4>
     Not authorized
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="listRepositories"/>
@@ -506,15 +526,32 @@ font-style: italic;
 
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ResultValue">ResultValue</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "result" : "{}",
+  "status" : "status"
+}</code></pre>
 
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     E-mail sent (or nothing set if no repository is assigned to the given e-mail
-        <a href="#"></a>
+        <a href="#ResultValue">ResultValue</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="status"/>
@@ -623,9 +660,12 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     The updated repository description
         <a href="#RepositoryInfo">RepositoryInfo</a>
+    <h4 class="field-label">400</h4>
+    Invalid service parametres
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Artifact">Artifact</a></h1>
@@ -648,18 +688,35 @@ font-style: italic;
 
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ResultValue">ResultValue</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "result" : "{}",
+  "status" : "status"
+}</code></pre>
 
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Repository cleared
-        <a href="#"></a>
+        <a href="#ResultValue">ResultValue</a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="createArtifact"/>
@@ -695,12 +752,18 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
+      <a href="#ResultValue">ResultValue</a>
       
-      String
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "result" : "{}",
+  "status" : "status"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -712,10 +775,13 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     The IRI of the new artifact created
-        <a href="#String">String</a>
+        <a href="#ResultValue">ResultValue</a>
+    <h4 class="field-label">400</h4>
+    Invalid service parametres
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
     <h4 class="field-label">404</h4>
     Repository or service with the given ID not found
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="deleteArtifact"/>
@@ -739,18 +805,35 @@ font-style: italic;
 
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ResultValue">ResultValue</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "result" : "{}",
+  "status" : "status"
+}</code></pre>
 
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Artifact deleted
-        <a href="#"></a>
+        <a href="#ResultValue">ResultValue</a>
     <h4 class="field-label">404</h4>
     Repository or artifact with the given ID not found
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getArtifact"/>
@@ -788,6 +871,7 @@ font-style: italic;
       <li><code>text/xml</code></li>
       <li><code>text/html</code></li>
       <li><code>image/png</code></li>
+      <li><code>application/json</code></li>
     </ul>
 
     <h3 class="field-label">Responses</h3>
@@ -809,9 +893,12 @@ font-style: italic;
     <h4 class="field-label">200-PNG</h4>
     The complete artifact in a PNG image
         <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid IRI provided
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
     <h4 class="field-label">404</h4>
-    Repository or artifact with the given ID not found or could not be serialized
-        <a href="#"></a>
+    Repository or service with the given ID not found
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getArtifactInfo"/>
@@ -846,6 +933,7 @@ font-style: italic;
       <li><code>application/ld+json</code></li>
       <li><code>text/turtle</code></li>
       <li><code>application/rdf+xml</code></li>
+      <li><code>application/json</code></li>
     </ul>
 
     <h3 class="field-label">Responses</h3>
@@ -858,9 +946,12 @@ font-style: italic;
     <h4 class="field-label">200-RDFXML</h4>
     The artifact RDF description serialized in RDF/XML
         <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid IRI provided
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
     <h4 class="field-label">404</h4>
-    Repository or artifact with the given ID not found or could not be serialized
-        <a href="#"></a>
+    Repository or service with the given ID not found
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getArtifactsInfo"/>
@@ -893,6 +984,7 @@ font-style: italic;
       <li><code>application/ld+json</code></li>
       <li><code>text/turtle</code></li>
       <li><code>application/rdf+xml</code></li>
+      <li><code>application/json</code></li>
     </ul>
 
     <h3 class="field-label">Responses</h3>
@@ -905,9 +997,12 @@ font-style: italic;
     <h4 class="field-label">200-RDFXML</h4>
     The artifacts RDF description serialized in RDF/XML
         <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Invalid service parametres
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found or could not be serialized
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="listArtifacts"/>
@@ -954,7 +1049,7 @@ font-style: italic;
         
     <h4 class="field-label">404</h4>
     Repository with the given ID not found
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Auth">Auth</a></h1>
@@ -1037,7 +1132,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#QuadrupleData">QuadrupleData</a>
+      <a href="#ResultValue">ResultValue</a>
       
     </div>
 
@@ -1046,12 +1141,8 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "artifact" : "artifact",
-  "p" : "p",
-  "s" : "s",
-  "ok" : true,
-  "value" : "{}",
-  "o" : "o"
+  "result" : "{}",
+  "status" : "status"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -1064,10 +1155,13 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     The quadruple added
-        <a href="#QuadrupleData">QuadrupleData</a>
+        <a href="#ResultValue">ResultValue</a>
+    <h4 class="field-label">400</h4>
+    Invalid quadruple specification
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="checkRepo"/>
@@ -1091,12 +1185,18 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
+      <a href="#ResultValue">ResultValue</a>
       
-      Object
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "result" : "{}",
+  "status" : "status"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -1107,11 +1207,11 @@ font-style: italic;
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
-    The quadruple added
-        <a href="#Object">Object</a>
+    Repository check result
+        <a href="#ResultValue">ResultValue</a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="describeSubject"/>
@@ -1170,7 +1270,7 @@ font-style: italic;
         <a href="#SubjectDescriptionResult">SubjectDescriptionResult</a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getSubjectType"/>
@@ -1196,12 +1296,18 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
+      <a href="#ResultValue">ResultValue</a>
       
-      String
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "result" : "{}",
+  "status" : "status"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -1213,10 +1319,10 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Type IRI or 'unknown'
-        <a href="#String">String</a>
+        <a href="#ResultValue">ResultValue</a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getSubjectValue"/>
@@ -1270,7 +1376,7 @@ font-style: italic;
         <a href="#ResultBinding">ResultBinding</a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="initRepo"/>
@@ -1292,18 +1398,35 @@ font-style: italic;
 
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ResultValue">ResultValue</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "result" : "{}",
+  "status" : "status"
+}</code></pre>
 
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Repository initialized
-        <a href="#"></a>
+        <a href="#ResultValue">ResultValue</a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="queryObject"/>
@@ -1375,7 +1498,7 @@ font-style: italic;
         <a href="#SelectQueryResult">SelectQueryResult</a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="querySubject"/>
@@ -1447,7 +1570,7 @@ font-style: italic;
         <a href="#SelectQueryResult">SelectQueryResult</a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="repositoryQuery"/>
@@ -1523,10 +1646,10 @@ font-style: italic;
         <a href="#SelectQueryResult">SelectQueryResult</a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
     <h4 class="field-label">500</h4>
     Query evaluation error
-        <a href="#"></a>
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="touch"/>
@@ -1548,15 +1671,32 @@ font-style: italic;
 
 
 
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ResultValue">ResultValue</a>
+      
+    </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "result" : "{}",
+  "status" : "status"
+}</code></pre>
 
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Repository touched
-        <a href="#"></a>
+        <a href="#ResultValue">ResultValue</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Service">Service</a></h1>
@@ -1800,7 +1940,9 @@ font-style: italic;
     <li><a href="#RepositoryInfo"><code>RepositoryInfo</code> - </a></li>
     <li><a href="#ResultBinding"><code>ResultBinding</code> - </a></li>
     <li><a href="#ResultBody"><code>ResultBody</code> - </a></li>
+    <li><a href="#ResultErrorMessage"><code>ResultErrorMessage</code> - </a></li>
     <li><a href="#ResultHeader"><code>ResultHeader</code> - </a></li>
+    <li><a href="#ResultValue"><code>ResultValue</code> - </a></li>
     <li><a href="#SelectQueryResult"><code>SelectQueryResult</code> - </a></li>
     <li><a href="#ServiceParams"><code>ServiceParams</code> - </a></li>
     <li><a href="#StorageStatus"><code>StorageStatus</code> - </a></li>
@@ -1922,10 +2064,26 @@ font-style: italic;
     </div>  <!-- field-items -->
   </div>
   <div class="model">
+    <h3><a name="ResultErrorMessage"><code>ResultErrorMessage</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Error result of an operation</div>
+    <div class="field-items">
+      <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
     <h3><a name="ResultHeader"><code>ResultHeader</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>Query result header (column names)</div>
     <div class="field-items">
       <div class="param">vars (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ResultValue"><code>ResultValue</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Result of an operation conaining an optional result value</div>
+    <div class="field-items">
+      <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">result (optional)</div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

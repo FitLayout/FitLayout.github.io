@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 <a name="clear"></a>
 # **clear**
-> clear(repoId)
+> ResultValue clear(repoId)
 
 Clears the repository - deletes all artifacts and metadata
 
@@ -27,7 +27,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**ResultValue**](../Models/ResultValue.md)
 
 ### Authorization
 
@@ -36,11 +36,11 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 <a name="createArtifact"></a>
 # **createArtifact**
-> String createArtifact(repoId, ServiceParams)
+> ResultValue createArtifact(repoId, ServiceParams)
 
 Creates a new artifact by invoking a service.
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**String**](../Models/string.md)
+[**ResultValue**](../Models/ResultValue.md)
 
 ### Authorization
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteArtifact"></a>
 # **deleteArtifact**
-> deleteArtifact(repoId, iri)
+> ResultValue deleteArtifact(repoId, iri)
 
 Deletes an artifact identified by its IRI
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**ResultValue**](../Models/ResultValue.md)
 
 ### Authorization
 
@@ -88,7 +88,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 <a name="getArtifact"></a>
 # **getArtifact**
@@ -114,7 +114,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/ld+json, text/turtle, application/rdf+xml, text/xml, text/html, image/png
+- **Accept**: application/ld+json, text/turtle, application/rdf+xml, text/xml, text/html, image/png, application/json
 
 <a name="getArtifactInfo"></a>
 # **getArtifactInfo**
@@ -140,7 +140,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/ld+json, text/turtle, application/rdf+xml
+- **Accept**: application/ld+json, text/turtle, application/rdf+xml, application/json
 
 <a name="getArtifactsInfo"></a>
 # **getArtifactsInfo**
@@ -165,7 +165,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/ld+json, text/turtle, application/rdf+xml
+- **Accept**: application/ld+json, text/turtle, application/rdf+xml, application/json
 
 <a name="listArtifacts"></a>
 # **listArtifacts**

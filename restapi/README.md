@@ -53,7 +53,9 @@ Class | Method | HTTP request | Description
  - [RepositoryInfo](./Models/RepositoryInfo.md)
  - [ResultBinding](./Models/ResultBinding.md)
  - [ResultBody](./Models/ResultBody.md)
+ - [ResultErrorMessage](./Models/ResultErrorMessage.md)
  - [ResultHeader](./Models/ResultHeader.md)
+ - [ResultValue](./Models/ResultValue.md)
  - [SelectQueryResult](./Models/SelectQueryResult.md)
  - [ServiceParams](./Models/ServiceParams.md)
  - [StorageStatus](./Models/StorageStatus.md)
@@ -67,5 +69,5 @@ Class | Method | HTTP request | Description
 <a name="jwt"></a>
 ### jwt
 
-- **Type**: HTTP bearer authentication (JWT)
+- **Type**: HTTP basic authentication
 

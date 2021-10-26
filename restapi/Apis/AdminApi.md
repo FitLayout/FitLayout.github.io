@@ -41,7 +41,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteRepository"></a>
 # **deleteRepository**
-> deleteRepository(repoId)
+> ResultValue deleteRepository(repoId)
 
 Deletes a repository identified by its ID.
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**ResultValue**](../Models/ResultValue.md)
 
 ### Authorization
 
@@ -62,7 +62,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 <a name="getRepositoryInfo"></a>
 # **getRepositoryInfo**
@@ -135,7 +135,7 @@ This endpoint does not need any parameter.
 
 <a name="sendRepositoriesReminder"></a>
 # **sendRepositoriesReminder**
-> sendRepositoriesReminder(email)
+> ResultValue sendRepositoriesReminder(email)
 
 Sends an e-mail reminder containing all repositories that have the given e-mail assigned
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**ResultValue**](../Models/ResultValue.md)
 
 ### Authorization
 
@@ -156,7 +156,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 <a name="status"></a>
 # **status**

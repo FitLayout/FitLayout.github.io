@@ -1,0 +1,1189 @@
+---
+openapi: 3.0.3
+info:
+  title: FitLayout REST API
+  description: "FitLayout API for artifact creation, storage and manipulation"
+  contact:
+    url: https://github.com/FitLayout/FitLayout/wiki
+    email: ""
+  version: 1.0.0
+servers:
+- url: http://localhost:9080/fitlayout-web
+- url: https://localhost:9443/fitlayout-web
+security:
+- jwt: []
+tags:
+- name: admin
+  description: Repository administration
+- name: artifact
+  description: Artifact operations
+- name: auth
+  description: User authorization
+- name: repository
+  description: RDF repository opertations
+- name: service
+  description: Service discovery and invocation
+paths:
+  /api/auth/userInfo:
+    get:
+      tags:
+      - auth
+      summary: Get current user information based on the credentials (Bearer JWT token)
+        obtained
+      operationId: getUserInfo
+      responses:
+        "200":
+          description: Current user information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfo'
+      security:
+      - jwt: []
+  /api/operator:
+    get:
+      tags:
+      - service
+      summary: Gets a list of available area tree operator services.
+      operationId: listOperators
+      responses:
+        "200":
+          description: List of service descriptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ParametrizedServiceDescr'
+  /api/r/{repoId}/artifact:
+    get:
+      tags:
+      - artifact
+      summary: Retrieves information about all artifacts in the repository (artifact
+        contents not included).
+      operationId: getArtifactsInfo
+      responses:
+        "200-JSONLD":
+          description: The artifacts RDF description serialized in JSON-LD
+          content:
+            application/ld+json: {}
+        "200-TURTLE":
+          description: The artifacts RDF description serialized in TURTLE
+          content:
+            text/turtle: {}
+        "200-RDFXML":
+          description: The artifacts RDF description serialized in RDF/XML
+          content:
+            application/rdf+xml: {}
+        "400":
+          description: Invalid service parametres
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+        "404":
+          description: Repository with the given ID not found or could not be serialized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/artifact/clear:
+    delete:
+      tags:
+      - artifact
+      summary: Clears the repository - deletes all artifacts and metadata
+      operationId: clear
+      responses:
+        "200":
+          description: Repository cleared
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/artifact/create:
+    post:
+      tags:
+      - artifact
+      summary: Creates a new artifact by invoking a service.
+      operationId: createArtifact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceParams'
+      responses:
+        "200":
+          description: The IRI of the new artifact created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "400":
+          description: Invalid service parametres
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+        "404":
+          description: Repository or service with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/artifact/info/{iri}:
+    get:
+      tags:
+      - artifact
+      summary: Retrieves information about an artifact identified by its IRI (artifact
+        content not included).
+      operationId: getArtifactInfo
+      parameters:
+      - name: iri
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200-JSONLD":
+          description: The artifact RDF description serialized in JSON-LD
+          content:
+            application/ld+json: {}
+        "200-TURTLE":
+          description: The artifact RDF description serialized in TURTLE
+          content:
+            text/turtle: {}
+        "200-RDFXML":
+          description: The artifact RDF description serialized in RDF/XML
+          content:
+            application/rdf+xml: {}
+        "400":
+          description: Invalid IRI provided
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+        "404":
+          description: Repository or service with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/artifact/item/{iri}:
+    get:
+      tags:
+      - artifact
+      summary: Gets a complete artifact including its contents identified by its IRI
+      operationId: getArtifact
+      parameters:
+      - name: iri
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200-JSONLD":
+          description: The complete artifact RDF description serialized in JSON-LD
+          content:
+            application/ld+json: {}
+        "200-TURTLE":
+          description: The complete artifact RDF description serialized in TURTLE
+          content:
+            text/turtle: {}
+        "200-RDFXML":
+          description: The complete artifact RDF description serialized in RDF/XML
+          content:
+            application/rdf+xml: {}
+        "200-XML":
+          description: The complete artifact serialized in XML
+          content:
+            text/xml: {}
+        "200-HTML":
+          description: The complete artifact serialized in HTML
+          content:
+            text/html: {}
+        "200-PNG":
+          description: The complete artifact in a PNG image
+          content:
+            image/png: {}
+        "400":
+          description: Invalid IRI provided
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+        "404":
+          description: Repository or service with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    delete:
+      tags:
+      - artifact
+      summary: Deletes an artifact identified by its IRI
+      operationId: deleteArtifact
+      parameters:
+      - name: iri
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Artifact deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "404":
+          description: Repository or artifact with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/artifact/list:
+    get:
+      tags:
+      - artifact
+      summary: Gets a list of artifact IRIs.
+      operationId: listArtifacts
+      responses:
+        "200":
+          description: List of artifact IRIs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/add:
+    post:
+      tags:
+      - repository
+      summary: Adds a new quadruple to the repository
+      operationId: addQuadruple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuadrupleData'
+      responses:
+        "200":
+          description: The quadruple added
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "400":
+          description: Invalid quadruple specification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/checkRepo:
+    get:
+      tags:
+      - repository
+      summary: Checks the repository whether it exists and is properly initialized
+      operationId: checkRepo
+      responses:
+        "200":
+          description: Repository check result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/describe/{iri}:
+    get:
+      tags:
+      - repository
+      summary: Gets the RDF description for the given subject IRI
+      operationId: describeSubject
+      parameters:
+      - name: iri
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Subject description
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubjectDescriptionResult'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/initRepo:
+    get:
+      tags:
+      - repository
+      summary: Initializes an empty repository with the necessary RDF metadata (schemas)
+      operationId: initRepo
+      responses:
+        "200":
+          description: Repository initialized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/object/{iri}:
+    get:
+      tags:
+      - repository
+      summary: Gets all triples for the given object IRI
+      operationId: queryObject
+      parameters:
+      - name: iri
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          format: int32
+          default: 100
+          type: integer
+      responses:
+        "200":
+          description: Select query result assigning (v)alue and (p)redicate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SelectQueryResult'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/query:
+    post:
+      tags:
+      - repository
+      summary: Executes a SPARQL SELECT query on the underlying RDF repository
+      operationId: repositoryQuery
+      requestBody:
+        content:
+          application/sparql-query:
+            schema:
+              type: string
+      responses:
+        "200":
+          description: SPARQL query result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SelectQueryResult'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+        "500":
+          description: Query evaluation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/subject/{iri}:
+    get:
+      tags:
+      - repository
+      summary: Gets all triples for the given subject IRI
+      operationId: querySubject
+      parameters:
+      - name: iri
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          format: int32
+          default: 100
+          type: integer
+      responses:
+        "200":
+          description: Select query result assigning (p)redicate and (v)alue
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SelectQueryResult'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/subject/{subjIri}/{propertyIri}:
+    get:
+      tags:
+      - repository
+      summary: Gets the property value for the given subject and property IRIs
+      operationId: getSubjectValue
+      parameters:
+      - name: propertyIri
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: subjIri
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Select query result assigning (p)redicate and (v)alue
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultBinding'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/touch:
+    get:
+      tags:
+      - repository
+      summary: Updates the last access time of the given repository to current time
+      operationId: touch
+      responses:
+        "200":
+          description: Repository touched
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/type/{iri}:
+    get:
+      tags:
+      - repository
+      summary: Gets the assigned rdf:type IRI for the given subject IRI
+      operationId: getSubjectType
+      parameters:
+      - name: iri
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Type IRI or 'unknown'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/repository:
+    get:
+      tags:
+      - admin
+      summary: Gets a list of available repositories for current user.
+      operationId: listRepositories
+      responses:
+        "200":
+          description: List of repository information
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RepositoryInfo'
+    post:
+      tags:
+      - admin
+      summary: Creates a new repository.
+      operationId: createRepository
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepositoryInfo'
+      responses:
+        "200":
+          description: The new repository description
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RepositoryInfo'
+  /api/repository/all:
+    get:
+      tags:
+      - admin
+      summary: Gets a list of all available repositories (admin only).
+      operationId: listAllRepositories
+      responses:
+        "200":
+          description: List of repository information
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RepositoryInfo'
+        "403":
+          description: Not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+      security:
+      - jwt: []
+  /api/repository/remind/{email}:
+    get:
+      tags:
+      - admin
+      summary: Sends an e-mail reminder containing all repositories that have the
+        given e-mail assigned
+      operationId: sendRepositoriesReminder
+      parameters:
+      - name: email
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: E-mail sent (or nothing set if no repository is assigned to
+            the given e-mail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+  /api/repository/status:
+    get:
+      tags:
+      - admin
+      summary: Gets overall storage status.
+      operationId: status
+      responses:
+        "200":
+          description: Selected repository information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageStatus'
+  /api/repository/{repoId}:
+    get:
+      tags:
+      - admin
+      summary: Gets information about a repository identified by its ID.
+      operationId: getRepositoryInfo
+      parameters:
+      - name: repoId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Selected repository information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RepositoryInfo'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    put:
+      tags:
+      - admin
+      summary: Gets information about a repository identified by its ID.
+      operationId: updateRepositoryInfo
+      parameters:
+      - name: repoId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RepositoryInfo'
+      responses:
+        "200":
+          description: The updated repository description
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RepositoryInfo'
+        "400":
+          description: Invalid service parametres
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    delete:
+      tags:
+      - admin
+      summary: Deletes a repository identified by its ID.
+      operationId: deleteRepository
+      parameters:
+      - name: repoId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Repository deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "400":
+          description: Invalid parametres
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+  /api/service:
+    get:
+      tags:
+      - service
+      summary: Gets a list of available artifact services.
+      operationId: getServiceList
+      responses:
+        "200":
+          description: List of service descriptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ArtifactServiceDescr'
+    post:
+      tags:
+      - service
+      summary: Invokes a service and returns the resulting artifact
+      operationId: invoke
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceParams'
+      responses:
+        "200":
+          description: The complete artifact data
+  /api/service/config:
+    get:
+      tags:
+      - service
+      summary: Gets the default configuration of an artifact service.
+      operationId: getServiceConfig
+      parameters:
+      - name: id
+        in: query
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Service configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceParams'
+  /api/service/ping:
+    get:
+      tags:
+      - service
+      summary: Returns 'ok'.
+      operationId: ping
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+components:
+  schemas:
+    ArtifactServiceDescr:
+      required:
+      - description
+      - id
+      - name
+      type: object
+      properties:
+        category:
+          description: Service category used for grouping services
+          type: string
+        description:
+          description: Service description
+          type: string
+        id:
+          description: Service ID
+          type: string
+        name:
+          description: Service name
+          type: string
+        params:
+          description: Descriptions of accepted parameters
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/ParamDescr'
+        consumes:
+          type: string
+        produces:
+          type: string
+    ParamBooleanDescr:
+      required:
+      - name
+      - type
+      type: object
+      properties:
+        name:
+          description: Name of the parameter
+          type: string
+        type:
+          description: "Type of the parameter {bolean, int, float, string}"
+          type: string
+    ParamDescr:
+      description: Service parameter description
+      required:
+      - name
+      - type
+      type: object
+      properties:
+        name:
+          description: Name of the parameter
+          type: string
+        type:
+          description: "Type of the parameter {bolean, int, float, string}"
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          int: '#/components/schemas/ParamIntDescr'
+          float: '#/components/schemas/ParamFloatDescr'
+          string: '#/components/schemas/ParamStringDescr'
+          boolean: '#/components/schemas/ParamBooleanDescr'
+    ParamFloatDescr:
+      required:
+      - name
+      - type
+      type: object
+      properties:
+        name:
+          description: Name of the parameter
+          type: string
+        type:
+          description: "Type of the parameter {bolean, int, float, string}"
+          type: string
+        maxValue:
+          format: float
+          type: number
+        minValue:
+          format: float
+          type: number
+    ParamIntDescr:
+      required:
+      - name
+      - type
+      type: object
+      properties:
+        name:
+          description: Name of the parameter
+          type: string
+        type:
+          description: "Type of the parameter {bolean, int, float, string}"
+          type: string
+        maxValue:
+          format: int32
+          type: integer
+        minValue:
+          format: int32
+          type: integer
+    ParamStringDescr:
+      required:
+      - name
+      - type
+      type: object
+      properties:
+        name:
+          description: Name of the parameter
+          type: string
+        type:
+          description: "Type of the parameter {bolean, int, float, string}"
+          type: string
+        maxLength:
+          format: int32
+          type: integer
+        minLength:
+          format: int32
+          type: integer
+    ParametrizedServiceDescr:
+      description: Description of a parametrized service
+      required:
+      - description
+      - id
+      - name
+      - produces
+      type: object
+      properties:
+        category:
+          description: Service category used for grouping services
+          type: string
+        consumes:
+          description: Type IRI of the input artifacts
+          type: string
+        description:
+          description: Service description
+          type: string
+        id:
+          description: Service ID
+          type: string
+        name:
+          description: Service name
+          type: string
+        params:
+          description: Descriptions of accepted parameters
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/ParamDescr'
+        produces:
+          description: Type IRI of the produced artifacts
+          type: string
+    QuadrupleData:
+      description: RDF quadruple data
+      type: object
+      properties:
+        artifact:
+          type: string
+        o:
+          type: string
+        p:
+          type: string
+        s:
+          type: string
+        value:
+          type: object
+        ok:
+          type: boolean
+    RepositoryInfo:
+      description: Information about an artifact repository
+      required:
+      - id
+      - owner
+      type: object
+      properties:
+        accessedOn:
+          format: date
+          description: Last access date
+          type: string
+        createdOn:
+          format: date
+          description: Creation date
+          type: string
+        description:
+          description: Repository description
+          type: string
+        email:
+          description: Creator's e-mail
+          type: string
+        expires:
+          format: date
+          description: Expiration date
+          type: string
+        id:
+          description: Repository ID
+          type: string
+        owner:
+          description: Owner ID
+          type: string
+        version:
+          description: Metadata schema version
+          type: string
+    ResultBinding:
+      description: Assigned result value
+      type: object
+      properties:
+        type:
+          description: "Value type {iri, literal}"
+          type: string
+        value:
+          description: The value
+          type: string
+    ResultBody:
+      description: Query result body (bindings)
+      type: object
+      properties:
+        bindings:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              $ref: '#/components/schemas/ResultBinding'
+    ResultErrorMessage:
+      description: Error result of an operation
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+    ResultHeader:
+      description: Query result header (column names)
+      type: object
+      properties:
+        vars:
+          type: array
+          items:
+            type: string
+    ResultValue:
+      description: Result of an operation conaining an optional result value
+      type: object
+      properties:
+        status:
+          type: string
+        result:
+          type: object
+    SelectQueryResult:
+      description: A result of a SPARQL SELECT query
+      type: object
+      properties:
+        head:
+          $ref: '#/components/schemas/ResultHeader'
+        results:
+          $ref: '#/components/schemas/ResultBody'
+    ServiceParams:
+      description: Service input parametres
+      required:
+      - serviceId
+      type: object
+      properties:
+        params:
+          description: Service invocation parametres
+          type: object
+          additionalProperties: {}
+        parentIri:
+          description: IRI of the input artifact if required by the given service
+          type: string
+        serviceId:
+          description: ID of the service to invoke
+          type: string
+    StorageStatus:
+      description: Overall storage status
+      type: object
+      properties:
+        available:
+          format: int32
+          type: integer
+        createAvailable:
+          type: boolean
+        repositories:
+          format: int32
+          type: integer
+        singleMode:
+          type: boolean
+    SubjectDescriptionResult:
+      description: Represents the subject descripton as map of properties.
+      type: object
+      properties:
+        description:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ResultBinding'
+    UserInfo:
+      description: Current user information
+      type: object
+      properties:
+        anonymous:
+          type: boolean
+        email:
+          type: string
+        expires:
+          format: date
+          type: string
+        guest:
+          type: boolean
+        roles:
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+        userId:
+          type: string
+  securitySchemes:
+    jwt:
+      type: http
+      in: header
+      scheme: bearer
+      bearerFormat: jwt
