@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Box Model Ontology</title>
+	<style type="text/css">
+		html {
+			font-family: sans-serif;
+		}
+		body {
+			padding: 1em 2em;
+		}
+		:link { color: #00c; }
+		:visited { color: #00c; }
+		a:active { color: #c00; }
+		a.known { color: #07c; }
+		a.known:visited { color: #07c; }
+		h1, h2, h3 { 
+			color: #005A9C;
+			font-weight: normal;
+			text-align: left;
+		}
+		h1 { font-size: 170%; }
+		h2 { font-size: 140%; margin-top: 2em; }
+		h3 { font-size: 120%  }
+		p { margin: 1em 0 }
+		dt { 
+			font-weight: bold;
+			margin-top: 5px; 
+		}
+		dd {
+			padding: 3px 0;
+		}
+		code { color: darkred; }
+		.logic {
+			font-weight: bold;
+			color: purple;
+		}
+		.res {
+			position: relative;
+			display: inline-block;
+			margin-right: 0;
+		}
+		.res::after {
+			font-size: smaller;
+			margin-left: 3px;
+			text-decoration: none !important;
+			position: absolute;
+			top: -0.5em;
+			right: -2em;
+			text-align: left;
+			width: 2em;
+		}
+		.res::after:hover {
+			background-color: lightblue;
+		}
+		.res.Class {
+			margin-right: 0.5em;
+		}
+		.res.ObjectProperty, .res.DatatypeProperty {
+			margin-right: 1em;
+		}
+		.res.Class::after {
+			content: "c";
+			color: orange;
+		}
+		.res.ObjectProperty::after {
+			content: "op";
+			color: navy;
+		}
+		.res.DatatypeProperty::after {
+			content: "dp";
+			color: green;
+		}
+		.res.other {
+			border-bottom: 1px dotted black;
+		}
+		.subtoc, .entity {
+			border: 1px solid navy;
+			padding: 0.5em;
+			margin: 0.5em 0;
+		}
+		.subtoc {
+			background: #f4ffff;
+		}
+		.subtoc li {
+			display: inline;
+			margin-right: 0.75em;
+			padding: 3px 0;
+		}
+		.entity .rel li {
+			display: inline;
+			margin-right: 0.3em;
+			padding: 3px 0;
+		}
+		.entity header {
+			border-bottom: 1px solid navy;
+			padding-bottom: 5px;
+		}
+		.entity h3 {
+			display: inline-block;
+			margin: 3px 1em 0 0;
+			padding: 0;
+		}
+		.entity .IRI {
+			display: inline-block;
+			margin: 0;
+		}
+		footer {
+			text-align: center;
+			font-size: small;
+			font-style: italic;
+			margin-top: 2em;
+		}
+	</style>
+</head>
+<body>
+
+<header>
+	<h1>Box Model Ontology</h1>
+</header>
+
+<section class="metadata">
+	<dl>
+		<dt>IRI</dt>
+		<dd class="iri"><code>http://fitlayout.github.io/ontology/render.owl#</code></dd>
+		<dt>Version</dt>
+		<dd>1.0.0</dd>
+		<dt>Creator(s)</dt>
+		<dd>Radek Burget</dd>
+	</dl>
+</section>
+
+<section id="description">
+	<h2>Description</h2>
+	<p>FitLayout rendered document (box model) description ontology.</p>
+</section>
+
+<section id="classes">
+	<h2>Classes</h2>
+	<ul class="subtoc">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Page" title="http://fitlayout.github.io/ontology/render.owl#Page">Page</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Attribute" title="http://fitlayout.github.io/ontology/render.owl#Attribute">Attribute</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Border" title="http://fitlayout.github.io/ontology/render.owl#Border">Border</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Bounds" title="http://fitlayout.github.io/ontology/render.owl#Bounds">Bounds</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-ContainerBox" title="http://fitlayout.github.io/ontology/render.owl#ContainerBox">ContainerBox</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-ContentBox" title="http://fitlayout.github.io/ontology/render.owl#ContentBox">ContentBox</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-ContentObject" title="http://fitlayout.github.io/ontology/render.owl#ContentObject">ContentObject</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Image" title="http://fitlayout.github.io/ontology/render.owl#Image">Image</a></li>
+</ul>
+
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-Box">
+	<header>
+		<h3 class="res Class">Box</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#Box">box:Box</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has super-classes</dt> 
+		<dd><ul class="rel super">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has subclasses</dt> 
+		<dd><ul class="rel sub">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-ContainerBox" title="http://fitlayout.github.io/ontology/render.owl#ContainerBox">ContainerBox</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-ContentBox" title="http://fitlayout.github.io/ontology/render.owl#ContentBox">ContentBox</a></li>
+</ul>
+</dd>
+		<dt>is in domain of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-containsObject" title="http://fitlayout.github.io/ontology/render.owl#containsObject">containsObject</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-contentBounds" title="http://fitlayout.github.io/ontology/render.owl#contentBounds">contentBounds</a></li>
+	<li><a class="res ObjectProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasAttribute" title="http://fitlayout.github.io/ontology/render.owl#hasAttribute">hasAttribute</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-isChildOf" title="http://fitlayout.github.io/ontology/render.owl#isChildOf">isChildOf</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-visualBounds" title="http://fitlayout.github.io/ontology/render.owl#visualBounds">visualBounds</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-color" title="http://fitlayout.github.io/ontology/render.owl#color">color</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-displayType" title="http://fitlayout.github.io/ontology/render.owl#displayType">displayType</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-fontFamily" title="http://fitlayout.github.io/ontology/render.owl#fontFamily">fontFamily</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-htmlTagName" title="http://fitlayout.github.io/ontology/render.owl#htmlTagName">htmlTagName</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-sourceXPath" title="http://fitlayout.github.io/ontology/render.owl#sourceXPath">sourceXPath</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-text" title="http://fitlayout.github.io/ontology/render.owl#text">text</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-visible" title="http://fitlayout.github.io/ontology/render.owl#visible">visible</a></li>
+</ul>
+</dd>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="known res ObjectProperty" href="segmentation.html#r-http---fitlayout-github-io-ontology-segmentation-owl-containsBox" title="http://fitlayout.github.io/ontology/segmentation.owl#containsBox">segm:containsBox</a></li>
+	<li><a class="known res ObjectProperty FunctionalProperty" href="segmentation.html#r-http---fitlayout-github-io-ontology-segmentation-owl-hasSourceBox" title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourceBox">segm:hasSourceBox</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-Page">
+	<header>
+		<h3 class="res Class">Page</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#Page">box:Page</code></p>
+	</header>
+	<p class="comment">A tree of boxes representing a rendered page.</p>
+	<dl>
+		<dt>has super-classes</dt> 
+		<dd><ul class="rel super">
+	<li><a class="known res Class" href="fitlayout.html#r-http---fitlayout-github-io-ontology-fitlayout-owl-Artifact" title="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact">fl:Artifact</a></li>
+</ul>
+</dd>
+		<dt>is in domain of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-pngImage" title="http://fitlayout.github.io/ontology/render.owl#pngImage">pngImage</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-sourceUrl" title="http://fitlayout.github.io/ontology/render.owl#sourceUrl">sourceUrl</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-title" title="http://fitlayout.github.io/ontology/render.owl#title">title</a></li>
+</ul>
+</dd>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="known res ObjectProperty FunctionalProperty" href="segmentation.html#r-http---fitlayout-github-io-ontology-segmentation-owl-hasSourcePage" title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourcePage">segm:hasSourcePage</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-belongsTo" title="http://fitlayout.github.io/ontology/render.owl#belongsTo">belongsTo</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-RectArea">
+	<header>
+		<h3 class="res Class">RectArea</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#RectArea">box:RectArea</code></p>
+	</header>
+	<p class="comment">A rectangular area in the page with bounds assigned.</p>
+	<dl>
+		<dt>has subclasses</dt> 
+		<dd><ul class="rel sub">
+	<li><a class="known res Class" href="segmentation.html#r-http---fitlayout-github-io-ontology-segmentation-owl-Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">segm:Area</a></li>
+	<li><a class="known res Class" href="segmentation.html#r-http---fitlayout-github-io-ontology-segmentation-owl-TextChunk" title="http://fitlayout.github.io/ontology/segmentation.owl#TextChunk">segm:TextChunk</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+</ul>
+</dd>
+		<dt>is in domain of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-belongsTo" title="http://fitlayout.github.io/ontology/render.owl#belongsTo">belongsTo</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-bounds" title="http://fitlayout.github.io/ontology/render.owl#bounds">bounds</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasBackgroundImage" title="http://fitlayout.github.io/ontology/render.owl#hasBackgroundImage">hasBackgroundImage</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasBottomBorder" title="http://fitlayout.github.io/ontology/render.owl#hasBottomBorder">hasBottomBorder</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasLeftBorder" title="http://fitlayout.github.io/ontology/render.owl#hasLeftBorder">hasLeftBorder</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasRightBorder" title="http://fitlayout.github.io/ontology/render.owl#hasRightBorder">hasRightBorder</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasTopBorder" title="http://fitlayout.github.io/ontology/render.owl#hasTopBorder">hasTopBorder</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-backgroundColor" title="http://fitlayout.github.io/ontology/render.owl#backgroundColor">backgroundColor</a></li>
+	<li><a class="res DatatypeProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-backgroundSeparated" title="http://fitlayout.github.io/ontology/render.owl#backgroundSeparated">backgroundSeparated</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-documentOrder" title="http://fitlayout.github.io/ontology/render.owl#documentOrder">documentOrder</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-fontSize" title="http://fitlayout.github.io/ontology/render.owl#fontSize">fontSize</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-fontStyle" title="http://fitlayout.github.io/ontology/render.owl#fontStyle">fontStyle</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-fontVariant" title="http://fitlayout.github.io/ontology/render.owl#fontVariant">fontVariant</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-fontWeight" title="http://fitlayout.github.io/ontology/render.owl#fontWeight">fontWeight</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-lineThrough" title="http://fitlayout.github.io/ontology/render.owl#lineThrough">lineThrough</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-underline" title="http://fitlayout.github.io/ontology/render.owl#underline">underline</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-Attribute">
+	<header>
+		<h3 class="res Class">Attribute</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#Attribute">box:Attribute</code></p>
+	</header>
+	<p class="comment">An HTML attribute assigned to a box.</p>
+	<dl>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasAttribute" title="http://fitlayout.github.io/ontology/render.owl#hasAttribute">hasAttribute</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-Border">
+	<header>
+		<h3 class="res Class">Border</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#Border">box:Border</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>is in domain of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-borderColor" title="http://fitlayout.github.io/ontology/render.owl#borderColor">borderColor</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-borderStyle" title="http://fitlayout.github.io/ontology/render.owl#borderStyle">borderStyle</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-borderWidth" title="http://fitlayout.github.io/ontology/render.owl#borderWidth">borderWidth</a></li>
+</ul>
+</dd>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasBottomBorder" title="http://fitlayout.github.io/ontology/render.owl#hasBottomBorder">hasBottomBorder</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasLeftBorder" title="http://fitlayout.github.io/ontology/render.owl#hasLeftBorder">hasLeftBorder</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasRightBorder" title="http://fitlayout.github.io/ontology/render.owl#hasRightBorder">hasRightBorder</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasTopBorder" title="http://fitlayout.github.io/ontology/render.owl#hasTopBorder">hasTopBorder</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-Bounds">
+	<header>
+		<h3 class="res Class">Bounds</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#Bounds">box:Bounds</code></p>
+	</header>
+	<p class="comment">Rectangular bounds specified by its coordinates, width and height.</p>
+	<dl>
+		<dt>equivalent classes</dt> 
+		<dd><ul class="rel eq">
+	<li>((<a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-height" title="http://fitlayout.github.io/ontology/render.owl#height">height</a> <span class="logic">exactly</span> 1) <span class="logic">and</span> (<a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-positionX" title="http://fitlayout.github.io/ontology/render.owl#positionX">positionX</a> <span class="logic">exactly</span> 1) <span class="logic">and</span> (<a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-positionY" title="http://fitlayout.github.io/ontology/render.owl#positionY">positionY</a> <span class="logic">exactly</span> 1) <span class="logic">and</span> (<a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-width" title="http://fitlayout.github.io/ontology/render.owl#width">width</a> <span class="logic">exactly</span> 1))</li>
+</ul>
+</dd>
+		<dt>is in domain of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-positionX" title="http://fitlayout.github.io/ontology/render.owl#positionX">positionX</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-positionY" title="http://fitlayout.github.io/ontology/render.owl#positionY">positionY</a></li>
+</ul>
+</dd>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-bounds" title="http://fitlayout.github.io/ontology/render.owl#bounds">bounds</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-contentBounds" title="http://fitlayout.github.io/ontology/render.owl#contentBounds">contentBounds</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-visualBounds" title="http://fitlayout.github.io/ontology/render.owl#visualBounds">visualBounds</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-ContainerBox">
+	<header>
+		<h3 class="res Class">ContainerBox</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#ContainerBox">box:ContainerBox</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>equivalent classes</dt> 
+		<dd><ul class="rel eq">
+	<li>(<a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a> <span class="logic">and</span> (<span class="logic">not</span> (<a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-ContentBox" title="http://fitlayout.github.io/ontology/render.owl#ContentBox">ContentBox</a>)))</li>
+</ul>
+</dd>
+		<dt>has super-classes</dt> 
+		<dd><ul class="rel super">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+</ul>
+</dd>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-isChildOf" title="http://fitlayout.github.io/ontology/render.owl#isChildOf">isChildOf</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-ContentBox">
+	<header>
+		<h3 class="res Class">ContentBox</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#ContentBox">box:ContentBox</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>equivalent classes</dt> 
+		<dd><ul class="rel eq">
+	<li>(<a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a> <span class="logic">and</span> ((<a class="res ObjectProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-containsObject" title="http://fitlayout.github.io/ontology/render.owl#containsObject">containsObject</a> <span class="logic">some</span> <a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-ContentObject" title="http://fitlayout.github.io/ontology/render.owl#ContentObject">ContentObject</a>) <span class="logic">or</span> (<a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-text" title="http://fitlayout.github.io/ontology/render.owl#text">text</a> <span class="logic">some</span> <span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span>)))</li>
+</ul>
+</dd>
+		<dt>has super-classes</dt> 
+		<dd><ul class="rel super">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-ContentObject">
+	<header>
+		<h3 class="res Class">ContentObject</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#ContentObject">box:ContentObject</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has subclasses</dt> 
+		<dd><ul class="rel sub">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Image" title="http://fitlayout.github.io/ontology/render.owl#Image">Image</a></li>
+</ul>
+</dd>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-containsObject" title="http://fitlayout.github.io/ontology/render.owl#containsObject">containsObject</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-Image">
+	<header>
+		<h3 class="res Class">Image</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#Image">box:Image</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has super-classes</dt> 
+		<dd><ul class="rel super">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-ContentObject" title="http://fitlayout.github.io/ontology/render.owl#ContentObject">ContentObject</a></li>
+</ul>
+</dd>
+		<dt>is in domain of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-imageData" title="http://fitlayout.github.io/ontology/render.owl#imageData">imageData</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-imageUrl" title="http://fitlayout.github.io/ontology/render.owl#imageUrl">imageUrl</a></li>
+</ul>
+</dd>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasBackgroundImage" title="http://fitlayout.github.io/ontology/render.owl#hasBackgroundImage">hasBackgroundImage</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+
+</section>
+
+<section id="object-properties">
+	<h2>Object Properties</h2>
+	<ul class="subtoc">
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-belongsTo" title="http://fitlayout.github.io/ontology/render.owl#belongsTo">belongsTo</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-bounds" title="http://fitlayout.github.io/ontology/render.owl#bounds">bounds</a></li>
+	<li><a class="res ObjectProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-containsObject" title="http://fitlayout.github.io/ontology/render.owl#containsObject">containsObject</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-contentBounds" title="http://fitlayout.github.io/ontology/render.owl#contentBounds">contentBounds</a></li>
+	<li><a class="res ObjectProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasAttribute" title="http://fitlayout.github.io/ontology/render.owl#hasAttribute">hasAttribute</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasBackgroundImage" title="http://fitlayout.github.io/ontology/render.owl#hasBackgroundImage">hasBackgroundImage</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasBottomBorder" title="http://fitlayout.github.io/ontology/render.owl#hasBottomBorder">hasBottomBorder</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasLeftBorder" title="http://fitlayout.github.io/ontology/render.owl#hasLeftBorder">hasLeftBorder</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasRightBorder" title="http://fitlayout.github.io/ontology/render.owl#hasRightBorder">hasRightBorder</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-hasTopBorder" title="http://fitlayout.github.io/ontology/render.owl#hasTopBorder">hasTopBorder</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-isChildOf" title="http://fitlayout.github.io/ontology/render.owl#isChildOf">isChildOf</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-visualBounds" title="http://fitlayout.github.io/ontology/render.owl#visualBounds">visualBounds</a></li>
+</ul>
+
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-belongsTo">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty">belongsTo</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#belongsTo">box:belongsTo</code></p>
+	</header>
+	<p class="comment">Assigns an owning page to a rectangle</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Page" title="http://fitlayout.github.io/ontology/render.owl#Page">Page</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-bounds">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty InverseFunctionalProperty">bounds</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#bounds">box:bounds</code></p>
+	</header>
+	<p class="comment">Assigns logical rectangular bounds to an area.</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Bounds" title="http://fitlayout.github.io/ontology/render.owl#Bounds">Bounds</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-containsObject">
+	<header>
+		<h3 class="res ObjectProperty InverseFunctionalProperty">containsObject</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#containsObject">box:containsObject</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-ContentObject" title="http://fitlayout.github.io/ontology/render.owl#ContentObject">ContentObject</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-contentBounds">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty InverseFunctionalProperty">contentBounds</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#contentBounds">box:contentBounds</code></p>
+	</header>
+	<p class="comment">Assigns rectangular content bounds to a box. The content bounds correspond to the box border bounds as provided by the box source (renderer).</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Bounds" title="http://fitlayout.github.io/ontology/render.owl#Bounds">Bounds</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-hasAttribute">
+	<header>
+		<h3 class="res ObjectProperty InverseFunctionalProperty">hasAttribute</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#hasAttribute">box:hasAttribute</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Attribute" title="http://fitlayout.github.io/ontology/render.owl#Attribute">Attribute</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-hasBackgroundImage">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty InverseFunctionalProperty">hasBackgroundImage</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#hasBackgroundImage">box:hasBackgroundImage</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Image" title="http://fitlayout.github.io/ontology/render.owl#Image">Image</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-hasBottomBorder">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty InverseFunctionalProperty">hasBottomBorder</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#hasBottomBorder">box:hasBottomBorder</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Border" title="http://fitlayout.github.io/ontology/render.owl#Border">Border</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-hasLeftBorder">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty InverseFunctionalProperty">hasLeftBorder</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#hasLeftBorder">box:hasLeftBorder</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Border" title="http://fitlayout.github.io/ontology/render.owl#Border">Border</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-hasRightBorder">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty InverseFunctionalProperty">hasRightBorder</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#hasRightBorder">box:hasRightBorder</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Border" title="http://fitlayout.github.io/ontology/render.owl#Border">Border</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-hasTopBorder">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty InverseFunctionalProperty">hasTopBorder</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#hasTopBorder">box:hasTopBorder</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Border" title="http://fitlayout.github.io/ontology/render.owl#Border">Border</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-isChildOf">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty">isChildOf</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#isChildOf">box:isChildOf</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-ContainerBox" title="http://fitlayout.github.io/ontology/render.owl#ContainerBox">ContainerBox</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-visualBounds">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty InverseFunctionalProperty">visualBounds</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#visualBounds">box:visualBounds</code></p>
+	</header>
+	<p class="comment">Assigns visual rectangular bounds to a box. Visual bounds correspond to the minimal rectangle that encloses visible contents inside the box.</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Bounds" title="http://fitlayout.github.io/ontology/render.owl#Bounds">Bounds</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+
+</section>
+
+<section id="datatype-properties">
+	<h2>Datatype Properties</h2>
+	<ul class="subtoc">
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-backgroundColor" title="http://fitlayout.github.io/ontology/render.owl#backgroundColor">backgroundColor</a></li>
+	<li><a class="res DatatypeProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-backgroundSeparated" title="http://fitlayout.github.io/ontology/render.owl#backgroundSeparated">backgroundSeparated</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-borderColor" title="http://fitlayout.github.io/ontology/render.owl#borderColor">borderColor</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-borderStyle" title="http://fitlayout.github.io/ontology/render.owl#borderStyle">borderStyle</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-borderWidth" title="http://fitlayout.github.io/ontology/render.owl#borderWidth">borderWidth</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-color" title="http://fitlayout.github.io/ontology/render.owl#color">color</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-displayType" title="http://fitlayout.github.io/ontology/render.owl#displayType">displayType</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-documentOrder" title="http://fitlayout.github.io/ontology/render.owl#documentOrder">documentOrder</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-fontFamily" title="http://fitlayout.github.io/ontology/render.owl#fontFamily">fontFamily</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-fontSize" title="http://fitlayout.github.io/ontology/render.owl#fontSize">fontSize</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-fontStyle" title="http://fitlayout.github.io/ontology/render.owl#fontStyle">fontStyle</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-fontVariant" title="http://fitlayout.github.io/ontology/render.owl#fontVariant">fontVariant</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-fontWeight" title="http://fitlayout.github.io/ontology/render.owl#fontWeight">fontWeight</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-height" title="http://fitlayout.github.io/ontology/render.owl#height">height</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-htmlTagName" title="http://fitlayout.github.io/ontology/render.owl#htmlTagName">htmlTagName</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-imageData" title="http://fitlayout.github.io/ontology/render.owl#imageData">imageData</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-imageUrl" title="http://fitlayout.github.io/ontology/render.owl#imageUrl">imageUrl</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-lineThrough" title="http://fitlayout.github.io/ontology/render.owl#lineThrough">lineThrough</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-pngImage" title="http://fitlayout.github.io/ontology/render.owl#pngImage">pngImage</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-positionX" title="http://fitlayout.github.io/ontology/render.owl#positionX">positionX</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-positionY" title="http://fitlayout.github.io/ontology/render.owl#positionY">positionY</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-sourceUrl" title="http://fitlayout.github.io/ontology/render.owl#sourceUrl">sourceUrl</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-sourceXPath" title="http://fitlayout.github.io/ontology/render.owl#sourceXPath">sourceXPath</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-text" title="http://fitlayout.github.io/ontology/render.owl#text">text</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-title" title="http://fitlayout.github.io/ontology/render.owl#title">title</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-underline" title="http://fitlayout.github.io/ontology/render.owl#underline">underline</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-visible" title="http://fitlayout.github.io/ontology/render.owl#visible">visible</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-render-owl-width" title="http://fitlayout.github.io/ontology/render.owl#width">width</a></li>
+</ul>
+
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-backgroundColor">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">backgroundColor</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#backgroundColor">box:backgroundColor</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-backgroundSeparated">
+	<header>
+		<h3 class="res DatatypeProperty">backgroundSeparated</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#backgroundSeparated">box:backgroundSeparated</code></p>
+	</header>
+	<p class="comment">Indicates whether the rectangle is separated from it parent rectangle by background color or image.</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-borderColor">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">borderColor</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#borderColor">box:borderColor</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Border" title="http://fitlayout.github.io/ontology/render.owl#Border">Border</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-borderStyle">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">borderStyle</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#borderStyle">box:borderStyle</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Border" title="http://fitlayout.github.io/ontology/render.owl#Border">Border</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-borderWidth">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">borderWidth</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#borderWidth">box:borderWidth</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Border" title="http://fitlayout.github.io/ontology/render.owl#Border">Border</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#int">xsd:int</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-color">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">color</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#color">box:color</code></p>
+	</header>
+	<p class="comment">Foreground color (#rrggbb)</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-displayType">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">displayType</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#displayType">box:displayType</code></p>
+	</header>
+	<p class="comment">The display type of a box that corresponds to the CSS &#39;display&#39; property (&#39;inline&#39;, &#39;block&#39;, etc.)</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-documentOrder">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">documentOrder</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#documentOrder">box:documentOrder</code></p>
+	</header>
+	<p class="comment">The order of a rectangle within its page</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#int">xsd:int</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-fontFamily">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">fontFamily</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#fontFamily">box:fontFamily</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-fontSize">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">fontSize</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#fontSize">box:fontSize</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#float">xsd:float</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-fontStyle">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">fontStyle</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#fontStyle">box:fontStyle</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#float">xsd:float</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-fontVariant">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">fontVariant</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#fontVariant">box:fontVariant</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-fontWeight">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">fontWeight</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#fontWeight">box:fontWeight</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#float">xsd:float</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-height">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">height</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#height">box:height</code></p>
+	</header>
+	<p class="comment">Effective height of a rectangle.</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li>(<a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Bounds" title="http://fitlayout.github.io/ontology/render.owl#Bounds">Bounds</a> <span class="logic">or</span> <a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Page" title="http://fitlayout.github.io/ontology/render.owl#Page">Page</a>)</li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#int">xsd:int</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-htmlTagName">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">htmlTagName</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#htmlTagName">box:htmlTagName</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-imageData">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">imageData</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#imageData">box:imageData</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Image" title="http://fitlayout.github.io/ontology/render.owl#Image">Image</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-imageUrl">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">imageUrl</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#imageUrl">box:imageUrl</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Image" title="http://fitlayout.github.io/ontology/render.owl#Image">Image</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-lineThrough">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">lineThrough</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#lineThrough">box:lineThrough</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#float">xsd:float</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-pngImage">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">pngImage</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#pngImage">box:pngImage</code></p>
+	</header>
+	<p class="comment">PNG image data representing the whole page (screen shot)</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Page" title="http://fitlayout.github.io/ontology/render.owl#Page">Page</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-positionX">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">positionX</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#positionX">box:positionX</code></p>
+	</header>
+	<p class="comment">Effective X coordinate of a rectangle.</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Bounds" title="http://fitlayout.github.io/ontology/render.owl#Bounds">Bounds</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#int">xsd:int</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-positionY">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">positionY</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#positionY">box:positionY</code></p>
+	</header>
+	<p class="comment">Effective Y coordinate of a rectangle.</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Bounds" title="http://fitlayout.github.io/ontology/render.owl#Bounds">Bounds</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#int">xsd:int</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-sourceUrl">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">sourceUrl</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#sourceUrl">box:sourceUrl</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Page" title="http://fitlayout.github.io/ontology/render.owl#Page">Page</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-sourceXPath">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">sourceXPath</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#sourceXPath">box:sourceXPath</code></p>
+	</header>
+	<p class="comment">An XPath expression identifying the source element of the box in the source document.</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-text">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">text</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#text">box:text</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-title">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">title</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#title">box:title</code></p>
+	</header>
+	<p class="comment">Page title</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Page" title="http://fitlayout.github.io/ontology/render.owl#Page">Page</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-underline">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">underline</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#underline">box:underline</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#float">xsd:float</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-visible">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">visible</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#visible">box:visible</code></p>
+	</header>
+	<p class="comment">Defines the box visibility</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-render-owl-width">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">width</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#width">box:width</code></p>
+	</header>
+	<p class="comment">Effective width of a rectangle.</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li>(<a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Bounds" title="http://fitlayout.github.io/ontology/render.owl#Bounds">Bounds</a> <span class="logic">or</span> <a class="res Class" href="#r-http---fitlayout-github-io-ontology-render-owl-Page" title="http://fitlayout.github.io/ontology/render.owl#Page">Page</a>)</li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#int">xsd:int</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+
+</section>
+
+<footer>
+	<p>Generated by <a href="https://github.com/radkovo/OwlDocGen">OwlDocGen</a>.</p>
+</footer>
+
+</body>
+</html>

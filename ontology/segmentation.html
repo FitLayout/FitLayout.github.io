@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Document Visual Area Ontology</title>
+	<style type="text/css">
+		html {
+			font-family: sans-serif;
+		}
+		body {
+			padding: 1em 2em;
+		}
+		:link { color: #00c; }
+		:visited { color: #00c; }
+		a:active { color: #c00; }
+		a.known { color: #07c; }
+		a.known:visited { color: #07c; }
+		h1, h2, h3 { 
+			color: #005A9C;
+			font-weight: normal;
+			text-align: left;
+		}
+		h1 { font-size: 170%; }
+		h2 { font-size: 140%; margin-top: 2em; }
+		h3 { font-size: 120%  }
+		p { margin: 1em 0 }
+		dt { 
+			font-weight: bold;
+			margin-top: 5px; 
+		}
+		dd {
+			padding: 3px 0;
+		}
+		code { color: darkred; }
+		.logic {
+			font-weight: bold;
+			color: purple;
+		}
+		.res {
+			position: relative;
+			display: inline-block;
+			margin-right: 0;
+		}
+		.res::after {
+			font-size: smaller;
+			margin-left: 3px;
+			text-decoration: none !important;
+			position: absolute;
+			top: -0.5em;
+			right: -2em;
+			text-align: left;
+			width: 2em;
+		}
+		.res::after:hover {
+			background-color: lightblue;
+		}
+		.res.Class {
+			margin-right: 0.5em;
+		}
+		.res.ObjectProperty, .res.DatatypeProperty {
+			margin-right: 1em;
+		}
+		.res.Class::after {
+			content: "c";
+			color: orange;
+		}
+		.res.ObjectProperty::after {
+			content: "op";
+			color: navy;
+		}
+		.res.DatatypeProperty::after {
+			content: "dp";
+			color: green;
+		}
+		.res.other {
+			border-bottom: 1px dotted black;
+		}
+		.subtoc, .entity {
+			border: 1px solid navy;
+			padding: 0.5em;
+			margin: 0.5em 0;
+		}
+		.subtoc {
+			background: #f4ffff;
+		}
+		.subtoc li {
+			display: inline;
+			margin-right: 0.75em;
+			padding: 3px 0;
+		}
+		.entity .rel li {
+			display: inline;
+			margin-right: 0.3em;
+			padding: 3px 0;
+		}
+		.entity header {
+			border-bottom: 1px solid navy;
+			padding-bottom: 5px;
+		}
+		.entity h3 {
+			display: inline-block;
+			margin: 3px 1em 0 0;
+			padding: 0;
+		}
+		.entity .IRI {
+			display: inline-block;
+			margin: 0;
+		}
+		footer {
+			text-align: center;
+			font-size: small;
+			font-style: italic;
+			margin-top: 2em;
+		}
+	</style>
+</head>
+<body>
+
+<header>
+	<h1>Document Visual Area Ontology</h1>
+</header>
+
+<section class="metadata">
+	<dl>
+		<dt>IRI</dt>
+		<dd class="iri"><code>http://fitlayout.github.io/ontology/segmentation.owl#</code></dd>
+		<dt>Version</dt>
+		<dd>1.0.0</dd>
+		<dt>Creator(s)</dt>
+		<dd>Radek Burget</dd>
+	</dl>
+</section>
+
+<section id="description">
+	<h2>Description</h2>
+	<p>Document visual area (segmentation) ontology.</p>
+</section>
+
+<section id="classes">
+	<h2>Classes</h2>
+	<ul class="subtoc">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">Area</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-AreaTree" title="http://fitlayout.github.io/ontology/segmentation.owl#AreaTree">AreaTree</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-ChunkSet" title="http://fitlayout.github.io/ontology/segmentation.owl#ChunkSet">ChunkSet</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-LogicalArea" title="http://fitlayout.github.io/ontology/segmentation.owl#LogicalArea">LogicalArea</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-LogicalAreaTree" title="http://fitlayout.github.io/ontology/segmentation.owl#LogicalAreaTree">LogicalAreaTree</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-Tag" title="http://fitlayout.github.io/ontology/segmentation.owl#Tag">Tag</a></li>
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-TextChunk" title="http://fitlayout.github.io/ontology/segmentation.owl#TextChunk">TextChunk</a></li>
+</ul>
+
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-Area">
+	<header>
+		<h3 class="res Class">Area</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#Area">segm:Area</code></p>
+	</header>
+	<p class="comment">A visual area within the page. The areas can be nested an together they form an AreaTree.</p>
+	<dl>
+		<dt>has super-classes</dt> 
+		<dd><ul class="rel super">
+	<li><a class="known res Class" href="render.html#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">box:RectArea</a></li>
+</ul>
+</dd>
+		<dt>is in domain of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-belongsTo" title="http://fitlayout.github.io/ontology/segmentation.owl#belongsTo">belongsTo</a></li>
+	<li><a class="res ObjectProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-containsBox" title="http://fitlayout.github.io/ontology/segmentation.owl#containsBox">containsBox</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-isChildOf" title="http://fitlayout.github.io/ontology/segmentation.owl#isChildOf">isChildOf</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-contentLength" title="http://fitlayout.github.io/ontology/segmentation.owl#contentLength">contentLength</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-tagSupport" title="http://fitlayout.github.io/ontology/segmentation.owl#tagSupport">tagSupport</a></li>
+</ul>
+</dd>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-containsArea" title="http://fitlayout.github.io/ontology/segmentation.owl#containsArea">containsArea</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-hasSourceArea" title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourceArea">hasSourceArea</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-isChildOf" title="http://fitlayout.github.io/ontology/segmentation.owl#isChildOf">isChildOf</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-AreaTree">
+	<header>
+		<h3 class="res Class">AreaTree</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#AreaTree">segm:AreaTree</code></p>
+	</header>
+	<p class="comment">A tree of visual areas created from a rendered page by page segmentation.</p>
+	<dl>
+		<dt>has super-classes</dt> 
+		<dd><ul class="rel super">
+	<li><a class="known res Class" href="fitlayout.html#r-http---fitlayout-github-io-ontology-fitlayout-owl-Artifact" title="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact">fl:Artifact</a></li>
+</ul>
+</dd>
+		<dt>is in domain of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-hasSourcePage" title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourcePage">hasSourcePage</a></li>
+</ul>
+</dd>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-belongsTo" title="http://fitlayout.github.io/ontology/segmentation.owl#belongsTo">belongsTo</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-hasAreaTree" title="http://fitlayout.github.io/ontology/segmentation.owl#hasAreaTree">hasAreaTree</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-ChunkSet">
+	<header>
+		<h3 class="res Class">ChunkSet</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#ChunkSet">segm:ChunkSet</code></p>
+	</header>
+	<p class="comment">A set of text chunks extreacted from a source page.</p>
+	<dl>
+		<dt>has super-classes</dt> 
+		<dd><ul class="rel super">
+	<li><a class="known res Class" href="fitlayout.html#r-http---fitlayout-github-io-ontology-fitlayout-owl-Artifact" title="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact">fl:Artifact</a></li>
+</ul>
+</dd>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-belongsToChunkSet" title="http://fitlayout.github.io/ontology/segmentation.owl#belongsToChunkSet">belongsToChunkSet</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-LogicalArea">
+	<header>
+		<h3 class="res Class">LogicalArea</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#LogicalArea">segm:LogicalArea</code></p>
+	</header>
+	<p class="comment">Logical area represents a set of areas that form a single semantic entity. Logical areas are organized in a tree where the parent-child relationships have some semantic meaning instead of representing the actual layout.</p>
+	<dl>
+		<dt>is in domain of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-containsArea" title="http://fitlayout.github.io/ontology/segmentation.owl#containsArea">containsArea</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-isSubordinateTo" title="http://fitlayout.github.io/ontology/segmentation.owl#isSubordinateTo">isSubordinateTo</a></li>
+</ul>
+</dd>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-isSubordinateTo" title="http://fitlayout.github.io/ontology/segmentation.owl#isSubordinateTo">isSubordinateTo</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-LogicalAreaTree">
+	<header>
+		<h3 class="res Class">LogicalAreaTree</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#LogicalAreaTree">segm:LogicalAreaTree</code></p>
+	</header>
+	<p class="comment">A tree of logical areas created from an area tree by some kind of logical structure analysis.</p>
+	<dl>
+		<dt>has super-classes</dt> 
+		<dd><ul class="rel super">
+	<li><a class="known res Class" href="fitlayout.html#r-http---fitlayout-github-io-ontology-fitlayout-owl-Artifact" title="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact">fl:Artifact</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-Tag">
+	<header>
+		<h3 class="res Class">Tag</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#Tag">segm:Tag</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>is in domain of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-name" title="http://fitlayout.github.io/ontology/segmentation.owl#name">name</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-type" title="http://fitlayout.github.io/ontology/segmentation.owl#type">type</a></li>
+</ul>
+</dd>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-hasTag" title="http://fitlayout.github.io/ontology/segmentation.owl#hasTag">hasTag</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-TextChunk">
+	<header>
+		<h3 class="res Class">TextChunk</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#TextChunk">segm:TextChunk</code></p>
+	</header>
+	<p class="comment">A connected piece of a document text that forms a rectangular area in the page.</p>
+	<dl>
+		<dt>has super-classes</dt> 
+		<dd><ul class="rel super">
+	<li><a class="known res Class" href="render.html#r-http---fitlayout-github-io-ontology-render-owl-RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">box:RectArea</a></li>
+</ul>
+</dd>
+		<dt>is in domain of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-belongsToChunkSet" title="http://fitlayout.github.io/ontology/segmentation.owl#belongsToChunkSet">belongsToChunkSet</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-hasSourceArea" title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourceArea">hasSourceArea</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-hasSourceBox" title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourceBox">hasSourceBox</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+
+</section>
+
+<section id="object-properties">
+	<h2>Object Properties</h2>
+	<ul class="subtoc">
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-belongsTo" title="http://fitlayout.github.io/ontology/segmentation.owl#belongsTo">belongsTo</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-belongsToChunkSet" title="http://fitlayout.github.io/ontology/segmentation.owl#belongsToChunkSet">belongsToChunkSet</a></li>
+	<li><a class="res ObjectProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-containsArea" title="http://fitlayout.github.io/ontology/segmentation.owl#containsArea">containsArea</a></li>
+	<li><a class="res ObjectProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-containsBox" title="http://fitlayout.github.io/ontology/segmentation.owl#containsBox">containsBox</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-hasAreaTree" title="http://fitlayout.github.io/ontology/segmentation.owl#hasAreaTree">hasAreaTree</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-hasSourceArea" title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourceArea">hasSourceArea</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-hasSourceBox" title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourceBox">hasSourceBox</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-hasSourcePage" title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourcePage">hasSourcePage</a></li>
+	<li><a class="res ObjectProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-hasTag" title="http://fitlayout.github.io/ontology/segmentation.owl#hasTag">hasTag</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-isChildOf" title="http://fitlayout.github.io/ontology/segmentation.owl#isChildOf">isChildOf</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-isSubordinateTo" title="http://fitlayout.github.io/ontology/segmentation.owl#isSubordinateTo">isSubordinateTo</a></li>
+</ul>
+
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-belongsTo">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty">belongsTo</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#belongsTo">segm:belongsTo</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">Area</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-AreaTree" title="http://fitlayout.github.io/ontology/segmentation.owl#AreaTree">AreaTree</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-belongsToChunkSet">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty">belongsToChunkSet</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#belongsToChunkSet">segm:belongsToChunkSet</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-TextChunk" title="http://fitlayout.github.io/ontology/segmentation.owl#TextChunk">TextChunk</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-ChunkSet" title="http://fitlayout.github.io/ontology/segmentation.owl#ChunkSet">ChunkSet</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-containsArea">
+	<header>
+		<h3 class="res ObjectProperty">containsArea</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#containsArea">segm:containsArea</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-LogicalArea" title="http://fitlayout.github.io/ontology/segmentation.owl#LogicalArea">LogicalArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">Area</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-containsBox">
+	<header>
+		<h3 class="res ObjectProperty">containsBox</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#containsBox">segm:containsBox</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">Area</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="known res Class" href="render.html#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">box:Box</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-hasAreaTree">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty">hasAreaTree</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#hasAreaTree">segm:hasAreaTree</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li>(<a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-ChunkSet" title="http://fitlayout.github.io/ontology/segmentation.owl#ChunkSet">ChunkSet</a> <span class="logic">or</span> <a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-LogicalAreaTree" title="http://fitlayout.github.io/ontology/segmentation.owl#LogicalAreaTree">LogicalAreaTree</a>)</li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-AreaTree" title="http://fitlayout.github.io/ontology/segmentation.owl#AreaTree">AreaTree</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-hasSourceArea">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty">hasSourceArea</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourceArea">segm:hasSourceArea</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-TextChunk" title="http://fitlayout.github.io/ontology/segmentation.owl#TextChunk">TextChunk</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">Area</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-hasSourceBox">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty">hasSourceBox</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourceBox">segm:hasSourceBox</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-TextChunk" title="http://fitlayout.github.io/ontology/segmentation.owl#TextChunk">TextChunk</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="known res Class" href="render.html#r-http---fitlayout-github-io-ontology-render-owl-Box" title="http://fitlayout.github.io/ontology/render.owl#Box">box:Box</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-hasSourcePage">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty">hasSourcePage</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourcePage">segm:hasSourcePage</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-AreaTree" title="http://fitlayout.github.io/ontology/segmentation.owl#AreaTree">AreaTree</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="known res Class" href="render.html#r-http---fitlayout-github-io-ontology-render-owl-Page" title="http://fitlayout.github.io/ontology/render.owl#Page">box:Page</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-hasTag">
+	<header>
+		<h3 class="res ObjectProperty">hasTag</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#hasTag">segm:hasTag</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li>(<a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">Area</a> <span class="logic">or</span> <a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-LogicalArea" title="http://fitlayout.github.io/ontology/segmentation.owl#LogicalArea">LogicalArea</a>)</li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-Tag" title="http://fitlayout.github.io/ontology/segmentation.owl#Tag">Tag</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-isChildOf">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty">isChildOf</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#isChildOf">segm:isChildOf</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">Area</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">Area</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-isSubordinateTo">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty">isSubordinateTo</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#isSubordinateTo">segm:isSubordinateTo</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-LogicalArea" title="http://fitlayout.github.io/ontology/segmentation.owl#LogicalArea">LogicalArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-LogicalArea" title="http://fitlayout.github.io/ontology/segmentation.owl#LogicalArea">LogicalArea</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+
+</section>
+
+<section id="datatype-properties">
+	<h2>Datatype Properties</h2>
+	<ul class="subtoc">
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-contentLength" title="http://fitlayout.github.io/ontology/segmentation.owl#contentLength">contentLength</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-name" title="http://fitlayout.github.io/ontology/segmentation.owl#name">name</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-support" title="http://fitlayout.github.io/ontology/segmentation.owl#support">support</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-tagSupport" title="http://fitlayout.github.io/ontology/segmentation.owl#tagSupport">tagSupport</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-text" title="http://fitlayout.github.io/ontology/segmentation.owl#text">text</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-type" title="http://fitlayout.github.io/ontology/segmentation.owl#type">type</a></li>
+</ul>
+
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-contentLength">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">contentLength</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#contentLength">segm:contentLength</code></p>
+	</header>
+	<p class="comment">The number of content elements used to compute the style statistics such as average font weight.</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">Area</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#int">xsd:int</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-name">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">name</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#name">segm:name</code></p>
+	</header>
+	<p class="comment">Assigned area name</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-Tag" title="http://fitlayout.github.io/ontology/segmentation.owl#Tag">Tag</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-support">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">support</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#support">segm:support</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#float">xsd:float</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-tagSupport">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">tagSupport</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#tagSupport">segm:tagSupport</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">Area</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-text">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">text</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#text">segm:text</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li>(<a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-LogicalArea" title="http://fitlayout.github.io/ontology/segmentation.owl#LogicalArea">LogicalArea</a> <span class="logic">or</span> <a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-TextChunk" title="http://fitlayout.github.io/ontology/segmentation.owl#TextChunk">TextChunk</a>)</li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="r-http---fitlayout-github-io-ontology-segmentation-owl-type">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">type</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#type">segm:type</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#r-http---fitlayout-github-io-ontology-segmentation-owl-Tag" title="http://fitlayout.github.io/ontology/segmentation.owl#Tag">Tag</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+
+</section>
+
+<footer>
+	<p>Generated by <a href="https://github.com/radkovo/OwlDocGen">OwlDocGen</a>.</p>
+</footer>
+
+</body>
+</html>
