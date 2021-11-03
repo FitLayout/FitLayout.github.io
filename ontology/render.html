@@ -148,126 +148,18 @@
 <section id="classes">
 	<h2>Classes</h2>
 	<ul class="subtoc">
-	<li><a class="res Class" href="#Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
-	<li><a class="res Class" href="#Page" title="http://fitlayout.github.io/ontology/render.owl#Page">Page</a></li>
-	<li><a class="res Class" href="#RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
 	<li><a class="res Class" href="#Attribute" title="http://fitlayout.github.io/ontology/render.owl#Attribute">Attribute</a></li>
 	<li><a class="res Class" href="#Border" title="http://fitlayout.github.io/ontology/render.owl#Border">Border</a></li>
 	<li><a class="res Class" href="#Bounds" title="http://fitlayout.github.io/ontology/render.owl#Bounds">Bounds</a></li>
+	<li><a class="res Class" href="#Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
 	<li><a class="res Class" href="#ContainerBox" title="http://fitlayout.github.io/ontology/render.owl#ContainerBox">ContainerBox</a></li>
 	<li><a class="res Class" href="#ContentBox" title="http://fitlayout.github.io/ontology/render.owl#ContentBox">ContentBox</a></li>
 	<li><a class="res Class" href="#ContentObject" title="http://fitlayout.github.io/ontology/render.owl#ContentObject">ContentObject</a></li>
 	<li><a class="res Class" href="#Image" title="http://fitlayout.github.io/ontology/render.owl#Image">Image</a></li>
-</ul>
-
-
-		<div class="entity" id="Box">
-	<header>
-		<h3 class="res Class">Box</h3>
-		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#Box">box:Box</code></p>
-	</header>
-	<p class="comment"></p>
-	<dl>
-		<dt>has super-classes</dt> 
-		<dd><ul class="rel super">
+	<li><a class="res Class" href="#Page" title="http://fitlayout.github.io/ontology/render.owl#Page">Page</a></li>
 	<li><a class="res Class" href="#RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
 </ul>
-</dd>
-		<dt>has subclasses</dt> 
-		<dd><ul class="rel sub">
-	<li><a class="res Class" href="#ContainerBox" title="http://fitlayout.github.io/ontology/render.owl#ContainerBox">ContainerBox</a></li>
-	<li><a class="res Class" href="#ContentBox" title="http://fitlayout.github.io/ontology/render.owl#ContentBox">ContentBox</a></li>
-</ul>
-</dd>
-		<dt>is in domain of</dt> 
-		<dd><ul class="rel domain">
-	<li><a class="res ObjectProperty InverseFunctionalProperty" href="#containsObject" title="http://fitlayout.github.io/ontology/render.owl#containsObject">containsObject</a></li>
-	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#contentBounds" title="http://fitlayout.github.io/ontology/render.owl#contentBounds">contentBounds</a></li>
-	<li><a class="res ObjectProperty InverseFunctionalProperty" href="#hasAttribute" title="http://fitlayout.github.io/ontology/render.owl#hasAttribute">hasAttribute</a></li>
-	<li><a class="res ObjectProperty FunctionalProperty" href="#isChildOf" title="http://fitlayout.github.io/ontology/render.owl#isChildOf">isChildOf</a></li>
-	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#visualBounds" title="http://fitlayout.github.io/ontology/render.owl#visualBounds">visualBounds</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#color" title="http://fitlayout.github.io/ontology/render.owl#color">color</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#displayType" title="http://fitlayout.github.io/ontology/render.owl#displayType">displayType</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#fontFamily" title="http://fitlayout.github.io/ontology/render.owl#fontFamily">fontFamily</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#htmlTagName" title="http://fitlayout.github.io/ontology/render.owl#htmlTagName">htmlTagName</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#sourceXPath" title="http://fitlayout.github.io/ontology/render.owl#sourceXPath">sourceXPath</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#text" title="http://fitlayout.github.io/ontology/render.owl#text">text</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#visible" title="http://fitlayout.github.io/ontology/render.owl#visible">visible</a></li>
-</ul>
-</dd>
-		<dt>is in range of</dt> 
-		<dd><ul class="rel domain">
-	<li><a class="known res ObjectProperty" href="segmentation.html#containsBox" title="http://fitlayout.github.io/ontology/segmentation.owl#containsBox">segm:containsBox</a></li>
-	<li><a class="known res ObjectProperty FunctionalProperty" href="segmentation.html#hasSourceBox" title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourceBox">segm:hasSourceBox</a></li>
-</ul>
-</dd>
-	</dl>
-</div>
 
-		<div class="entity" id="Page">
-	<header>
-		<h3 class="res Class">Page</h3>
-		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#Page">box:Page</code></p>
-	</header>
-	<p class="comment">A tree of boxes representing a rendered page.</p>
-	<dl>
-		<dt>has super-classes</dt> 
-		<dd><ul class="rel super">
-	<li><a class="known res Class" href="fitlayout.html#Artifact" title="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact">fl:Artifact</a></li>
-</ul>
-</dd>
-		<dt>is in domain of</dt> 
-		<dd><ul class="rel domain">
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#pngImage" title="http://fitlayout.github.io/ontology/render.owl#pngImage">pngImage</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#sourceUrl" title="http://fitlayout.github.io/ontology/render.owl#sourceUrl">sourceUrl</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#title" title="http://fitlayout.github.io/ontology/render.owl#title">title</a></li>
-</ul>
-</dd>
-		<dt>is in range of</dt> 
-		<dd><ul class="rel domain">
-	<li><a class="known res ObjectProperty FunctionalProperty" href="segmentation.html#hasSourcePage" title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourcePage">segm:hasSourcePage</a></li>
-	<li><a class="res ObjectProperty FunctionalProperty" href="#belongsTo" title="http://fitlayout.github.io/ontology/render.owl#belongsTo">belongsTo</a></li>
-</ul>
-</dd>
-	</dl>
-</div>
-
-		<div class="entity" id="RectArea">
-	<header>
-		<h3 class="res Class">RectArea</h3>
-		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#RectArea">box:RectArea</code></p>
-	</header>
-	<p class="comment">A rectangular area in the page with bounds assigned.</p>
-	<dl>
-		<dt>has subclasses</dt> 
-		<dd><ul class="rel sub">
-	<li><a class="known res Class" href="segmentation.html#Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">segm:Area</a></li>
-	<li><a class="known res Class" href="segmentation.html#TextChunk" title="http://fitlayout.github.io/ontology/segmentation.owl#TextChunk">segm:TextChunk</a></li>
-	<li><a class="res Class" href="#Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
-</ul>
-</dd>
-		<dt>is in domain of</dt> 
-		<dd><ul class="rel domain">
-	<li><a class="res ObjectProperty FunctionalProperty" href="#belongsTo" title="http://fitlayout.github.io/ontology/render.owl#belongsTo">belongsTo</a></li>
-	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#bounds" title="http://fitlayout.github.io/ontology/render.owl#bounds">bounds</a></li>
-	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasBackgroundImage" title="http://fitlayout.github.io/ontology/render.owl#hasBackgroundImage">hasBackgroundImage</a></li>
-	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasBottomBorder" title="http://fitlayout.github.io/ontology/render.owl#hasBottomBorder">hasBottomBorder</a></li>
-	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasLeftBorder" title="http://fitlayout.github.io/ontology/render.owl#hasLeftBorder">hasLeftBorder</a></li>
-	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasRightBorder" title="http://fitlayout.github.io/ontology/render.owl#hasRightBorder">hasRightBorder</a></li>
-	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasTopBorder" title="http://fitlayout.github.io/ontology/render.owl#hasTopBorder">hasTopBorder</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#backgroundColor" title="http://fitlayout.github.io/ontology/render.owl#backgroundColor">backgroundColor</a></li>
-	<li><a class="res DatatypeProperty" href="#backgroundSeparated" title="http://fitlayout.github.io/ontology/render.owl#backgroundSeparated">backgroundSeparated</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#documentOrder" title="http://fitlayout.github.io/ontology/render.owl#documentOrder">documentOrder</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#fontSize" title="http://fitlayout.github.io/ontology/render.owl#fontSize">fontSize</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#fontStyle" title="http://fitlayout.github.io/ontology/render.owl#fontStyle">fontStyle</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#fontVariant" title="http://fitlayout.github.io/ontology/render.owl#fontVariant">fontVariant</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#fontWeight" title="http://fitlayout.github.io/ontology/render.owl#fontWeight">fontWeight</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#lineThrough" title="http://fitlayout.github.io/ontology/render.owl#lineThrough">lineThrough</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#underline" title="http://fitlayout.github.io/ontology/render.owl#underline">underline</a></li>
-</ul>
-</dd>
-	</dl>
-</div>
 
 		<div class="entity" id="Attribute">
 	<header>
@@ -332,6 +224,49 @@
 	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#bounds" title="http://fitlayout.github.io/ontology/render.owl#bounds">bounds</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#contentBounds" title="http://fitlayout.github.io/ontology/render.owl#contentBounds">contentBounds</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#visualBounds" title="http://fitlayout.github.io/ontology/render.owl#visualBounds">visualBounds</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="Box">
+	<header>
+		<h3 class="res Class">Box</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#Box">box:Box</code></p>
+	</header>
+	<p class="comment"></p>
+	<dl>
+		<dt>has super-classes</dt> 
+		<dd><ul class="rel super">
+	<li><a class="res Class" href="#RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has subclasses</dt> 
+		<dd><ul class="rel sub">
+	<li><a class="res Class" href="#ContainerBox" title="http://fitlayout.github.io/ontology/render.owl#ContainerBox">ContainerBox</a></li>
+	<li><a class="res Class" href="#ContentBox" title="http://fitlayout.github.io/ontology/render.owl#ContentBox">ContentBox</a></li>
+</ul>
+</dd>
+		<dt>is in domain of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty InverseFunctionalProperty" href="#containsObject" title="http://fitlayout.github.io/ontology/render.owl#containsObject">containsObject</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#contentBounds" title="http://fitlayout.github.io/ontology/render.owl#contentBounds">contentBounds</a></li>
+	<li><a class="res ObjectProperty InverseFunctionalProperty" href="#hasAttribute" title="http://fitlayout.github.io/ontology/render.owl#hasAttribute">hasAttribute</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#isChildOf" title="http://fitlayout.github.io/ontology/render.owl#isChildOf">isChildOf</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#visualBounds" title="http://fitlayout.github.io/ontology/render.owl#visualBounds">visualBounds</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#color" title="http://fitlayout.github.io/ontology/render.owl#color">color</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#displayType" title="http://fitlayout.github.io/ontology/render.owl#displayType">displayType</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#fontFamily" title="http://fitlayout.github.io/ontology/render.owl#fontFamily">fontFamily</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#htmlTagName" title="http://fitlayout.github.io/ontology/render.owl#htmlTagName">htmlTagName</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#sourceXPath" title="http://fitlayout.github.io/ontology/render.owl#sourceXPath">sourceXPath</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#text" title="http://fitlayout.github.io/ontology/render.owl#text">text</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#visible" title="http://fitlayout.github.io/ontology/render.owl#visible">visible</a></li>
+</ul>
+</dd>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="known res ObjectProperty" href="segmentation.html#containsBox" title="http://fitlayout.github.io/ontology/segmentation.owl#containsBox">segm:containsBox</a></li>
+	<li><a class="known res ObjectProperty FunctionalProperty" href="segmentation.html#hasSourceBox" title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourceBox">segm:hasSourceBox</a></li>
 </ul>
 </dd>
 	</dl>
@@ -423,6 +358,71 @@
 		<dt>is in range of</dt> 
 		<dd><ul class="rel domain">
 	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasBackgroundImage" title="http://fitlayout.github.io/ontology/render.owl#hasBackgroundImage">hasBackgroundImage</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="Page">
+	<header>
+		<h3 class="res Class">Page</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#Page">box:Page</code></p>
+	</header>
+	<p class="comment">A tree of boxes representing a rendered page.</p>
+	<dl>
+		<dt>has super-classes</dt> 
+		<dd><ul class="rel super">
+	<li><a class="known res Class" href="fitlayout.html#Artifact" title="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact">fl:Artifact</a></li>
+</ul>
+</dd>
+		<dt>is in domain of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#pngImage" title="http://fitlayout.github.io/ontology/render.owl#pngImage">pngImage</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#sourceUrl" title="http://fitlayout.github.io/ontology/render.owl#sourceUrl">sourceUrl</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#title" title="http://fitlayout.github.io/ontology/render.owl#title">title</a></li>
+</ul>
+</dd>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty FunctionalProperty" href="#belongsTo" title="http://fitlayout.github.io/ontology/render.owl#belongsTo">belongsTo</a></li>
+	<li><a class="known res ObjectProperty FunctionalProperty" href="segmentation.html#hasSourcePage" title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourcePage">segm:hasSourcePage</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="RectArea">
+	<header>
+		<h3 class="res Class">RectArea</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#RectArea">box:RectArea</code></p>
+	</header>
+	<p class="comment">A rectangular area in the page with bounds assigned.</p>
+	<dl>
+		<dt>has subclasses</dt> 
+		<dd><ul class="rel sub">
+	<li><a class="res Class" href="#Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+	<li><a class="known res Class" href="segmentation.html#Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">segm:Area</a></li>
+	<li><a class="known res Class" href="segmentation.html#TextChunk" title="http://fitlayout.github.io/ontology/segmentation.owl#TextChunk">segm:TextChunk</a></li>
+</ul>
+</dd>
+		<dt>is in domain of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty FunctionalProperty" href="#belongsTo" title="http://fitlayout.github.io/ontology/render.owl#belongsTo">belongsTo</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#bounds" title="http://fitlayout.github.io/ontology/render.owl#bounds">bounds</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasBackgroundImage" title="http://fitlayout.github.io/ontology/render.owl#hasBackgroundImage">hasBackgroundImage</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasBottomBorder" title="http://fitlayout.github.io/ontology/render.owl#hasBottomBorder">hasBottomBorder</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasLeftBorder" title="http://fitlayout.github.io/ontology/render.owl#hasLeftBorder">hasLeftBorder</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasRightBorder" title="http://fitlayout.github.io/ontology/render.owl#hasRightBorder">hasRightBorder</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasTopBorder" title="http://fitlayout.github.io/ontology/render.owl#hasTopBorder">hasTopBorder</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#backgroundColor" title="http://fitlayout.github.io/ontology/render.owl#backgroundColor">backgroundColor</a></li>
+	<li><a class="res DatatypeProperty" href="#backgroundSeparated" title="http://fitlayout.github.io/ontology/render.owl#backgroundSeparated">backgroundSeparated</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#documentOrder" title="http://fitlayout.github.io/ontology/render.owl#documentOrder">documentOrder</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#fontSize" title="http://fitlayout.github.io/ontology/render.owl#fontSize">fontSize</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#fontStyle" title="http://fitlayout.github.io/ontology/render.owl#fontStyle">fontStyle</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#fontVariant" title="http://fitlayout.github.io/ontology/render.owl#fontVariant">fontVariant</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#fontWeight" title="http://fitlayout.github.io/ontology/render.owl#fontWeight">fontWeight</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#lineThrough" title="http://fitlayout.github.io/ontology/render.owl#lineThrough">lineThrough</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#underline" title="http://fitlayout.github.io/ontology/render.owl#underline">underline</a></li>
 </ul>
 </dd>
 	</dl>
