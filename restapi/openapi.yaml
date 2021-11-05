@@ -9,7 +9,6 @@ info:
   version: 1.0.0
 servers:
 - url: http://localhost:9080/fitlayout-web
-- url: https://localhost:9443/fitlayout-web
 security:
 - jwt: []
 tags:
@@ -420,6 +419,134 @@ paths:
                 $ref: '#/components/schemas/ResultValue'
         "404":
           description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/namespaces:
+    get:
+      tags:
+      - repository
+      summary: Gets a list of namespace declarations that have been defined for the
+        repository
+      operationId: getNamespaces
+      responses:
+        "200":
+          description: Namespace query result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SelectQueryResult'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    delete:
+      tags:
+      - repository
+      summary: Removes all namespace declarations from the repository
+      operationId: clearNamespaces
+      responses:
+        "200":
+          description: Namespaces removed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/namespaces/{prefix}:
+    get:
+      tags:
+      - repository
+      summary: Gets a namespace URI for the given prefix
+      operationId: getNamespace
+      parameters:
+      - name: prefix
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Namespace URI
+          content:
+            text/plain: {}
+        "404":
+          description: Repository or namespace with the given ID not found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    put:
+      tags:
+      - repository
+      summary: Adds a namespace definition for the given prefix
+      operationId: addNamespace
+      parameters:
+      - name: prefix
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        "200":
+          description: Namespace added
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    delete:
+      tags:
+      - repository
+      summary: Removes a namespace definition for the given prefix
+      operationId: deleteNamespace
+      parameters:
+      - name: prefix
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Namespace deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "404":
+          description: Repository or namespace with the given ID not found
           content:
             application/json:
               schema:

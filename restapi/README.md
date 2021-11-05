@@ -22,9 +22,14 @@ Class | Method | HTTP request | Description
 *ArtifactApi* | [**getArtifactsInfo**](Apis/ArtifactApi.md#getartifactsinfo) | **GET** /api/r/{repoId}/artifact | Retrieves information about all artifacts in the repository (artifact contents not included).
 *ArtifactApi* | [**listArtifacts**](Apis/ArtifactApi.md#listartifacts) | **GET** /api/r/{repoId}/artifact/list | Gets a list of artifact IRIs.
 *AuthApi* | [**getUserInfo**](Apis/AuthApi.md#getuserinfo) | **GET** /api/auth/userInfo | Get current user information based on the credentials (Bearer JWT token) obtained
+*RepositoryApi* | [**addNamespace**](Apis/RepositoryApi.md#addnamespace) | **PUT** /api/r/{repoId}/repository/namespaces/{prefix} | Adds a namespace definition for the given prefix
 *RepositoryApi* | [**addQuadruple**](Apis/RepositoryApi.md#addquadruple) | **POST** /api/r/{repoId}/repository/add | Adds a new quadruple to the repository
 *RepositoryApi* | [**checkRepo**](Apis/RepositoryApi.md#checkrepo) | **GET** /api/r/{repoId}/repository/checkRepo | Checks the repository whether it exists and is properly initialized
+*RepositoryApi* | [**clearNamespaces**](Apis/RepositoryApi.md#clearnamespaces) | **DELETE** /api/r/{repoId}/repository/namespaces | Removes all namespace declarations from the repository
+*RepositoryApi* | [**deleteNamespace**](Apis/RepositoryApi.md#deletenamespace) | **DELETE** /api/r/{repoId}/repository/namespaces/{prefix} | Removes a namespace definition for the given prefix
 *RepositoryApi* | [**describeSubject**](Apis/RepositoryApi.md#describesubject) | **GET** /api/r/{repoId}/repository/describe/{iri} | Gets the RDF description for the given subject IRI
+*RepositoryApi* | [**getNamespace**](Apis/RepositoryApi.md#getnamespace) | **GET** /api/r/{repoId}/repository/namespaces/{prefix} | Gets a namespace URI for the given prefix
+*RepositoryApi* | [**getNamespaces**](Apis/RepositoryApi.md#getnamespaces) | **GET** /api/r/{repoId}/repository/namespaces | Gets a list of namespace declarations that have been defined for the repository
 *RepositoryApi* | [**getSubjectType**](Apis/RepositoryApi.md#getsubjecttype) | **GET** /api/r/{repoId}/repository/type/{iri} | Gets the assigned rdf:type IRI for the given subject IRI
 *RepositoryApi* | [**getSubjectValue**](Apis/RepositoryApi.md#getsubjectvalue) | **GET** /api/r/{repoId}/repository/subject/{subjIri}/{propertyIri} | Gets the property value for the given subject and property IRIs
 *RepositoryApi* | [**initRepo**](Apis/RepositoryApi.md#initrepo) | **GET** /api/r/{repoId}/repository/initRepo | Initializes an empty repository with the necessary RDF metadata (schemas)
