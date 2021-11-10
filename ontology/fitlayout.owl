@@ -9,7 +9,7 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:segm="http://fitlayout.github.io/ontology/segmentation.owl#"
-     xmlns:layout="http://fitlayout.github.io/ontology/fitlayout.owl#">
+     xmlns:fl="http://fitlayout.github.io/ontology/fitlayout.owl#">
     <owl:Ontology rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#">
         <owl:imports rdf:resource="http://fitlayout.github.io/ontology/render.owl#"/>
         <dc:creator>Radek Burget</dc:creator>
