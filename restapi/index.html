@@ -223,18 +223,22 @@ font-style: italic;
   <ul>
   <li><a href="#addNamespace"><code><span class="http-method">put</span> /api/r/{repoId}/repository/namespaces/{prefix}</code></a></li>
   <li><a href="#addQuadruple"><code><span class="http-method">post</span> /api/r/{repoId}/repository/add</code></a></li>
+  <li><a href="#addStatements"><code><span class="http-method">post</span> /api/r/{repoId}/repository/statements</code></a></li>
   <li><a href="#checkRepo"><code><span class="http-method">get</span> /api/r/{repoId}/repository/checkRepo</code></a></li>
   <li><a href="#clearNamespaces"><code><span class="http-method">delete</span> /api/r/{repoId}/repository/namespaces</code></a></li>
   <li><a href="#deleteNamespace"><code><span class="http-method">delete</span> /api/r/{repoId}/repository/namespaces/{prefix}</code></a></li>
   <li><a href="#describeSubject"><code><span class="http-method">get</span> /api/r/{repoId}/repository/describe/{iri}</code></a></li>
+  <li><a href="#getContexts"><code><span class="http-method">get</span> /api/r/{repoId}/repository/contexts</code></a></li>
   <li><a href="#getNamespace"><code><span class="http-method">get</span> /api/r/{repoId}/repository/namespaces/{prefix}</code></a></li>
   <li><a href="#getNamespaces"><code><span class="http-method">get</span> /api/r/{repoId}/repository/namespaces</code></a></li>
+  <li><a href="#getStatements"><code><span class="http-method">get</span> /api/r/{repoId}/repository/statements</code></a></li>
   <li><a href="#getSubjectType"><code><span class="http-method">get</span> /api/r/{repoId}/repository/type/{iri}</code></a></li>
   <li><a href="#getSubjectValue"><code><span class="http-method">get</span> /api/r/{repoId}/repository/subject/{subjIri}/{propertyIri}</code></a></li>
   <li><a href="#initRepo"><code><span class="http-method">get</span> /api/r/{repoId}/repository/initRepo</code></a></li>
+  <li><a href="#query"><code><span class="http-method">post</span> /api/r/{repoId}/repository/query</code></a></li>
   <li><a href="#queryObject"><code><span class="http-method">get</span> /api/r/{repoId}/repository/object/{iri}</code></a></li>
   <li><a href="#querySubject"><code><span class="http-method">get</span> /api/r/{repoId}/repository/subject/{iri}</code></a></li>
-  <li><a href="#repositoryQuery"><code><span class="http-method">post</span> /api/r/{repoId}/repository/query</code></a></li>
+  <li><a href="#selectQuery"><code><span class="http-method">post</span> /api/r/{repoId}/repository/selectQuery</code></a></li>
   <li><a href="#touch"><code><span class="http-method">get</span> /api/r/{repoId}/repository/touch</code></a></li>
   </ul>
   <h4><a href="#Service">Service</a></h4>
@@ -1233,6 +1237,80 @@ font-style: italic;
         <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
+  <div class="method"><a name="addStatements"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/r/{repoId}/repository/statements</code></pre></div>
+    <div class="method-summary">Imports statements to the repository (<span class="nickname">addStatements</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/ld+json</code></li>
+      <li><code>text/turtle</code></li>
+      <li><code>application/rdf+xml</code></li>
+      <li><code>application/n-quads</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#object">object</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">context (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ResultValue">ResultValue</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "result" : "{}",
+  "status" : "status"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Statements added
+        <a href="#ResultValue">ResultValue</a>
+    <h4 class="field-label">400</h4>
+    Invalid service parametres
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="checkRepo"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -1444,6 +1522,70 @@ font-style: italic;
         <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
+  <div class="method"><a name="getContexts"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/r/{repoId}/repository/contexts</code></pre></div>
+    <div class="method-summary">Gets a list of contexts that have been defined for the repository (<span class="nickname">getContexts</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SelectQueryResult">SelectQueryResult</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "head" : {
+    "vars" : [ "vars", "vars" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "key" : {
+        "type" : "type",
+        "value" : "value"
+      }
+    }, {
+      "key" : {
+        "type" : "type",
+        "value" : "value"
+      }
+    } ]
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Context query result
+        <a href="#SelectQueryResult">SelectQueryResult</a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="getNamespace"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -1544,6 +1686,64 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     Namespace query result
         <a href="#SelectQueryResult">SelectQueryResult</a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getStatements"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/r/{repoId}/repository/statements</code></pre></div>
+    <div class="method-summary">Gets all RDF statements from the repository (<span class="nickname">getStatements</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">context (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/ld+json</code></li>
+      <li><code>text/turtle</code></li>
+      <li><code>application/rdf+xml</code></li>
+      <li><code>application/n-quads</code></li>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200-JSONLD</h4>
+    RDF statements serialized in JSON-LD
+        <a href="#"></a>
+    <h4 class="field-label">200-TURTLE</h4>
+    RDF statements serialized in TURTLE
+        <a href="#"></a>
+    <h4 class="field-label">200-RDFXML</h4>
+    RDF statements serialized in RDF/XML
+        <a href="#"></a>
+    <h4 class="field-label">200-NQUADS</h4>
+    RDF statements serialized in N-Quads
+        <a href="#"></a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found
         <a href="#ResultErrorMessage">ResultErrorMessage</a>
@@ -1705,6 +1905,98 @@ font-style: italic;
         <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
+  <div class="method"><a name="query"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/r/{repoId}/repository/query</code></pre></div>
+    <div class="method-summary">Executes any SPARQL query on the underlying RDF repository (<span class="nickname">query</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">repoId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the artifact repository to use default: null </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/sparql-query</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#string">string</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  default: 100 format: int64</div><div class="param">offset (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  default: 0 format: int64</div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SelectQueryResult">SelectQueryResult</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "head" : {
+    "vars" : [ "vars", "vars" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "key" : {
+        "type" : "type",
+        "value" : "value"
+      }
+    }, {
+      "key" : {
+        "type" : "type",
+        "value" : "value"
+      }
+    } ]
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+      <li><code>application/ld+json</code></li>
+      <li><code>text/turtle</code></li>
+      <li><code>application/rdf+xml</code></li>
+      <li><code>text/xml</code></li>
+      <li><code>text/plain</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    SELECT query result (tuple query)
+        <a href="#SelectQueryResult">SelectQueryResult</a>
+    <h4 class="field-label">404</h4>
+    Repository with the given ID not found
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
+    <h4 class="field-label">500</h4>
+    Query evaluation error
+        <a href="#ResultErrorMessage">ResultErrorMessage</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="queryObject"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -1849,11 +2141,11 @@ font-style: italic;
         <a href="#ResultErrorMessage">ResultErrorMessage</a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="repositoryQuery"/>
+  <div class="method"><a name="selectQuery"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/r/{repoId}/repository/query</code></pre></div>
-    <div class="method-summary">Executes a SPARQL SELECT query on the underlying RDF repository (<span class="nickname">repositoryQuery</span>)</div>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/r/{repoId}/repository/selectQuery</code></pre></div>
+    <div class="method-summary">Executes a SPARQL SELECT query on the underlying RDF repository (<span class="nickname">selectQuery</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
@@ -1878,6 +2170,14 @@ font-style: italic;
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  default: 100 format: int64</div><div class="param">offset (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash;  default: 0 format: int64</div>
+    </div>  <!-- field-items -->
 
 
     <h3 class="field-label">Return type</h3>
@@ -1918,7 +2218,7 @@ font-style: italic;
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
-    SPARQL query result
+    SPARQL select query result (bindings)
         <a href="#SelectQueryResult">SelectQueryResult</a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found

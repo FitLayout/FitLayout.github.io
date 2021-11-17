@@ -6,18 +6,22 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addNamespace**](RepositoryApi.md#addNamespace) | **PUT** /api/r/{repoId}/repository/namespaces/{prefix} | Adds a namespace definition for the given prefix
 [**addQuadruple**](RepositoryApi.md#addQuadruple) | **POST** /api/r/{repoId}/repository/add | Adds a new quadruple to the repository
+[**addStatements**](RepositoryApi.md#addStatements) | **POST** /api/r/{repoId}/repository/statements | Imports statements to the repository
 [**checkRepo**](RepositoryApi.md#checkRepo) | **GET** /api/r/{repoId}/repository/checkRepo | Checks the repository whether it exists and is properly initialized
 [**clearNamespaces**](RepositoryApi.md#clearNamespaces) | **DELETE** /api/r/{repoId}/repository/namespaces | Removes all namespace declarations from the repository
 [**deleteNamespace**](RepositoryApi.md#deleteNamespace) | **DELETE** /api/r/{repoId}/repository/namespaces/{prefix} | Removes a namespace definition for the given prefix
 [**describeSubject**](RepositoryApi.md#describeSubject) | **GET** /api/r/{repoId}/repository/describe/{iri} | Gets the RDF description for the given subject IRI
+[**getContexts**](RepositoryApi.md#getContexts) | **GET** /api/r/{repoId}/repository/contexts | Gets a list of contexts that have been defined for the repository
 [**getNamespace**](RepositoryApi.md#getNamespace) | **GET** /api/r/{repoId}/repository/namespaces/{prefix} | Gets a namespace URI for the given prefix
 [**getNamespaces**](RepositoryApi.md#getNamespaces) | **GET** /api/r/{repoId}/repository/namespaces | Gets a list of namespace declarations that have been defined for the repository
+[**getStatements**](RepositoryApi.md#getStatements) | **GET** /api/r/{repoId}/repository/statements | Gets all RDF statements from the repository
 [**getSubjectType**](RepositoryApi.md#getSubjectType) | **GET** /api/r/{repoId}/repository/type/{iri} | Gets the assigned rdf:type IRI for the given subject IRI
 [**getSubjectValue**](RepositoryApi.md#getSubjectValue) | **GET** /api/r/{repoId}/repository/subject/{subjIri}/{propertyIri} | Gets the property value for the given subject and property IRIs
 [**initRepo**](RepositoryApi.md#initRepo) | **GET** /api/r/{repoId}/repository/initRepo | Initializes an empty repository with the necessary RDF metadata (schemas)
+[**query**](RepositoryApi.md#query) | **POST** /api/r/{repoId}/repository/query | Executes any SPARQL query on the underlying RDF repository
 [**queryObject**](RepositoryApi.md#queryObject) | **GET** /api/r/{repoId}/repository/object/{iri} | Gets all triples for the given object IRI
 [**querySubject**](RepositoryApi.md#querySubject) | **GET** /api/r/{repoId}/repository/subject/{iri} | Gets all triples for the given subject IRI
-[**repositoryQuery**](RepositoryApi.md#repositoryQuery) | **POST** /api/r/{repoId}/repository/query | Executes a SPARQL SELECT query on the underlying RDF repository
+[**selectQuery**](RepositoryApi.md#selectQuery) | **POST** /api/r/{repoId}/repository/selectQuery | Executes a SPARQL SELECT query on the underlying RDF repository
 [**touch**](RepositoryApi.md#touch) | **GET** /api/r/{repoId}/repository/touch | Updates the last access time of the given repository to current time
 
 
@@ -72,6 +76,33 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+<a name="addStatements"></a>
+# **addStatements**
+> ResultValue addStatements(repoId, context, body)
+
+Imports statements to the repository
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **repoId** | **String**| The ID of the artifact repository to use | [default to null]
+ **context** | **String**|  | [optional] [default to null]
+ **body** | **Object**|  | [optional]
+
+### Return type
+
+[**ResultValue**](../Models/ResultValue.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+- **Content-Type**: application/ld+json, text/turtle, application/rdf+xml, application/n-quads
 - **Accept**: application/json
 
 <a name="checkRepo"></a>
@@ -176,6 +207,31 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+<a name="getContexts"></a>
+# **getContexts**
+> SelectQueryResult getContexts(repoId)
+
+Gets a list of contexts that have been defined for the repository
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **repoId** | **String**| The ID of the artifact repository to use | [default to null]
+
+### Return type
+
+[**SelectQueryResult**](../Models/SelectQueryResult.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 <a name="getNamespace"></a>
 # **getNamespace**
 > getNamespace(repoId, prefix)
@@ -226,6 +282,32 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+<a name="getStatements"></a>
+# **getStatements**
+> getStatements(repoId, context)
+
+Gets all RDF statements from the repository
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **repoId** | **String**| The ID of the artifact repository to use | [default to null]
+ **context** | **String**|  | [optional] [default to null]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/ld+json, text/turtle, application/rdf+xml, application/n-quads, application/json
 
 <a name="getSubjectType"></a>
 # **getSubjectType**
@@ -305,6 +387,34 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+<a name="query"></a>
+# **query**
+> SelectQueryResult query(repoId, limit, offset, body)
+
+Executes any SPARQL query on the underlying RDF repository
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **repoId** | **String**| The ID of the artifact repository to use | [default to null]
+ **limit** | **Long**|  | [optional] [default to 100]
+ **offset** | **Long**|  | [optional] [default to 0]
+ **body** | **String**|  | [optional]
+
+### Return type
+
+[**SelectQueryResult**](../Models/SelectQueryResult.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+- **Content-Type**: application/sparql-query
+- **Accept**: application/json, application/ld+json, text/turtle, application/rdf+xml, text/xml, text/plain
+
 <a name="queryObject"></a>
 # **queryObject**
 > SelectQueryResult queryObject(repoId, iri, limit)
@@ -359,9 +469,9 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
-<a name="repositoryQuery"></a>
-# **repositoryQuery**
-> SelectQueryResult repositoryQuery(repoId, body)
+<a name="selectQuery"></a>
+# **selectQuery**
+> SelectQueryResult selectQuery(repoId, limit, offset, body)
 
 Executes a SPARQL SELECT query on the underlying RDF repository
 
@@ -370,6 +480,8 @@ Executes a SPARQL SELECT query on the underlying RDF repository
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **repoId** | **String**| The ID of the artifact repository to use | [default to null]
+ **limit** | **Long**|  | [optional] [default to 100]
+ **offset** | **Long**|  | [optional] [default to 0]
  **body** | **String**|  | [optional]
 
 ### Return type

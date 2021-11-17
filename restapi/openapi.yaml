@@ -9,6 +9,7 @@ info:
   version: 1.0.0
 servers:
 - url: http://localhost:9080/fitlayout-web
+- url: https://localhost:9443/fitlayout-web
 security:
 - jwt: []
 tags:
@@ -372,6 +373,32 @@ paths:
       required: true
       schema:
         type: string
+  /api/r/{repoId}/repository/contexts:
+    get:
+      tags:
+      - repository
+      summary: Gets a list of contexts that have been defined for the repository
+      operationId: getContexts
+      responses:
+        "200":
+          description: Context query result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SelectQueryResult'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
   /api/r/{repoId}/repository/describe/{iri}:
     get:
       tags:
@@ -600,8 +627,21 @@ paths:
     post:
       tags:
       - repository
-      summary: Executes a SPARQL SELECT query on the underlying RDF repository
-      operationId: repositoryQuery
+      summary: Executes any SPARQL query on the underlying RDF repository
+      operationId: query
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          format: int64
+          default: 100
+          type: integer
+      - name: offset
+        in: query
+        schema:
+          format: int64
+          default: 0
+          type: integer
       requestBody:
         content:
           application/sparql-query:
@@ -609,7 +649,87 @@ paths:
               type: string
       responses:
         "200":
-          description: SPARQL query result
+          description: SELECT query result (tuple query)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SelectQueryResult'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+            text/turtle:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+            application/rdf+xml:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+        "500":
+          description: Query evaluation error
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+            text/turtle:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+            application/rdf+xml:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/selectQuery:
+    post:
+      tags:
+      - repository
+      summary: Executes a SPARQL SELECT query on the underlying RDF repository
+      operationId: selectQuery
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          format: int64
+          default: 100
+          type: integer
+      - name: offset
+        in: query
+        schema:
+          format: int64
+          default: 0
+          type: integer
+      requestBody:
+        content:
+          application/sparql-query:
+            schema:
+              type: string
+      responses:
+        "200":
+          description: SPARQL select query result (bindings)
           content:
             application/json:
               schema:
@@ -622,6 +742,90 @@ paths:
                 $ref: '#/components/schemas/ResultErrorMessage'
         "500":
           description: Query evaluation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/statements:
+    get:
+      tags:
+      - repository
+      summary: Gets all RDF statements from the repository
+      operationId: getStatements
+      parameters:
+      - name: context
+        in: query
+        schema:
+          type: string
+      responses:
+        "200-JSONLD":
+          description: RDF statements serialized in JSON-LD
+          content:
+            application/ld+json: {}
+        "200-TURTLE":
+          description: RDF statements serialized in TURTLE
+          content:
+            text/turtle: {}
+        "200-RDFXML":
+          description: RDF statements serialized in RDF/XML
+          content:
+            application/rdf+xml: {}
+        "200-NQUADS":
+          description: RDF statements serialized in N-Quads
+          content:
+            application/n-quads: {}
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    post:
+      tags:
+      - repository
+      summary: Imports statements to the repository
+      operationId: addStatements
+      parameters:
+      - name: context
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              type: object
+          text/turtle:
+            schema:
+              type: object
+          application/rdf+xml:
+            schema:
+              type: object
+          application/n-quads:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Statements added
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "400":
+          description: Invalid service parametres
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+        "404":
+          description: Repository with the given ID not found
           content:
             application/json:
               schema:

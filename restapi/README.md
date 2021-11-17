@@ -24,18 +24,22 @@ Class | Method | HTTP request | Description
 *AuthApi* | [**getUserInfo**](Apis/AuthApi.md#getuserinfo) | **GET** /api/auth/userInfo | Get current user information based on the credentials (Bearer JWT token) obtained
 *RepositoryApi* | [**addNamespace**](Apis/RepositoryApi.md#addnamespace) | **PUT** /api/r/{repoId}/repository/namespaces/{prefix} | Adds a namespace definition for the given prefix
 *RepositoryApi* | [**addQuadruple**](Apis/RepositoryApi.md#addquadruple) | **POST** /api/r/{repoId}/repository/add | Adds a new quadruple to the repository
+*RepositoryApi* | [**addStatements**](Apis/RepositoryApi.md#addstatements) | **POST** /api/r/{repoId}/repository/statements | Imports statements to the repository
 *RepositoryApi* | [**checkRepo**](Apis/RepositoryApi.md#checkrepo) | **GET** /api/r/{repoId}/repository/checkRepo | Checks the repository whether it exists and is properly initialized
 *RepositoryApi* | [**clearNamespaces**](Apis/RepositoryApi.md#clearnamespaces) | **DELETE** /api/r/{repoId}/repository/namespaces | Removes all namespace declarations from the repository
 *RepositoryApi* | [**deleteNamespace**](Apis/RepositoryApi.md#deletenamespace) | **DELETE** /api/r/{repoId}/repository/namespaces/{prefix} | Removes a namespace definition for the given prefix
 *RepositoryApi* | [**describeSubject**](Apis/RepositoryApi.md#describesubject) | **GET** /api/r/{repoId}/repository/describe/{iri} | Gets the RDF description for the given subject IRI
+*RepositoryApi* | [**getContexts**](Apis/RepositoryApi.md#getcontexts) | **GET** /api/r/{repoId}/repository/contexts | Gets a list of contexts that have been defined for the repository
 *RepositoryApi* | [**getNamespace**](Apis/RepositoryApi.md#getnamespace) | **GET** /api/r/{repoId}/repository/namespaces/{prefix} | Gets a namespace URI for the given prefix
 *RepositoryApi* | [**getNamespaces**](Apis/RepositoryApi.md#getnamespaces) | **GET** /api/r/{repoId}/repository/namespaces | Gets a list of namespace declarations that have been defined for the repository
+*RepositoryApi* | [**getStatements**](Apis/RepositoryApi.md#getstatements) | **GET** /api/r/{repoId}/repository/statements | Gets all RDF statements from the repository
 *RepositoryApi* | [**getSubjectType**](Apis/RepositoryApi.md#getsubjecttype) | **GET** /api/r/{repoId}/repository/type/{iri} | Gets the assigned rdf:type IRI for the given subject IRI
 *RepositoryApi* | [**getSubjectValue**](Apis/RepositoryApi.md#getsubjectvalue) | **GET** /api/r/{repoId}/repository/subject/{subjIri}/{propertyIri} | Gets the property value for the given subject and property IRIs
 *RepositoryApi* | [**initRepo**](Apis/RepositoryApi.md#initrepo) | **GET** /api/r/{repoId}/repository/initRepo | Initializes an empty repository with the necessary RDF metadata (schemas)
+*RepositoryApi* | [**query**](Apis/RepositoryApi.md#query) | **POST** /api/r/{repoId}/repository/query | Executes any SPARQL query on the underlying RDF repository
 *RepositoryApi* | [**queryObject**](Apis/RepositoryApi.md#queryobject) | **GET** /api/r/{repoId}/repository/object/{iri} | Gets all triples for the given object IRI
 *RepositoryApi* | [**querySubject**](Apis/RepositoryApi.md#querysubject) | **GET** /api/r/{repoId}/repository/subject/{iri} | Gets all triples for the given subject IRI
-*RepositoryApi* | [**repositoryQuery**](Apis/RepositoryApi.md#repositoryquery) | **POST** /api/r/{repoId}/repository/query | Executes a SPARQL SELECT query on the underlying RDF repository
+*RepositoryApi* | [**selectQuery**](Apis/RepositoryApi.md#selectquery) | **POST** /api/r/{repoId}/repository/selectQuery | Executes a SPARQL SELECT query on the underlying RDF repository
 *RepositoryApi* | [**touch**](Apis/RepositoryApi.md#touch) | **GET** /api/r/{repoId}/repository/touch | Updates the last access time of the given repository to current time
 *ServiceApi* | [**getServiceConfig**](Apis/ServiceApi.md#getserviceconfig) | **GET** /api/service/config | Gets the default configuration of an artifact service.
 *ServiceApi* | [**getServiceList**](Apis/ServiceApi.md#getservicelist) | **GET** /api/service | Gets a list of available artifact services.
