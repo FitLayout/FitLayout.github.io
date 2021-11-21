@@ -412,6 +412,7 @@
 	<li><a class="res DatatypeProperty" href="#backgroundSeparated" title="http://fitlayout.github.io/ontology/render.owl#backgroundSeparated">backgroundSeparated</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty" href="#belongsTo" title="http://fitlayout.github.io/ontology/render.owl#belongsTo">belongsTo</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#bounds" title="http://fitlayout.github.io/ontology/render.owl#bounds">bounds</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#contentLength" title="http://fitlayout.github.io/ontology/render.owl#contentLength">contentLength</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#documentOrder" title="http://fitlayout.github.io/ontology/render.owl#documentOrder">documentOrder</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#fontSize" title="http://fitlayout.github.io/ontology/render.owl#fontSize">fontSize</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#fontStyle" title="http://fitlayout.github.io/ontology/render.owl#fontStyle">fontStyle</a></li>
@@ -714,6 +715,7 @@
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#borderStyle" title="http://fitlayout.github.io/ontology/render.owl#borderStyle">borderStyle</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#borderWidth" title="http://fitlayout.github.io/ontology/render.owl#borderWidth">borderWidth</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#color" title="http://fitlayout.github.io/ontology/render.owl#color">color</a></li>
+	<li><a class="res DatatypeProperty FunctionalProperty" href="#contentLength" title="http://fitlayout.github.io/ontology/render.owl#contentLength">contentLength</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#displayType" title="http://fitlayout.github.io/ontology/render.owl#displayType">displayType</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#documentOrder" title="http://fitlayout.github.io/ontology/render.owl#documentOrder">documentOrder</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#fontFamily" title="http://fitlayout.github.io/ontology/render.owl#fontFamily">fontFamily</a></li>
@@ -859,6 +861,27 @@
 		<dt>has range</dt> 
 		<dd><ul class="rel domain">
 	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="contentLength">
+	<header>
+		<h3 class="res DatatypeProperty FunctionalProperty">contentLength</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#contentLength">box:contentLength</code></p>
+	</header>
+	<p class="comment">The number of content elements used to compute the style statistics such as average font weight.</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#int">xsd:int</span></li>
 </ul>
 </dd>
 	
