@@ -310,6 +310,38 @@ paths:
       required: true
       schema:
         type: string
+  /api/r/{repoId}/artifact/refresh/{iri}:
+    get:
+      tags:
+      - artifact
+      summary: Recomputes the computed artifact properties
+      operationId: refreshArtifact
+      parameters:
+      - name: iri
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Artifact recomputed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "404":
+          description: Repository or artifact with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
   /api/r/{repoId}/repository/add:
     post:
       tags:
@@ -324,6 +356,45 @@ paths:
       responses:
         "200":
           description: The quadruple added
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "400":
+          description: Invalid quadruple specification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/addQuads:
+    post:
+      tags:
+      - repository
+      summary: Adds a list of new quadruple to the repository
+      operationId: addQuadruples
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QuadrupleData'
+      responses:
+        "200":
+          description: The quadruples added
           content:
             application/json:
               schema:
@@ -386,6 +457,45 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SelectQueryResult'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/deleteQuads:
+    post:
+      tags:
+      - repository
+      summary: Removes a list of quadruples from the repository
+      operationId: deleteQuadruples
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/QuadrupleData'
+      responses:
+        "200":
+          description: Quadruples removed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "400":
+          description: Invalid quadruple specification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
         "404":
           description: Repository with the given ID not found
           content:
@@ -764,6 +874,18 @@ paths:
         in: query
         schema:
           type: string
+      - name: obj
+        in: query
+        schema:
+          type: string
+      - name: pred
+        in: query
+        schema:
+          type: string
+      - name: subj
+        in: query
+        schema:
+          type: string
       responses:
         "200-JSONLD":
           description: RDF statements serialized in JSON-LD
@@ -793,6 +915,10 @@ paths:
       summary: Imports statements to the repository
       operationId: addStatements
       parameters:
+      - name: baseURI
+        in: query
+        schema:
+          type: string
       - name: context
         in: query
         schema:
@@ -814,6 +940,47 @@ paths:
       responses:
         "200":
           description: Statements added
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "400":
+          description: Invalid service parametres
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    delete:
+      tags:
+      - repository
+      summary: Deletes statements from the repository
+      operationId: deleteStatements
+      parameters:
+      - name: context
+        in: query
+        schema:
+          type: string
+      - name: obj
+        in: query
+        schema:
+          type: string
+      - name: pred
+        in: query
+        schema:
+          type: string
+      - name: subj
+        in: query
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Statements deleted
           content:
             application/json:
               schema:
@@ -953,6 +1120,43 @@ paths:
                 $ref: '#/components/schemas/ResultValue'
         "404":
           description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/updateQuery:
+    post:
+      tags:
+      - repository
+      summary: Executes a SPARQL UPDATE query on the underlying RDF repository
+      operationId: updateQuery
+      requestBody:
+        content:
+          application/sparql-query:
+            schema:
+              type: string
+      responses:
+        "200":
+          description: Update performed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+        "500":
+          description: Query evaluation error
           content:
             application/json:
               schema:

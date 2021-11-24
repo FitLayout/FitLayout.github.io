@@ -21,13 +21,17 @@ Class | Method | HTTP request | Description
 *ArtifactApi* | [**getArtifactInfo**](Apis/ArtifactApi.md#getartifactinfo) | **GET** /api/r/{repoId}/artifact/info/{iri} | Retrieves information about an artifact identified by its IRI (artifact content not included).
 *ArtifactApi* | [**getArtifactsInfo**](Apis/ArtifactApi.md#getartifactsinfo) | **GET** /api/r/{repoId}/artifact | Retrieves information about all artifacts in the repository (artifact contents not included).
 *ArtifactApi* | [**listArtifacts**](Apis/ArtifactApi.md#listartifacts) | **GET** /api/r/{repoId}/artifact/list | Gets a list of artifact IRIs.
+*ArtifactApi* | [**refreshArtifact**](Apis/ArtifactApi.md#refreshartifact) | **GET** /api/r/{repoId}/artifact/refresh/{iri} | Recomputes the computed artifact properties
 *AuthApi* | [**getUserInfo**](Apis/AuthApi.md#getuserinfo) | **GET** /api/auth/userInfo | Get current user information based on the credentials (Bearer JWT token) obtained
 *RepositoryApi* | [**addNamespace**](Apis/RepositoryApi.md#addnamespace) | **PUT** /api/r/{repoId}/repository/namespaces/{prefix} | Adds a namespace definition for the given prefix
 *RepositoryApi* | [**addQuadruple**](Apis/RepositoryApi.md#addquadruple) | **POST** /api/r/{repoId}/repository/add | Adds a new quadruple to the repository
+*RepositoryApi* | [**addQuadruples**](Apis/RepositoryApi.md#addquadruples) | **POST** /api/r/{repoId}/repository/addQuads | Adds a list of new quadruple to the repository
 *RepositoryApi* | [**addStatements**](Apis/RepositoryApi.md#addstatements) | **POST** /api/r/{repoId}/repository/statements | Imports statements to the repository
 *RepositoryApi* | [**checkRepo**](Apis/RepositoryApi.md#checkrepo) | **GET** /api/r/{repoId}/repository/checkRepo | Checks the repository whether it exists and is properly initialized
 *RepositoryApi* | [**clearNamespaces**](Apis/RepositoryApi.md#clearnamespaces) | **DELETE** /api/r/{repoId}/repository/namespaces | Removes all namespace declarations from the repository
 *RepositoryApi* | [**deleteNamespace**](Apis/RepositoryApi.md#deletenamespace) | **DELETE** /api/r/{repoId}/repository/namespaces/{prefix} | Removes a namespace definition for the given prefix
+*RepositoryApi* | [**deleteQuadruples**](Apis/RepositoryApi.md#deletequadruples) | **POST** /api/r/{repoId}/repository/deleteQuads | Removes a list of quadruples from the repository
+*RepositoryApi* | [**deleteStatements**](Apis/RepositoryApi.md#deletestatements) | **DELETE** /api/r/{repoId}/repository/statements | Deletes statements from the repository
 *RepositoryApi* | [**describeSubject**](Apis/RepositoryApi.md#describesubject) | **GET** /api/r/{repoId}/repository/describe/{iri} | Gets the RDF description for the given subject IRI
 *RepositoryApi* | [**getContexts**](Apis/RepositoryApi.md#getcontexts) | **GET** /api/r/{repoId}/repository/contexts | Gets a list of contexts that have been defined for the repository
 *RepositoryApi* | [**getNamespace**](Apis/RepositoryApi.md#getnamespace) | **GET** /api/r/{repoId}/repository/namespaces/{prefix} | Gets a namespace URI for the given prefix
@@ -41,6 +45,7 @@ Class | Method | HTTP request | Description
 *RepositoryApi* | [**querySubject**](Apis/RepositoryApi.md#querysubject) | **GET** /api/r/{repoId}/repository/subject/{iri} | Gets all triples for the given subject IRI
 *RepositoryApi* | [**selectQuery**](Apis/RepositoryApi.md#selectquery) | **POST** /api/r/{repoId}/repository/selectQuery | Executes a SPARQL SELECT query on the underlying RDF repository
 *RepositoryApi* | [**touch**](Apis/RepositoryApi.md#touch) | **GET** /api/r/{repoId}/repository/touch | Updates the last access time of the given repository to current time
+*RepositoryApi* | [**updateQuery**](Apis/RepositoryApi.md#updatequery) | **POST** /api/r/{repoId}/repository/updateQuery | Executes a SPARQL UPDATE query on the underlying RDF repository
 *ServiceApi* | [**getServiceConfig**](Apis/ServiceApi.md#getserviceconfig) | **GET** /api/service/config | Gets the default configuration of an artifact service.
 *ServiceApi* | [**getServiceList**](Apis/ServiceApi.md#getservicelist) | **GET** /api/service | Gets a list of available artifact services.
 *ServiceApi* | [**invoke**](Apis/ServiceApi.md#invoke) | **POST** /api/service | Invokes a service and returns the resulting artifact

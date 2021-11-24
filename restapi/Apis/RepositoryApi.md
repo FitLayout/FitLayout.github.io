@@ -6,10 +6,13 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addNamespace**](RepositoryApi.md#addNamespace) | **PUT** /api/r/{repoId}/repository/namespaces/{prefix} | Adds a namespace definition for the given prefix
 [**addQuadruple**](RepositoryApi.md#addQuadruple) | **POST** /api/r/{repoId}/repository/add | Adds a new quadruple to the repository
+[**addQuadruples**](RepositoryApi.md#addQuadruples) | **POST** /api/r/{repoId}/repository/addQuads | Adds a list of new quadruple to the repository
 [**addStatements**](RepositoryApi.md#addStatements) | **POST** /api/r/{repoId}/repository/statements | Imports statements to the repository
 [**checkRepo**](RepositoryApi.md#checkRepo) | **GET** /api/r/{repoId}/repository/checkRepo | Checks the repository whether it exists and is properly initialized
 [**clearNamespaces**](RepositoryApi.md#clearNamespaces) | **DELETE** /api/r/{repoId}/repository/namespaces | Removes all namespace declarations from the repository
 [**deleteNamespace**](RepositoryApi.md#deleteNamespace) | **DELETE** /api/r/{repoId}/repository/namespaces/{prefix} | Removes a namespace definition for the given prefix
+[**deleteQuadruples**](RepositoryApi.md#deleteQuadruples) | **POST** /api/r/{repoId}/repository/deleteQuads | Removes a list of quadruples from the repository
+[**deleteStatements**](RepositoryApi.md#deleteStatements) | **DELETE** /api/r/{repoId}/repository/statements | Deletes statements from the repository
 [**describeSubject**](RepositoryApi.md#describeSubject) | **GET** /api/r/{repoId}/repository/describe/{iri} | Gets the RDF description for the given subject IRI
 [**getContexts**](RepositoryApi.md#getContexts) | **GET** /api/r/{repoId}/repository/contexts | Gets a list of contexts that have been defined for the repository
 [**getNamespace**](RepositoryApi.md#getNamespace) | **GET** /api/r/{repoId}/repository/namespaces/{prefix} | Gets a namespace URI for the given prefix
@@ -23,6 +26,7 @@ Method | HTTP request | Description
 [**querySubject**](RepositoryApi.md#querySubject) | **GET** /api/r/{repoId}/repository/subject/{iri} | Gets all triples for the given subject IRI
 [**selectQuery**](RepositoryApi.md#selectQuery) | **POST** /api/r/{repoId}/repository/selectQuery | Executes a SPARQL SELECT query on the underlying RDF repository
 [**touch**](RepositoryApi.md#touch) | **GET** /api/r/{repoId}/repository/touch | Updates the last access time of the given repository to current time
+[**updateQuery**](RepositoryApi.md#updateQuery) | **POST** /api/r/{repoId}/repository/updateQuery | Executes a SPARQL UPDATE query on the underlying RDF repository
 
 
 <a name="addNamespace"></a>
@@ -78,9 +82,35 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json
 
+<a name="addQuadruples"></a>
+# **addQuadruples**
+> ResultValue addQuadruples(repoId, QuadrupleData)
+
+Adds a list of new quadruple to the repository
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **repoId** | **String**| The ID of the artifact repository to use | [default to null]
+ **QuadrupleData** | [**List**](../Models/QuadrupleData.md)|  | [optional]
+
+### Return type
+
+[**ResultValue**](../Models/ResultValue.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
 <a name="addStatements"></a>
 # **addStatements**
-> ResultValue addStatements(repoId, context, body)
+> ResultValue addStatements(repoId, baseURI, context, body)
 
 Imports statements to the repository
 
@@ -89,6 +119,7 @@ Imports statements to the repository
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **repoId** | **String**| The ID of the artifact repository to use | [default to null]
+ **baseURI** | **String**|  | [optional] [default to null]
  **context** | **String**|  | [optional] [default to null]
  **body** | **Object**|  | [optional]
 
@@ -167,6 +198,61 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **repoId** | **String**| The ID of the artifact repository to use | [default to null]
  **prefix** | **String**|  | [default to null]
+
+### Return type
+
+[**ResultValue**](../Models/ResultValue.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="deleteQuadruples"></a>
+# **deleteQuadruples**
+> ResultValue deleteQuadruples(repoId, QuadrupleData)
+
+Removes a list of quadruples from the repository
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **repoId** | **String**| The ID of the artifact repository to use | [default to null]
+ **QuadrupleData** | [**List**](../Models/QuadrupleData.md)|  | [optional]
+
+### Return type
+
+[**ResultValue**](../Models/ResultValue.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+<a name="deleteStatements"></a>
+# **deleteStatements**
+> ResultValue deleteStatements(repoId, context, obj, pred, subj)
+
+Deletes statements from the repository
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **repoId** | **String**| The ID of the artifact repository to use | [default to null]
+ **context** | **String**|  | [optional] [default to null]
+ **obj** | **String**|  | [optional] [default to null]
+ **pred** | **String**|  | [optional] [default to null]
+ **subj** | **String**|  | [optional] [default to null]
 
 ### Return type
 
@@ -285,7 +371,7 @@ Name | Type | Description  | Notes
 
 <a name="getStatements"></a>
 # **getStatements**
-> getStatements(repoId, context)
+> getStatements(repoId, context, obj, pred, subj)
 
 Gets all RDF statements from the repository
 
@@ -295,6 +381,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **repoId** | **String**| The ID of the artifact repository to use | [default to null]
  **context** | **String**|  | [optional] [default to null]
+ **obj** | **String**|  | [optional] [default to null]
+ **pred** | **String**|  | [optional] [default to null]
+ **subj** | **String**|  | [optional] [default to null]
 
 ### Return type
 
@@ -520,5 +609,31 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="updateQuery"></a>
+# **updateQuery**
+> ResultValue updateQuery(repoId, body)
+
+Executes a SPARQL UPDATE query on the underlying RDF repository
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **repoId** | **String**| The ID of the artifact repository to use | [default to null]
+ **body** | **String**|  | [optional]
+
+### Return type
+
+[**ResultValue**](../Models/ResultValue.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+- **Content-Type**: application/sparql-query
 - **Accept**: application/json
 

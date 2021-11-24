@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**getArtifactInfo**](ArtifactApi.md#getArtifactInfo) | **GET** /api/r/{repoId}/artifact/info/{iri} | Retrieves information about an artifact identified by its IRI (artifact content not included).
 [**getArtifactsInfo**](ArtifactApi.md#getArtifactsInfo) | **GET** /api/r/{repoId}/artifact | Retrieves information about all artifacts in the repository (artifact contents not included).
 [**listArtifacts**](ArtifactApi.md#listArtifacts) | **GET** /api/r/{repoId}/artifact/list | Gets a list of artifact IRIs.
+[**refreshArtifact**](ArtifactApi.md#refreshArtifact) | **GET** /api/r/{repoId}/artifact/refresh/{iri} | Recomputes the computed artifact properties
 
 
 <a name="clear"></a>
@@ -182,6 +183,32 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List**](../Models/string.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="refreshArtifact"></a>
+# **refreshArtifact**
+> ResultValue refreshArtifact(repoId, iri)
+
+Recomputes the computed artifact properties
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **repoId** | **String**| The ID of the artifact repository to use | [default to null]
+ **iri** | **String**|  | [default to null]
+
+### Return type
+
+[**ResultValue**](../Models/ResultValue.md)
 
 ### Authorization
 
