@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/ld+json, text/turtle, application/rdf+xml, application/n-quads
+- **Content-Type**: application/ld+json, text/turtle, application/rdf+xml, application/n-triples, application/n-quads
 - **Accept**: application/json
 
 <a name="checkRepo"></a>
@@ -396,7 +396,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/ld+json, text/turtle, application/rdf+xml, application/n-quads, application/json
+- **Accept**: application/ld+json, text/turtle, application/rdf+xml, application/n-triples, application/n-quads, application/json
 
 <a name="getSubjectType"></a>
 # **getSubjectType**
@@ -502,7 +502,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/sparql-query
-- **Accept**: application/json, application/ld+json, text/turtle, application/rdf+xml, text/xml, text/plain
+- **Accept**: application/json, application/ld+json, text/turtle, application/rdf+xml, application/n-triples, application/n-quads, text/boolean, text/xml
 
 <a name="queryObject"></a>
 # **queryObject**

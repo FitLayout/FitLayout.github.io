@@ -75,6 +75,14 @@ paths:
           description: The artifacts RDF description serialized in RDF/XML
           content:
             application/rdf+xml: {}
+        "200-NTRIPLES":
+          description: The artifacts RDF description serialized in N-TRIPLES
+          content:
+            application/n-triples: {}
+        "200-NQUADS":
+          description: The artifacts RDF description serialized in N-QUADS
+          content:
+            application/n-quads: {}
         "400":
           description: Invalid service parametres
           content:
@@ -183,6 +191,14 @@ paths:
           description: The artifact RDF description serialized in RDF/XML
           content:
             application/rdf+xml: {}
+        "200-NTRIPLES":
+          description: The artifact RDF description serialized in N-TRIPLES
+          content:
+            application/n-triples: {}
+        "200-NQUADS":
+          description: The artifact RDF description serialized in N-QUADS
+          content:
+            application/n-quads: {}
         "400":
           description: Invalid IRI provided
           content:
@@ -227,6 +243,14 @@ paths:
           description: The complete artifact RDF description serialized in RDF/XML
           content:
             application/rdf+xml: {}
+        "200-NTRIPLES":
+          description: The complete artifact RDF description serialized in N-TRIPLES
+          content:
+            application/n-triples: {}
+        "200-NQUADS":
+          description: The complete artifact RDF description serialized in N-QUADS
+          content:
+            application/n-quads: {}
         "200-XML":
           description: The complete artifact serialized in XML
           content:
@@ -764,6 +788,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SelectQueryResult'
+        "200-JSONLD":
+          description: CONSTRUCT query result (graph query) serialized in JSON-LD
+          content:
+            application/ld+json: {}
+        "200-TURTLE":
+          description: CONSTRUCT query result (graph query) serialized in TURTLE
+          content:
+            text/turtle: {}
+        "200-RDFXML":
+          description: CONSTRUCT query result (graph query) serialized in RDF/XML
+          content:
+            application/rdf+xml: {}
+        "200-NTRIPLES":
+          description: CONSTRUCT query result (graph query) serialized in N-TRIPLES
+          content:
+            application/n-triples: {}
+        "200-NQUADS":
+          description: CONSTRUCT query result (graph query) serialized in N-QUADS
+          content:
+            application/n-quads: {}
+        "200-JSON":
+          description: ASK query result (boolean query) serialized in JSON
+          content:
+            application/json: {}
+        "200-TEXT":
+          description: ASK query result (boolean query) serialized in text
+          content:
+            text/boolean: {}
         "404":
           description: Repository with the given ID not found
           content:
@@ -776,13 +828,19 @@ paths:
             application/rdf+xml:
               schema:
                 $ref: '#/components/schemas/ResultErrorMessage'
+            application/n-triples:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+            application/n-quads:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
             text/xml:
               schema:
                 $ref: '#/components/schemas/ResultErrorMessage'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResultErrorMessage'
-            text/plain:
+            text/boolean:
               schema:
                 $ref: '#/components/schemas/ResultErrorMessage'
         "500":
@@ -797,13 +855,19 @@ paths:
             application/rdf+xml:
               schema:
                 $ref: '#/components/schemas/ResultErrorMessage'
+            application/n-triples:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+            application/n-quads:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
             text/xml:
               schema:
                 $ref: '#/components/schemas/ResultErrorMessage'
             application/json:
               schema:
                 $ref: '#/components/schemas/ResultErrorMessage'
-            text/plain:
+            text/boolean:
               schema:
                 $ref: '#/components/schemas/ResultErrorMessage'
     parameters:
@@ -899,6 +963,10 @@ paths:
           description: RDF statements serialized in RDF/XML
           content:
             application/rdf+xml: {}
+        "200-NTRIPLES":
+          description: RDF statements serialized in N-Triples
+          content:
+            application/n-triples: {}
         "200-NQUADS":
           description: RDF statements serialized in N-Quads
           content:
@@ -932,6 +1000,9 @@ paths:
             schema:
               type: object
           application/rdf+xml:
+            schema:
+              type: object
+          application/n-triples:
             schema:
               type: object
           application/n-quads:

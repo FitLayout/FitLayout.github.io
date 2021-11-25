@@ -115,7 +115,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/ld+json, text/turtle, application/rdf+xml, text/xml, text/html, image/png, application/json
+- **Accept**: application/ld+json, text/turtle, application/rdf+xml, application/n-triples, application/n-quads, text/xml, text/html, image/png, application/json
 
 <a name="getArtifactInfo"></a>
 # **getArtifactInfo**
@@ -141,7 +141,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/ld+json, text/turtle, application/rdf+xml, application/json
+- **Accept**: application/ld+json, text/turtle, application/rdf+xml, application/n-triples, application/n-quads, application/json
 
 <a name="getArtifactsInfo"></a>
 # **getArtifactsInfo**
@@ -166,7 +166,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/ld+json, text/turtle, application/rdf+xml, application/json
+- **Accept**: application/ld+json, text/turtle, application/rdf+xml, application/n-triples, application/n-quads, application/json
 
 <a name="listArtifacts"></a>
 # **listArtifacts**

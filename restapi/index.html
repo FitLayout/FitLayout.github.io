@@ -882,6 +882,8 @@ font-style: italic;
       <li><code>application/ld+json</code></li>
       <li><code>text/turtle</code></li>
       <li><code>application/rdf+xml</code></li>
+      <li><code>application/n-triples</code></li>
+      <li><code>application/n-quads</code></li>
       <li><code>text/xml</code></li>
       <li><code>text/html</code></li>
       <li><code>image/png</code></li>
@@ -897,6 +899,12 @@ font-style: italic;
         <a href="#"></a>
     <h4 class="field-label">200-RDFXML</h4>
     The complete artifact RDF description serialized in RDF/XML
+        <a href="#"></a>
+    <h4 class="field-label">200-NTRIPLES</h4>
+    The complete artifact RDF description serialized in N-TRIPLES
+        <a href="#"></a>
+    <h4 class="field-label">200-NQUADS</h4>
+    The complete artifact RDF description serialized in N-QUADS
         <a href="#"></a>
     <h4 class="field-label">200-XML</h4>
     The complete artifact serialized in XML
@@ -947,6 +955,8 @@ font-style: italic;
       <li><code>application/ld+json</code></li>
       <li><code>text/turtle</code></li>
       <li><code>application/rdf+xml</code></li>
+      <li><code>application/n-triples</code></li>
+      <li><code>application/n-quads</code></li>
       <li><code>application/json</code></li>
     </ul>
 
@@ -959,6 +969,12 @@ font-style: italic;
         <a href="#"></a>
     <h4 class="field-label">200-RDFXML</h4>
     The artifact RDF description serialized in RDF/XML
+        <a href="#"></a>
+    <h4 class="field-label">200-NTRIPLES</h4>
+    The artifact RDF description serialized in N-TRIPLES
+        <a href="#"></a>
+    <h4 class="field-label">200-NQUADS</h4>
+    The artifact RDF description serialized in N-QUADS
         <a href="#"></a>
     <h4 class="field-label">400</h4>
     Invalid IRI provided
@@ -998,6 +1014,8 @@ font-style: italic;
       <li><code>application/ld+json</code></li>
       <li><code>text/turtle</code></li>
       <li><code>application/rdf+xml</code></li>
+      <li><code>application/n-triples</code></li>
+      <li><code>application/n-quads</code></li>
       <li><code>application/json</code></li>
     </ul>
 
@@ -1010,6 +1028,12 @@ font-style: italic;
         <a href="#"></a>
     <h4 class="field-label">200-RDFXML</h4>
     The artifacts RDF description serialized in RDF/XML
+        <a href="#"></a>
+    <h4 class="field-label">200-NTRIPLES</h4>
+    The artifacts RDF description serialized in N-TRIPLES
+        <a href="#"></a>
+    <h4 class="field-label">200-NQUADS</h4>
+    The artifacts RDF description serialized in N-QUADS
         <a href="#"></a>
     <h4 class="field-label">400</h4>
     Invalid service parametres
@@ -1379,6 +1403,7 @@ font-style: italic;
       <li><code>application/ld+json</code></li>
       <li><code>text/turtle</code></li>
       <li><code>application/rdf+xml</code></li>
+      <li><code>application/n-triples</code></li>
       <li><code>application/n-quads</code></li>
     </ul>
 
@@ -1987,6 +2012,7 @@ font-style: italic;
       <li><code>application/ld+json</code></li>
       <li><code>text/turtle</code></li>
       <li><code>application/rdf+xml</code></li>
+      <li><code>application/n-triples</code></li>
       <li><code>application/n-quads</code></li>
       <li><code>application/json</code></li>
     </ul>
@@ -2000,6 +2026,9 @@ font-style: italic;
         <a href="#"></a>
     <h4 class="field-label">200-RDFXML</h4>
     RDF statements serialized in RDF/XML
+        <a href="#"></a>
+    <h4 class="field-label">200-NTRIPLES</h4>
+    RDF statements serialized in N-Triples
         <a href="#"></a>
     <h4 class="field-label">200-NQUADS</h4>
     RDF statements serialized in N-Quads
@@ -2241,14 +2270,37 @@ font-style: italic;
       <li><code>application/ld+json</code></li>
       <li><code>text/turtle</code></li>
       <li><code>application/rdf+xml</code></li>
+      <li><code>application/n-triples</code></li>
+      <li><code>application/n-quads</code></li>
+      <li><code>text/boolean</code></li>
       <li><code>text/xml</code></li>
-      <li><code>text/plain</code></li>
     </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     SELECT query result (tuple query)
         <a href="#SelectQueryResult">SelectQueryResult</a>
+    <h4 class="field-label">200-JSONLD</h4>
+    CONSTRUCT query result (graph query) serialized in JSON-LD
+        <a href="#"></a>
+    <h4 class="field-label">200-TURTLE</h4>
+    CONSTRUCT query result (graph query) serialized in TURTLE
+        <a href="#"></a>
+    <h4 class="field-label">200-RDFXML</h4>
+    CONSTRUCT query result (graph query) serialized in RDF/XML
+        <a href="#"></a>
+    <h4 class="field-label">200-NTRIPLES</h4>
+    CONSTRUCT query result (graph query) serialized in N-TRIPLES
+        <a href="#"></a>
+    <h4 class="field-label">200-NQUADS</h4>
+    CONSTRUCT query result (graph query) serialized in N-QUADS
+        <a href="#"></a>
+    <h4 class="field-label">200-JSON</h4>
+    ASK query result (boolean query) serialized in JSON
+        <a href="#"></a>
+    <h4 class="field-label">200-TEXT</h4>
+    ASK query result (boolean query) serialized in text
+        <a href="#"></a>
     <h4 class="field-label">404</h4>
     Repository with the given ID not found
         <a href="#ResultErrorMessage">ResultErrorMessage</a>
