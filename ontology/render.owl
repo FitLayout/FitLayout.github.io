@@ -623,6 +623,17 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/render.owl#ConnectionSet -->
+
+    <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#ConnectionSet">
+        <rdfs:subClassOf rdf:resource="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact"/>
+        <owl:disjointWith rdf:resource="http://fitlayout.github.io/ontology/render.owl#Page"/>
+        <rdfs:comment>A set of named area connections.</rdfs:comment>
+        <rdfs:label>ConnectionSet</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/render.owl#ContainerBox -->
 
     <owl:Class rdf:about="http://fitlayout.github.io/ontology/render.owl#ContainerBox">
