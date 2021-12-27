@@ -138,6 +138,18 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/render.owl#hasSource -->
+
+    <owl:ObjectProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#hasSource">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/render.owl#ConnectionSet"/>
+        <rdfs:range rdf:resource="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact"/>
+        <rdfs:comment>Assigns a source artifact to a connection set.</rdfs:comment>
+        <rdfs:label>hasSource</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/render.owl#hasTopBorder -->
 
     <owl:ObjectProperty rdf:about="http://fitlayout.github.io/ontology/render.owl#hasTopBorder">
