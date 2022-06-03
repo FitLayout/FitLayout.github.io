@@ -150,6 +150,7 @@
 	<h2>Classes</h2>
 	<ul class="subtoc">
 	<li><a class="res Class" href="#Artifact" title="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact">Artifact</a></li>
+	<li><a class="res Class" href="#Tagger" title="http://fitlayout.github.io/ontology/fitlayout.owl#Tagger">Tagger</a></li>
 </ul>
 
 
@@ -164,6 +165,7 @@
 		<dd><ul class="rel sub">
 	<li><a class="known res Class" href="segmentation.html#AreaTree" title="http://fitlayout.github.io/ontology/segmentation.owl#AreaTree">segm:AreaTree</a></li>
 	<li><a class="known res Class" href="segmentation.html#ChunkSet" title="http://fitlayout.github.io/ontology/segmentation.owl#ChunkSet">segm:ChunkSet</a></li>
+	<li><a class="known res Class" href="render.html#ConnectionSet" title="http://fitlayout.github.io/ontology/render.owl#ConnectionSet">box:ConnectionSet</a></li>
 	<li><a class="known res Class" href="segmentation.html#LogicalAreaTree" title="http://fitlayout.github.io/ontology/segmentation.owl#LogicalAreaTree">segm:LogicalAreaTree</a></li>
 	<li><a class="known res Class" href="render.html#Page" title="http://fitlayout.github.io/ontology/render.owl#Page">box:Page</a></li>
 </ul>
@@ -179,6 +181,22 @@
 		<dt>is in range of</dt> 
 		<dd><ul class="rel domain">
 	<li><a class="res ObjectProperty FunctionalProperty" href="#hasParentArtifact" title="http://fitlayout.github.io/ontology/fitlayout.owl#hasParentArtifact">hasParentArtifact</a></li>
+	<li><a class="known res ObjectProperty FunctionalProperty" href="render.html#hasSource" title="http://fitlayout.github.io/ontology/render.owl#hasSource">box:hasSource</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="Tagger">
+	<header>
+		<h3 class="res Class">Tagger</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/fitlayout.owl#Tagger">fl:Tagger</code></p>
+	</header>
+	<p class="comment">A tagger that is able to assign tags to content rectangles.</p>
+	<dl>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="known res ObjectProperty" href="segmentation.html#tagger" title="http://fitlayout.github.io/ontology/segmentation.owl#tagger">segm:tagger</a></li>
 </ul>
 </dd>
 	</dl>
@@ -224,6 +242,10 @@
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#createdOn" title="http://fitlayout.github.io/ontology/fitlayout.owl#createdOn">createdOn</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#creator" title="http://fitlayout.github.io/ontology/fitlayout.owl#creator">creator</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#creatorParams" title="http://fitlayout.github.io/ontology/fitlayout.owl#creatorParams">creatorParams</a></li>
+	<li><a class="res DatatypeProperty" href="#param" title="http://fitlayout.github.io/ontology/fitlayout.owl#param">param</a></li>
+	<li><a class="res DatatypeProperty" href="#paramName" title="http://fitlayout.github.io/ontology/fitlayout.owl#paramName">paramName</a></li>
+	<li><a class="res DatatypeProperty" href="#paramValue" title="http://fitlayout.github.io/ontology/fitlayout.owl#paramValue">paramValue</a></li>
+	<li><a class="res DatatypeProperty" href="#service" title="http://fitlayout.github.io/ontology/fitlayout.owl#service">service</a></li>
 </ul>
 
 
@@ -290,6 +312,55 @@
 	</dl>
 </div>
 
+		<div class="entity" id="param">
+	<header>
+		<h3 class="res DatatypeProperty">param</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/fitlayout.owl#param">fl:param</code></p>
+	</header>
+	<p class="comment">Service parameter value definition.</p>
+	<dl>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="paramName">
+	<header>
+		<h3 class="res DatatypeProperty">paramName</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/fitlayout.owl#paramName">fl:paramName</code></p>
+	</header>
+	<p class="comment">Parameter name</p>
+	<dl>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="paramValue">
+	<header>
+		<h3 class="res DatatypeProperty">paramValue</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/fitlayout.owl#paramValue">fl:paramValue</code></p>
+	</header>
+	<p class="comment">Parameter value.</p>
+	<dl>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="service">
+	<header>
+		<h3 class="res DatatypeProperty">service</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/fitlayout.owl#service">fl:service</code></p>
+	</header>
+	<p class="comment">A service ID definition</p>
+	<dl>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
 
 </section>
 
@@ -303,6 +374,8 @@
 		<dd><code>http://purl.org/dc/elements/1.1/</code></dd>
 		<dt>fl</dt>
 		<dd><code>http://fitlayout.github.io/ontology/fitlayout.owl#</code></dd>
+		<dt>map</dt>
+		<dd><code>http://fitlayout.github.io/ontology/mapping.owl#</code></dd>
 		<dt>owl</dt>
 		<dd><code>http://www.w3.org/2002/07/owl#</code></dd>
 		<dt>rdf</dt>

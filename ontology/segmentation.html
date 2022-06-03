@@ -281,6 +281,7 @@
 		<dt>is in domain of</dt> 
 		<dd><ul class="rel domain">
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#name" title="http://fitlayout.github.io/ontology/segmentation.owl#name">name</a></li>
+	<li><a class="res ObjectProperty" href="#tagger" title="http://fitlayout.github.io/ontology/segmentation.owl#tagger">tagger</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#type" title="http://fitlayout.github.io/ontology/segmentation.owl#type">type</a></li>
 </ul>
 </dd>
@@ -331,6 +332,7 @@
 	<li><a class="res ObjectProperty" href="#hasTag" title="http://fitlayout.github.io/ontology/segmentation.owl#hasTag">hasTag</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty" href="#isChildOf" title="http://fitlayout.github.io/ontology/segmentation.owl#isChildOf">isChildOf</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty" href="#isSubordinateTo" title="http://fitlayout.github.io/ontology/segmentation.owl#isSubordinateTo">isSubordinateTo</a></li>
+	<li><a class="res ObjectProperty" href="#tagger" title="http://fitlayout.github.io/ontology/segmentation.owl#tagger">tagger</a></li>
 </ul>
 
 
@@ -511,7 +513,7 @@
 	<dl>
 		<dt>has domain</dt> 
 		<dd><ul class="rel domain">
-	<li>(<a class="res Class" href="#Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">Area</a> <span class="logic">or</span> <a class="res Class" href="#LogicalArea" title="http://fitlayout.github.io/ontology/segmentation.owl#LogicalArea">LogicalArea</a>)</li>
+	<li>(<a class="res Class" href="#Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">Area</a> <span class="logic">or</span> <a class="res Class" href="#LogicalArea" title="http://fitlayout.github.io/ontology/segmentation.owl#LogicalArea">LogicalArea</a> <span class="logic">or</span> <a class="res Class" href="#TextChunk" title="http://fitlayout.github.io/ontology/segmentation.owl#TextChunk">TextChunk</a>)</li>
 </ul>
 </dd>
 		<dt>has range</dt> 
@@ -559,6 +561,27 @@
 		<dt>has range</dt> 
 		<dd><ul class="rel domain">
 	<li><a class="res Class" href="#LogicalArea" title="http://fitlayout.github.io/ontology/segmentation.owl#LogicalArea">LogicalArea</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="tagger">
+	<header>
+		<h3 class="res ObjectProperty">tagger</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#tagger">segm:tagger</code></p>
+	</header>
+	<p class="comment">Assigns a tagger to a tag</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#Tag" title="http://fitlayout.github.io/ontology/segmentation.owl#Tag">Tag</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="known res Class" href="fitlayout.html#Tagger" title="http://fitlayout.github.io/ontology/fitlayout.owl#Tagger">fl:Tagger</a></li>
 </ul>
 </dd>
 	
@@ -687,6 +710,8 @@
 		<dd><code>http://purl.org/dc/elements/1.1/</code></dd>
 		<dt>fl</dt>
 		<dd><code>http://fitlayout.github.io/ontology/fitlayout.owl#</code></dd>
+		<dt>map</dt>
+		<dd><code>http://fitlayout.github.io/ontology/mapping.owl#</code></dd>
 		<dt>owl</dt>
 		<dd><code>http://www.w3.org/2002/07/owl#</code></dd>
 		<dt>rdf</dt>

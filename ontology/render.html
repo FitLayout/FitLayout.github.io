@@ -153,6 +153,7 @@
 	<li><a class="res Class" href="#Border" title="http://fitlayout.github.io/ontology/render.owl#Border">Border</a></li>
 	<li><a class="res Class" href="#Bounds" title="http://fitlayout.github.io/ontology/render.owl#Bounds">Bounds</a></li>
 	<li><a class="res Class" href="#Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
+	<li><a class="res Class" href="#ConnectionSet" title="http://fitlayout.github.io/ontology/render.owl#ConnectionSet">ConnectionSet</a></li>
 	<li><a class="res Class" href="#ContainerBox" title="http://fitlayout.github.io/ontology/render.owl#ContainerBox">ContainerBox</a></li>
 	<li><a class="res Class" href="#ContentBox" title="http://fitlayout.github.io/ontology/render.owl#ContentBox">ContentBox</a></li>
 	<li><a class="res Class" href="#ContentObject" title="http://fitlayout.github.io/ontology/render.owl#ContentObject">ContentObject</a></li>
@@ -268,6 +269,26 @@
 		<dd><ul class="rel domain">
 	<li><a class="known res ObjectProperty" href="segmentation.html#containsBox" title="http://fitlayout.github.io/ontology/segmentation.owl#containsBox">segm:containsBox</a></li>
 	<li><a class="known res ObjectProperty FunctionalProperty" href="segmentation.html#hasSourceBox" title="http://fitlayout.github.io/ontology/segmentation.owl#hasSourceBox">segm:hasSourceBox</a></li>
+</ul>
+</dd>
+	</dl>
+</div>
+
+		<div class="entity" id="ConnectionSet">
+	<header>
+		<h3 class="res Class">ConnectionSet</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#ConnectionSet">box:ConnectionSet</code></p>
+	</header>
+	<p class="comment">A set of named area connections.</p>
+	<dl>
+		<dt>has super-classes</dt> 
+		<dd><ul class="rel super">
+	<li><a class="known res Class" href="fitlayout.html#Artifact" title="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact">fl:Artifact</a></li>
+</ul>
+</dd>
+		<dt>is in domain of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty FunctionalProperty" href="#hasSource" title="http://fitlayout.github.io/ontology/render.owl#hasSource">hasSource</a></li>
 </ul>
 </dd>
 	</dl>
@@ -413,6 +434,7 @@
 	<li><a class="res ObjectProperty FunctionalProperty" href="#belongsTo" title="http://fitlayout.github.io/ontology/render.owl#belongsTo">belongsTo</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#bounds" title="http://fitlayout.github.io/ontology/render.owl#bounds">bounds</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#contentLength" title="http://fitlayout.github.io/ontology/render.owl#contentLength">contentLength</a></li>
+	<li><a class="known res ObjectProperty" href="mapping.html#describesInstance" title="http://fitlayout.github.io/ontology/mapping.owl#describesInstance">map:describesInstance</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#documentOrder" title="http://fitlayout.github.io/ontology/render.owl#documentOrder">documentOrder</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#fontSize" title="http://fitlayout.github.io/ontology/render.owl#fontSize">fontSize</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#fontStyle" title="http://fitlayout.github.io/ontology/render.owl#fontStyle">fontStyle</a></li>
@@ -423,6 +445,7 @@
 	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasLeftBorder" title="http://fitlayout.github.io/ontology/render.owl#hasLeftBorder">hasLeftBorder</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasRightBorder" title="http://fitlayout.github.io/ontology/render.owl#hasRightBorder">hasRightBorder</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasTopBorder" title="http://fitlayout.github.io/ontology/render.owl#hasTopBorder">hasTopBorder</a></li>
+	<li><a class="known res ObjectProperty" href="mapping.html#isValueOf" title="http://fitlayout.github.io/ontology/mapping.owl#isValueOf">map:isValueOf</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#lineThrough" title="http://fitlayout.github.io/ontology/render.owl#lineThrough">lineThrough</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#underline" title="http://fitlayout.github.io/ontology/render.owl#underline">underline</a></li>
 </ul>
@@ -445,6 +468,7 @@
 	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasBottomBorder" title="http://fitlayout.github.io/ontology/render.owl#hasBottomBorder">hasBottomBorder</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasLeftBorder" title="http://fitlayout.github.io/ontology/render.owl#hasLeftBorder">hasLeftBorder</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasRightBorder" title="http://fitlayout.github.io/ontology/render.owl#hasRightBorder">hasRightBorder</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#hasSource" title="http://fitlayout.github.io/ontology/render.owl#hasSource">hasSource</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#hasTopBorder" title="http://fitlayout.github.io/ontology/render.owl#hasTopBorder">hasTopBorder</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty" href="#isChildOf" title="http://fitlayout.github.io/ontology/render.owl#isChildOf">isChildOf</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#visualBounds" title="http://fitlayout.github.io/ontology/render.owl#visualBounds">visualBounds</a></li>
@@ -634,6 +658,27 @@
 		<dt>has range</dt> 
 		<dd><ul class="rel domain">
 	<li><a class="res Class" href="#Border" title="http://fitlayout.github.io/ontology/render.owl#Border">Border</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="hasSource">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty">hasSource</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#hasSource">box:hasSource</code></p>
+	</header>
+	<p class="comment">Assigns a source artifact to a connection set.</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#ConnectionSet" title="http://fitlayout.github.io/ontology/render.owl#ConnectionSet">ConnectionSet</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="known res Class" href="fitlayout.html#Artifact" title="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact">fl:Artifact</a></li>
 </ul>
 </dd>
 	
@@ -1363,6 +1408,8 @@
 		<dd><code>http://purl.org/dc/elements/1.1/</code></dd>
 		<dt>fl</dt>
 		<dd><code>http://fitlayout.github.io/ontology/fitlayout.owl#</code></dd>
+		<dt>map</dt>
+		<dd><code>http://fitlayout.github.io/ontology/mapping.owl#</code></dd>
 		<dt>owl</dt>
 		<dd><code>http://www.w3.org/2002/07/owl#</code></dd>
 		<dt>rdf</dt>

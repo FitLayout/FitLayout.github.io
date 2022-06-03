@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Visual area to entity mapping ontology</title>
+	<style type="text/css">
+		html {
+			font-family: sans-serif;
+		}
+		body {
+			padding: 1em 2em;
+		}
+		:link { color: #00c; }
+		:visited { color: #00c; }
+		a:active { color: #c00; }
+		a.known { color: #07c; }
+		a.known:visited { color: #07c; }
+		h1, h2, h3 { 
+			color: #005A9C;
+			font-weight: normal;
+			text-align: left;
+		}
+		h1 { font-size: 170%; }
+		h2 { font-size: 140%; margin-top: 2em; }
+		h3 { font-size: 120%  }
+		p { margin: 1em 0 }
+		dt { 
+			font-weight: bold;
+			margin-top: 5px; 
+		}
+		dd {
+			padding: 3px 0;
+		}
+		code { color: darkred; }
+		.logic {
+			font-weight: bold;
+			color: purple;
+		}
+		.res {
+			position: relative;
+			display: inline-block;
+			margin-right: 0;
+		}
+		.res::after {
+			font-size: smaller;
+			margin-left: 3px;
+			text-decoration: none !important;
+			position: absolute;
+			top: -0.5em;
+			right: -2em;
+			text-align: left;
+			width: 2em;
+		}
+		.res::after:hover {
+			background-color: lightblue;
+		}
+		.res.Class {
+			margin-right: 0.5em;
+		}
+		.res.ObjectProperty, .res.DatatypeProperty {
+			margin-right: 1em;
+		}
+		.res.Class::after {
+			content: "c";
+			color: orange;
+		}
+		.res.ObjectProperty::after {
+			content: "op";
+			color: navy;
+		}
+		.res.DatatypeProperty::after {
+			content: "dp";
+			color: green;
+		}
+		.res.other {
+			border-bottom: 1px dotted black;
+		}
+		.subtoc, .entity {
+			border: 1px solid navy;
+			padding: 0.5em;
+			margin: 0.5em 0;
+		}
+		.subtoc {
+			background: #f4ffff;
+		}
+		.subtoc li {
+			display: inline;
+			margin-right: 0.75em;
+			padding: 3px 0;
+		}
+		.entity .rel li {
+			display: inline;
+			margin-right: 0.3em;
+			padding: 3px 0;
+		}
+		.entity header {
+			border-bottom: 1px solid navy;
+			padding-bottom: 5px;
+		}
+		.entity h3 {
+			display: inline-block;
+			margin: 3px 1em 0 0;
+			padding: 0;
+		}
+		.entity .IRI {
+			display: inline-block;
+			margin: 0;
+		}
+		footer {
+			text-align: center;
+			font-size: small;
+			font-style: italic;
+			margin-top: 2em;
+		}
+	</style>
+</head>
+<body>
+
+<header>
+	<h1>Visual area to entity mapping ontology</h1>
+</header>
+
+<section class="metadata">
+	<dl>
+		<dt>IRI</dt>
+		<dd class="iri"><code>http://fitlayout.github.io/ontology/mapping.owl#</code></dd>
+		<dt>Version</dt>
+		<dd>1.0.0</dd>
+		<dt>Creator(s)</dt>
+		<dd>Radek Burget</dd>
+	</dl>
+</section>
+
+<section id="description">
+	<h2>Description</h2>
+	<p>An ontology for mapping visual areas to ontological instances and properties.</p>
+</section>
+
+<section id="toc">
+	<h2>Table of Contents</h2>
+	<ol>
+		<li><a href="#object-properties">Object properties</a></li>
+		<li><a href="#namespaces">Namespaces</a></li>
+	</ol>
+</section>
+
+
+<section id="object-properties">
+	<h2>Object Properties</h2>
+	<ul class="subtoc">
+	<li><a class="res ObjectProperty" href="#describesInstance" title="http://fitlayout.github.io/ontology/mapping.owl#describesInstance">describesInstance</a></li>
+	<li><a class="res ObjectProperty" href="#isValueOf" title="http://fitlayout.github.io/ontology/mapping.owl#isValueOf">isValueOf</a></li>
+</ul>
+
+
+		<div class="entity" id="describesInstance">
+	<header>
+		<h3 class="res ObjectProperty">describesInstance</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/mapping.owl#describesInstance">map:describesInstance</code></p>
+	</header>
+	<p class="comment">Assigns an individual to the visual area that the area describes.</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="known res Class" href="render.html#RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">box:RectArea</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="isValueOf">
+	<header>
+		<h3 class="res ObjectProperty">isValueOf</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/mapping.owl#isValueOf">map:isValueOf</code></p>
+	</header>
+	<p class="comment">Assigns an ontological property to the area whose value the area represents.</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="known res Class" href="render.html#RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">box:RectArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><span class="res other" title="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">rdf:Property</span></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+
+</section>
+
+
+
+<section id="namespaces">
+	<h2>Namespaces</h2>
+	<dl>
+		<dt>box</dt>
+		<dd><code>http://fitlayout.github.io/ontology/render.owl#</code></dd>
+		<dt>dc</dt>
+		<dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+		<dt>fl</dt>
+		<dd><code>http://fitlayout.github.io/ontology/fitlayout.owl#</code></dd>
+		<dt>map</dt>
+		<dd><code>http://fitlayout.github.io/ontology/mapping.owl#</code></dd>
+		<dt>owl</dt>
+		<dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+		<dt>rdf</dt>
+		<dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+		<dt>rdfs</dt>
+		<dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+		<dt>segm</dt>
+		<dd><code>http://fitlayout.github.io/ontology/segmentation.owl#</code></dd>
+		<dt>xsd</dt>
+		<dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+	</dl>
+</section>
+
+<footer>
+	<p>Generated by <a href="https://github.com/radkovo/OwlDocGen">OwlDocGen</a>.</p>
+</footer>
+
+</body>
+</html>
