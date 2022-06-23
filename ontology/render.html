@@ -250,6 +250,7 @@
 </dd>
 		<dt>is in domain of</dt> 
 		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty FunctionalProperty" href="#belongsTo" title="http://fitlayout.github.io/ontology/render.owl#belongsTo">belongsTo</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#color" title="http://fitlayout.github.io/ontology/render.owl#color">color</a></li>
 	<li><a class="res ObjectProperty InverseFunctionalProperty" href="#containsObject" title="http://fitlayout.github.io/ontology/render.owl#containsObject">containsObject</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#contentBounds" title="http://fitlayout.github.io/ontology/render.owl#contentBounds">contentBounds</a></li>
@@ -410,7 +411,6 @@
 		<dd><ul class="rel domain">
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#backgroundColor" title="http://fitlayout.github.io/ontology/render.owl#backgroundColor">backgroundColor</a></li>
 	<li><a class="res DatatypeProperty" href="#backgroundSeparated" title="http://fitlayout.github.io/ontology/render.owl#backgroundSeparated">backgroundSeparated</a></li>
-	<li><a class="res ObjectProperty FunctionalProperty" href="#belongsTo" title="http://fitlayout.github.io/ontology/render.owl#belongsTo">belongsTo</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty InverseFunctionalProperty" href="#bounds" title="http://fitlayout.github.io/ontology/render.owl#bounds">bounds</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#contentLength" title="http://fitlayout.github.io/ontology/render.owl#contentLength">contentLength</a></li>
 	<li><a class="known res ObjectProperty" href="mapping.html#describesInstance" title="http://fitlayout.github.io/ontology/mapping.owl#describesInstance">map:describesInstance</a></li>
@@ -458,11 +458,11 @@
 		<h3 class="res ObjectProperty FunctionalProperty">belongsTo</h3>
 		<p class="IRI"><code title="http://fitlayout.github.io/ontology/render.owl#belongsTo">box:belongsTo</code></p>
 	</header>
-	<p class="comment">Assigns an owning page to a rectangle</p>
+	<p class="comment">Assigns an owning page to a box</p>
 	<dl>
 		<dt>has domain</dt> 
 		<dd><ul class="rel domain">
-	<li><a class="res Class" href="#RectArea" title="http://fitlayout.github.io/ontology/render.owl#RectArea">RectArea</a></li>
+	<li><a class="res Class" href="#Box" title="http://fitlayout.github.io/ontology/render.owl#Box">Box</a></li>
 </ul>
 </dd>
 		<dt>has range</dt> 
