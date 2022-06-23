@@ -243,6 +243,7 @@
 	<dl>
 		<dt>is in domain of</dt> 
 		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty" href="#belongsToLogicalTree" title="http://fitlayout.github.io/ontology/segmentation.owl#belongsToLogicalTree">belongsToLogicalTree</a></li>
 	<li><a class="res ObjectProperty" href="#containsArea" title="http://fitlayout.github.io/ontology/segmentation.owl#containsArea">containsArea</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty" href="#isSubordinateTo" title="http://fitlayout.github.io/ontology/segmentation.owl#isSubordinateTo">isSubordinateTo</a></li>
 </ul>
@@ -265,6 +266,11 @@
 		<dt>has super-classes</dt> 
 		<dd><ul class="rel super">
 	<li><a class="known res Class" href="fitlayout.html#Artifact" title="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact">fl:Artifact</a></li>
+</ul>
+</dd>
+		<dt>is in range of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty" href="#belongsToLogicalTree" title="http://fitlayout.github.io/ontology/segmentation.owl#belongsToLogicalTree">belongsToLogicalTree</a></li>
 </ul>
 </dd>
 	</dl>
@@ -322,6 +328,7 @@
 	<ul class="subtoc">
 	<li><a class="res ObjectProperty FunctionalProperty" href="#belongsTo" title="http://fitlayout.github.io/ontology/segmentation.owl#belongsTo">belongsTo</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty" href="#belongsToChunkSet" title="http://fitlayout.github.io/ontology/segmentation.owl#belongsToChunkSet">belongsToChunkSet</a></li>
+	<li><a class="res ObjectProperty" href="#belongsToLogicalTree" title="http://fitlayout.github.io/ontology/segmentation.owl#belongsToLogicalTree">belongsToLogicalTree</a></li>
 	<li><a class="res ObjectProperty" href="#containsArea" title="http://fitlayout.github.io/ontology/segmentation.owl#containsArea">containsArea</a></li>
 	<li><a class="res ObjectProperty" href="#containsBox" title="http://fitlayout.github.io/ontology/segmentation.owl#containsBox">containsBox</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty" href="#hasAreaTree" title="http://fitlayout.github.io/ontology/segmentation.owl#hasAreaTree">hasAreaTree</a></li>
@@ -341,7 +348,7 @@
 		<h3 class="res ObjectProperty FunctionalProperty">belongsTo</h3>
 		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#belongsTo">segm:belongsTo</code></p>
 	</header>
-	<p class="comment"></p>
+	<p class="comment">Assigns an AreaTree to an Area.</p>
 	<dl>
 		<dt>has domain</dt> 
 		<dd><ul class="rel domain">
@@ -362,7 +369,7 @@
 		<h3 class="res ObjectProperty FunctionalProperty">belongsToChunkSet</h3>
 		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#belongsToChunkSet">segm:belongsToChunkSet</code></p>
 	</header>
-	<p class="comment"></p>
+	<p class="comment">Assigns a ChunkSet to a TextChunk.</p>
 	<dl>
 		<dt>has domain</dt> 
 		<dd><ul class="rel domain">
@@ -372,6 +379,27 @@
 		<dt>has range</dt> 
 		<dd><ul class="rel domain">
 	<li><a class="res Class" href="#ChunkSet" title="http://fitlayout.github.io/ontology/segmentation.owl#ChunkSet">ChunkSet</a></li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
+		<div class="entity" id="belongsToLogicalTree">
+	<header>
+		<h3 class="res ObjectProperty">belongsToLogicalTree</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#belongsToLogicalTree">segm:belongsToLogicalTree</code></p>
+	</header>
+	<p class="comment">Assigns the owning LogicalAreaTree to a LogicalArea.</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#LogicalArea" title="http://fitlayout.github.io/ontology/segmentation.owl#LogicalArea">LogicalArea</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#LogicalAreaTree" title="http://fitlayout.github.io/ontology/segmentation.owl#LogicalAreaTree">LogicalAreaTree</a></li>
 </ul>
 </dd>
 	
