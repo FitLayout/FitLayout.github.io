@@ -176,7 +176,6 @@
 	<li><a class="res ObjectProperty FunctionalProperty" href="#belongsTo" title="http://fitlayout.github.io/ontology/segmentation.owl#belongsTo">belongsTo</a></li>
 	<li><a class="res ObjectProperty" href="#containsBox" title="http://fitlayout.github.io/ontology/segmentation.owl#containsBox">containsBox</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty" href="#isChildOf" title="http://fitlayout.github.io/ontology/segmentation.owl#isChildOf">isChildOf</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#tagSupport" title="http://fitlayout.github.io/ontology/segmentation.owl#tagSupport">tagSupport</a></li>
 </ul>
 </dd>
 		<dt>is in range of</dt> 
@@ -332,6 +331,7 @@
 	<li><a class="res ObjectProperty" href="#hasTag" title="http://fitlayout.github.io/ontology/segmentation.owl#hasTag">hasTag</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty" href="#isChildOf" title="http://fitlayout.github.io/ontology/segmentation.owl#isChildOf">isChildOf</a></li>
 	<li><a class="res ObjectProperty FunctionalProperty" href="#isSubordinateTo" title="http://fitlayout.github.io/ontology/segmentation.owl#isSubordinateTo">isSubordinateTo</a></li>
+	<li><a class="res ObjectProperty FunctionalProperty" href="#tagSupport" title="http://fitlayout.github.io/ontology/segmentation.owl#tagSupport">tagSupport</a></li>
 	<li><a class="res ObjectProperty" href="#tagger" title="http://fitlayout.github.io/ontology/segmentation.owl#tagger">tagger</a></li>
 </ul>
 
@@ -567,6 +567,22 @@
 	</dl>
 </div>
 
+		<div class="entity" id="tagSupport">
+	<header>
+		<h3 class="res ObjectProperty FunctionalProperty">tagSupport</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#tagSupport">segm:tagSupport</code></p>
+	</header>
+	<p class="comment">Assigns a node that refers to a tag and the assigned support.</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li>(<a class="res Class" href="#Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">Area</a> <span class="logic">or</span> <a class="res Class" href="#TextChunk" title="http://fitlayout.github.io/ontology/segmentation.owl#TextChunk">TextChunk</a>)</li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
 		<div class="entity" id="tagger">
 	<header>
 		<h3 class="res ObjectProperty">tagger</h3>
@@ -596,7 +612,6 @@
 	<ul class="subtoc">
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#name" title="http://fitlayout.github.io/ontology/segmentation.owl#name">name</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#support" title="http://fitlayout.github.io/ontology/segmentation.owl#support">support</a></li>
-	<li><a class="res DatatypeProperty FunctionalProperty" href="#tagSupport" title="http://fitlayout.github.io/ontology/segmentation.owl#tagSupport">tagSupport</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#text" title="http://fitlayout.github.io/ontology/segmentation.owl#text">text</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#type" title="http://fitlayout.github.io/ontology/segmentation.owl#type">type</a></li>
 </ul>
@@ -633,22 +648,6 @@
 		<dt>has range</dt> 
 		<dd><ul class="rel domain">
 	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#float">xsd:float</span></li>
-</ul>
-</dd>
-	
-	</dl>
-</div>
-
-		<div class="entity" id="tagSupport">
-	<header>
-		<h3 class="res DatatypeProperty FunctionalProperty">tagSupport</h3>
-		<p class="IRI"><code title="http://fitlayout.github.io/ontology/segmentation.owl#tagSupport">segm:tagSupport</code></p>
-	</header>
-	<p class="comment"></p>
-	<dl>
-		<dt>has domain</dt> 
-		<dd><ul class="rel domain">
-	<li><a class="res Class" href="#Area" title="http://fitlayout.github.io/ontology/segmentation.owl#Area">Area</a></li>
 </ul>
 </dd>
 	
