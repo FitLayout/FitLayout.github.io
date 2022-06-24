@@ -192,6 +192,12 @@
 	</header>
 	<p class="comment">A tagger that is able to assign tags to content rectangles.</p>
 	<dl>
+		<dt>is in domain of</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res ObjectProperty" href="#param" title="http://fitlayout.github.io/ontology/fitlayout.owl#param">param</a></li>
+	<li><a class="res DatatypeProperty" href="#service" title="http://fitlayout.github.io/ontology/fitlayout.owl#service">service</a></li>
+</ul>
+</dd>
 		<dt>is in range of</dt> 
 		<dd><ul class="rel domain">
 	<li><a class="known res ObjectProperty" href="segmentation.html#tagger" title="http://fitlayout.github.io/ontology/segmentation.owl#tagger">segm:tagger</a></li>
@@ -207,6 +213,7 @@
 	<h2>Object Properties</h2>
 	<ul class="subtoc">
 	<li><a class="res ObjectProperty FunctionalProperty" href="#hasParentArtifact" title="http://fitlayout.github.io/ontology/fitlayout.owl#hasParentArtifact">hasParentArtifact</a></li>
+	<li><a class="res ObjectProperty" href="#param" title="http://fitlayout.github.io/ontology/fitlayout.owl#param">param</a></li>
 </ul>
 
 
@@ -231,6 +238,27 @@
 	</dl>
 </div>
 
+		<div class="entity" id="param">
+	<header>
+		<h3 class="res ObjectProperty">param</h3>
+		<p class="IRI"><code title="http://fitlayout.github.io/ontology/fitlayout.owl#param">fl:param</code></p>
+	</header>
+	<p class="comment">Service parameter name and value definition.</p>
+	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#Tagger" title="http://fitlayout.github.io/ontology/fitlayout.owl#Tagger">Tagger</a></li>
+</ul>
+</dd>
+		<dt>has range</dt> 
+		<dd><ul class="rel domain">
+	<li>((<a class="res DatatypeProperty" href="#paramName" title="http://fitlayout.github.io/ontology/fitlayout.owl#paramName">paramName</a> <span class="logic">some</span> <span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span>) <span class="logic">and</span> (<a class="res DatatypeProperty" href="#paramValue" title="http://fitlayout.github.io/ontology/fitlayout.owl#paramValue">paramValue</a> <span class="logic">some</span> <span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span>))</li>
+</ul>
+</dd>
+	
+	</dl>
+</div>
+
 
 </section>
 
@@ -240,7 +268,6 @@
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#createdOn" title="http://fitlayout.github.io/ontology/fitlayout.owl#createdOn">createdOn</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#creator" title="http://fitlayout.github.io/ontology/fitlayout.owl#creator">creator</a></li>
 	<li><a class="res DatatypeProperty FunctionalProperty" href="#creatorParams" title="http://fitlayout.github.io/ontology/fitlayout.owl#creatorParams">creatorParams</a></li>
-	<li><a class="res DatatypeProperty" href="#param" title="http://fitlayout.github.io/ontology/fitlayout.owl#param">param</a></li>
 	<li><a class="res DatatypeProperty" href="#paramName" title="http://fitlayout.github.io/ontology/fitlayout.owl#paramName">paramName</a></li>
 	<li><a class="res DatatypeProperty" href="#paramValue" title="http://fitlayout.github.io/ontology/fitlayout.owl#paramValue">paramValue</a></li>
 	<li><a class="res DatatypeProperty" href="#service" title="http://fitlayout.github.io/ontology/fitlayout.owl#service">service</a></li>
@@ -310,17 +337,6 @@
 	</dl>
 </div>
 
-		<div class="entity" id="param">
-	<header>
-		<h3 class="res DatatypeProperty">param</h3>
-		<p class="IRI"><code title="http://fitlayout.github.io/ontology/fitlayout.owl#param">fl:param</code></p>
-	</header>
-	<p class="comment">Service parameter value definition.</p>
-	<dl>
-	
-	</dl>
-</div>
-
 		<div class="entity" id="paramName">
 	<header>
 		<h3 class="res DatatypeProperty">paramName</h3>
@@ -350,6 +366,11 @@
 	</header>
 	<p class="comment">A service ID definition</p>
 	<dl>
+		<dt>has domain</dt> 
+		<dd><ul class="rel domain">
+	<li><a class="res Class" href="#Tagger" title="http://fitlayout.github.io/ontology/fitlayout.owl#Tagger">Tagger</a></li>
+</ul>
+</dd>
 		<dt>has range</dt> 
 		<dd><ul class="rel domain">
 	<li><span class="res other" title="http://www.w3.org/2001/XMLSchema#string">xsd:string</span></li>
