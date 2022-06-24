@@ -13,7 +13,7 @@
         <owl:imports rdf:resource="http://fitlayout.github.io/ontology/render.owl#"/>
         <dc:creator>Radek Burget</dc:creator>
         <dc:description>Document visual area (segmentation) ontology.</dc:description>
-        <dc:title>Document Visual Area Ontology</dc:title>
+        <dc:title>Visual Area Ontology</dc:title>
         <rdfs:comment>Document visual area (segmentation) ontology.</rdfs:comment>
         <owl:versionInfo>1.0.0</owl:versionInfo>
     </owl:Ontology>
