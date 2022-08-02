@@ -133,9 +133,9 @@
         <rdfs:domain>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#Area"/>
-                    <rdf:Description rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#LogicalArea"/>
-                    <rdf:Description rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#TextChunk"/>
+                    <rdf:Description rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#AreaTree"/>
+                    <rdf:Description rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#ChunkSet"/>
+                    <rdf:Description rdf:about="http://fitlayout.github.io/ontology/segmentation.owl#LogicalAreaTree"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
