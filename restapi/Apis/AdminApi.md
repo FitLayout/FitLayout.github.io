@@ -1,6 +1,6 @@
 # AdminApi
 
-All URIs are relative to *http://localhost:9080/fitlayout-web*
+All URIs are relative to *http://localhost:8080/fitlayout-web*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

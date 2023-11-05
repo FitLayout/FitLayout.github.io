@@ -5,10 +5,10 @@ info:
   description: "FitLayout API for artifact creation, storage and manipulation"
   contact:
     url: https://github.com/FitLayout/FitLayout/wiki
-    email: ""
+    email: burgetr@fit.vut.cz
   version: 1.0.0
 servers:
-- url: http://localhost:9080/fitlayout-web
+- url: http://localhost:8080/fitlayout-web
 - url: https://localhost:9443/fitlayout-web
 security:
 - jwt: []
@@ -19,10 +19,20 @@ tags:
   description: Artifact operations
 - name: auth
   description: User authorization
+- name: query
+  description: Saved query management
 - name: repository
   description: RDF repository opertations
+- name: repositoryOperator
+  description: Repository-specific operator config
+- name: repositoryService
+  description: Repository-specific service config and invocation
+- name: runService
+  description: Running different analytic services on a repository
 - name: service
-  description: Service discovery and invocation
+  description: Global service discovery and invocation
+- name: tags
+  description: Tag operations
 paths:
   /api/auth/userInfo:
     get:
@@ -62,6 +72,11 @@ paths:
       summary: Retrieves information about all artifacts in the repository (artifact
         contents not included).
       operationId: getArtifactsInfo
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: string
       responses:
         "200-JSONLD":
           description: The artifacts RDF description serialized in JSON-LD
@@ -312,6 +327,11 @@ paths:
       - artifact
       summary: Gets a list of artifact IRIs.
       operationId: listArtifacts
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: string
       responses:
         "200":
           description: List of artifact IRIs
@@ -359,6 +379,101 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/operator:
+    get:
+      tags:
+      - repositoryOperator
+      summary: Gets a list of available area tree operator services for the repository.
+      operationId: repositoryListOperators
+      responses:
+        "200":
+          description: List of service descriptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ParametrizedServiceDescr'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/query:
+    get:
+      tags:
+      - query
+      summary: Obtains all the saved queries
+      operationId: list
+      responses:
+        "200":
+          description: Saved query list
+    post:
+      tags:
+      - query
+      summary: Adds a saved a query
+      operationId: addQuery
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SavedQueryDTO'
+      responses:
+        "200":
+          description: Query saved
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/query/{id}:
+    get:
+      tags:
+      - query
+      summary: Obtains a saved query
+      operationId: getQuery
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: A saved query
+    delete:
+      tags:
+      - query
+      summary: Deletes a saved query
+      operationId: deleteQuery
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: Query deleted
     parameters:
     - name: repoId
       in: path
@@ -545,6 +660,12 @@ paths:
         required: true
         schema:
           type: string
+      - name: limit
+        in: query
+        schema:
+          format: int32
+          default: 2048
+          type: integer
       responses:
         "200":
           description: Subject description
@@ -552,6 +673,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SubjectDescriptionResult'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/repository/forceInitRepo:
+    get:
+      tags:
+      - repository
+      summary: Re-initializes an empty repository with the necessary RDF metadata
+        (schemas)
+      operationId: forceInitRepo
+      responses:
+        "200":
+          description: Repository initialized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
         "404":
           description: Repository with the given ID not found
           content:
@@ -735,7 +883,7 @@ paths:
         in: query
         schema:
           format: int32
-          default: 100
+          default: 2048
           type: integer
       responses:
         "200":
@@ -764,11 +912,16 @@ paths:
       summary: Executes any SPARQL query on the underlying RDF repository
       operationId: query
       parameters:
+      - name: distinct
+        in: query
+        schema:
+          default: false
+          type: boolean
       - name: limit
         in: query
         schema:
           format: int64
-          default: 100
+          default: 2048
           type: integer
       - name: offset
         in: query
@@ -884,11 +1037,16 @@ paths:
       summary: Executes a SPARQL SELECT query on the underlying RDF repository
       operationId: selectQuery
       parameters:
+      - name: distinct
+        in: query
+        schema:
+          default: false
+          type: boolean
       - name: limit
         in: query
         schema:
           format: int64
-          default: 100
+          default: 2048
           type: integer
       - name: offset
         in: query
@@ -977,10 +1135,65 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResultErrorMessage'
+    put:
+      tags:
+      - repository
+      summary: Replaces all statements in the repository
+      operationId: replaceStatements
+      parameters:
+      - name: baseURI
+        in: query
+        schema:
+          type: string
+      - name: context
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              format: binary
+              type: string
+          text/turtle:
+            schema:
+              format: binary
+              type: string
+          application/rdf+xml:
+            schema:
+              format: binary
+              type: string
+          application/n-triples:
+            schema:
+              format: binary
+              type: string
+          application/n-quads:
+            schema:
+              format: binary
+              type: string
+      responses:
+        "200":
+          description: Statements replaced
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultValue'
+        "400":
+          description: Invalid service parametres
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
     post:
       tags:
       - repository
-      summary: Imports statements to the repository
+      summary: Imports (adds) statements to the repository
       operationId: addStatements
       parameters:
       - name: baseURI
@@ -995,19 +1208,24 @@ paths:
         content:
           application/ld+json:
             schema:
-              type: object
+              format: binary
+              type: string
           text/turtle:
             schema:
-              type: object
+              format: binary
+              type: string
           application/rdf+xml:
             schema:
-              type: object
+              format: binary
+              type: string
           application/n-triples:
             schema:
-              type: object
+              format: binary
+              type: string
           application/n-quads:
             schema:
-              type: object
+              format: binary
+              type: string
       responses:
         "200":
           description: Statements added
@@ -1091,7 +1309,7 @@ paths:
         in: query
         schema:
           format: int32
-          default: 100
+          default: 2048
           type: integer
       responses:
         "200":
@@ -1228,6 +1446,145 @@ paths:
                 $ref: '#/components/schemas/ResultErrorMessage'
         "500":
           description: Query evaluation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/run/renderJson:
+    post:
+      tags:
+      - runService
+      summary: Creates a new Page artifact from a JSON page description (e.g. obtained
+        from a puppeteer backend or a client browser extension).
+      operationId: renderJsonPage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              format: binary
+              type: string
+      responses:
+        "200":
+          description: OK
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/service:
+    get:
+      tags:
+      - repositoryService
+      summary: Gets a list of available artifact services for the repository.
+      operationId: repositoryGetServiceList
+      responses:
+        "200":
+          description: List of service descriptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ArtifactServiceDescr'
+        "404":
+          description: Repository with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    post:
+      tags:
+      - repositoryService
+      summary: Invokes a service and returns the resulting artifact
+      operationId: repositoryInvoke
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceParams'
+      responses:
+        "200":
+          description: The complete artifact data
+        "404":
+          description: Repository or service with the given ID not found
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+            text/turtle:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+            application/rdf+xml:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+            application/n-triples:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+            application/n-quads:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/service/config:
+    get:
+      tags:
+      - repositoryService
+      summary: Gets the default configuration of an artifact service.
+      operationId: getRepoServiceConfig
+      parameters:
+      - name: id
+        in: query
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Service configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceParams'
+        "404":
+          description: Repository or service with the given ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultErrorMessage'
+    parameters:
+    - name: repoId
+      in: path
+      description: The ID of the artifact repository to use
+      required: true
+      schema:
+        type: string
+  /api/r/{repoId}/tags:
+    get:
+      tags:
+      - tags
+      summary: Reads a list of tags defined in the repository
+      operationId: getTags
+      responses:
+        "200":
+          description: The list of tags
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagInfo'
+        "404":
+          description: Repository with the given ID not found
           content:
             application/json:
               schema:
@@ -1481,22 +1838,22 @@ components:
   schemas:
     ArtifactServiceDescr:
       required:
-      - description
       - id
       - name
+      - description
       type: object
       properties:
-        category:
-          description: Service category used for grouping services
-          type: string
-        description:
-          description: Service description
-          type: string
         id:
           description: Service ID
           type: string
         name:
           description: Service name
+          type: string
+        description:
+          description: Service description
+          type: string
+        category:
+          description: Service category used for grouping services
           type: string
         params:
           description: Descriptions of accepted parameters
@@ -1516,6 +1873,9 @@ components:
         name:
           description: Name of the parameter
           type: string
+        description:
+          description: Text description of the parameter
+          type: string
         type:
           description: "Type of the parameter {bolean, int, float, string}"
           type: string
@@ -1528,6 +1888,9 @@ components:
       properties:
         name:
           description: Name of the parameter
+          type: string
+        description:
+          description: Text description of the parameter
           type: string
         type:
           description: "Type of the parameter {bolean, int, float, string}"
@@ -1548,13 +1911,16 @@ components:
         name:
           description: Name of the parameter
           type: string
+        description:
+          description: Text description of the parameter
+          type: string
         type:
           description: "Type of the parameter {bolean, int, float, string}"
           type: string
-        maxValue:
+        minValue:
           format: float
           type: number
-        minValue:
+        maxValue:
           format: float
           type: number
     ParamIntDescr:
@@ -1566,13 +1932,16 @@ components:
         name:
           description: Name of the parameter
           type: string
+        description:
+          description: Text description of the parameter
+          type: string
         type:
           description: "Type of the parameter {bolean, int, float, string}"
           type: string
-        maxValue:
+        minValue:
           format: int32
           type: integer
-        minValue:
+        maxValue:
           format: int32
           type: integer
     ParamStringDescr:
@@ -1584,61 +1953,64 @@ components:
         name:
           description: Name of the parameter
           type: string
+        description:
+          description: Text description of the parameter
+          type: string
         type:
           description: "Type of the parameter {bolean, int, float, string}"
           type: string
-        maxLength:
+        minLength:
           format: int32
           type: integer
-        minLength:
+        maxLength:
           format: int32
           type: integer
     ParametrizedServiceDescr:
       description: Description of a parametrized service
       required:
-      - description
       - id
       - name
+      - description
       - produces
       type: object
       properties:
-        category:
-          description: Service category used for grouping services
-          type: string
-        consumes:
-          description: Type IRI of the input artifacts
-          type: string
-        description:
-          description: Service description
-          type: string
         id:
           description: Service ID
           type: string
         name:
           description: Service name
           type: string
+        description:
+          description: Service description
+          type: string
+        consumes:
+          description: Type IRI of the input artifacts
+          type: string
+        produces:
+          description: Type IRI of the produced artifacts
+          type: string
+        category:
+          description: Service category used for grouping services
+          type: string
         params:
           description: Descriptions of accepted parameters
           type: object
           additionalProperties:
             $ref: '#/components/schemas/ParamDescr'
-        produces:
-          description: Type IRI of the produced artifacts
-          type: string
     QuadrupleData:
       description: RDF quadruple data
       type: object
       properties:
-        artifact:
-          type: string
-        o:
+        s:
           type: string
         p:
           type: string
-        s:
+        o:
           type: string
         value:
           type: object
+        artifact:
+          type: string
         ok:
           type: boolean
     RepositoryInfo:
@@ -1648,33 +2020,36 @@ components:
       - owner
       type: object
       properties:
-        accessedOn:
-          format: date
-          description: Last access date
+        id:
+          description: Repository ID
+          type: string
+        description:
+          description: Repository description
+          type: string
+        version:
+          description: Metadata schema version
+          type: string
+        email:
+          description: Creator's e-mail
+          type: string
+        owner:
+          description: Owner ID
           type: string
         createdOn:
           format: date
           description: Creation date
           type: string
-        description:
-          description: Repository description
-          type: string
-        email:
-          description: Creator's e-mail
+        accessedOn:
+          format: date
+          description: Last access date
           type: string
         expires:
           format: date
           description: Expiration date
           type: string
-        id:
-          description: Repository ID
-          type: string
-        owner:
-          description: Owner ID
-          type: string
-        version:
-          description: Metadata schema version
-          type: string
+        readOnly:
+          description: Read only flag
+          type: boolean
     ResultBinding:
       description: Assigned result value
       type: object
@@ -1719,6 +2094,16 @@ components:
           type: string
         result:
           type: object
+    SavedQueryDTO:
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        title:
+          type: string
+        queryString:
+          type: string
     SelectQueryResult:
       description: A result of a SPARQL SELECT query
       type: object
@@ -1733,30 +2118,30 @@ components:
       - serviceId
       type: object
       properties:
+        serviceId:
+          description: ID of the service to invoke
+          type: string
+        parentIri:
+          description: IRI of the input artifact if required by the given service
+          type: string
         params:
           description: Service invocation parametres
           type: object
           additionalProperties: {}
-        parentIri:
-          description: IRI of the input artifact if required by the given service
-          type: string
-        serviceId:
-          description: ID of the service to invoke
-          type: string
     StorageStatus:
       description: Overall storage status
       type: object
       properties:
-        available:
-          format: int32
-          type: integer
+        singleMode:
+          type: boolean
         createAvailable:
           type: boolean
         repositories:
           format: int32
           type: integer
-        singleMode:
-          type: boolean
+        available:
+          format: int32
+          type: integer
     SubjectDescriptionResult:
       description: Represents the subject descripton as map of properties.
       type: object
@@ -1767,29 +2152,41 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ResultBinding'
+    TagInfo:
+      description: Tag information
+      type: object
+      properties:
+        iri:
+          type: string
+        type:
+          type: string
+        name:
+          type: string
+        context:
+          type: string
     UserInfo:
       description: Current user information
       type: object
       properties:
-        anonymous:
-          type: boolean
+        userId:
+          type: string
         email:
           type: string
+        anonymous:
+          type: boolean
+        guest:
+          type: boolean
         expires:
           format: date
           type: string
-        guest:
-          type: boolean
         roles:
           uniqueItems: true
           type: array
           items:
             type: string
-        userId:
-          type: string
   securitySchemes:
     jwt:
       type: http
-      in: header
+      description: JWT authentication with bearer token
       scheme: bearer
       bearerFormat: jwt

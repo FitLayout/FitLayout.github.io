@@ -1,6 +1,6 @@
 # ArtifactApi
 
-All URIs are relative to *http://localhost:9080/fitlayout-web*
+All URIs are relative to *http://localhost:8080/fitlayout-web*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -145,7 +145,7 @@ null (empty response body)
 
 <a name="getArtifactsInfo"></a>
 # **getArtifactsInfo**
-> getArtifactsInfo(repoId)
+> getArtifactsInfo(repoId, page)
 
 Retrieves information about all artifacts in the repository (artifact contents not included).
 
@@ -154,6 +154,7 @@ Retrieves information about all artifacts in the repository (artifact contents n
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **repoId** | **String**| The ID of the artifact repository to use | [default to null]
+ **page** | **String**|  | [optional] [default to null]
 
 ### Return type
 
@@ -170,7 +171,7 @@ null (empty response body)
 
 <a name="listArtifacts"></a>
 # **listArtifacts**
-> List listArtifacts(repoId)
+> List listArtifacts(repoId, page)
 
 Gets a list of artifact IRIs.
 
@@ -179,6 +180,7 @@ Gets a list of artifact IRIs.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **repoId** | **String**| The ID of the artifact repository to use | [default to null]
+ **page** | **String**|  | [optional] [default to null]
 
 ### Return type
 
