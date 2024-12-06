@@ -162,6 +162,17 @@
     
 
 
+    <!-- http://fitlayout.github.io/ontology/fitlayout.owl#processedBy -->
+
+    <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#processedBy">
+        <rdfs:domain rdf:resource="http://fitlayout.github.io/ontology/fitlayout.owl#Artifact"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>An identification of the service that (post-)processed the artifact. This is used to track the processing steps applied on the artifact.</rdfs:comment>
+        <rdfs:label>processedBy</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://fitlayout.github.io/ontology/fitlayout.owl#service -->
 
     <owl:DatatypeProperty rdf:about="http://fitlayout.github.io/ontology/fitlayout.owl#service">
